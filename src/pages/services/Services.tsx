@@ -2,6 +2,8 @@ import HText from "@/shared/HText";
 import SText from "@/shared/SText";
 import { Link } from "react-router-dom";
 
+import DryImage from "@/assets/dry.png";
+
 const Services = () => {
   const products = [
     {
@@ -106,7 +108,7 @@ const Services = () => {
             key={product.id}
             className="flex flex-col items-center justify-center bg-white p-8"
           >
-            <img src={product.image} alt="dry-cleaning" />
+            <img src={DryImage} alt="dry-cleaning" />
             <SText textAlign="text-center">{product.name}</SText>
             <p className="text-center">{product.description}</p>
             <Link to={`/pricing/${product.name}`}>
