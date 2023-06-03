@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./pages/navbar";
+import PrivateRoutes from "./components/PrivateRoutes";
+import HomeScreen from "./pages/landingScreen/HomeScreen";
+import Login from "./pages/login/Login";
+import Footer from "./pages/footer";
+import PageNotFound from "./pages/pageNotFound/PageNotFound";
+import Services from "./pages/services/Services";
+import Pricing from "./pages/pricing/Pricing";
+import PricingDetailed from "./pages/pricing/PricingDetailed";
+import Areas from "./pages/areas/Areas";
+import FAQ from "./pages/faq/faq";
+import { useEffect, useState } from "react";
+import Corporates from "./pages/corperates/Corperates";
+import Branches from "./pages/branches/Branches";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY === 0) {
+                setIsTopOfPage(true);
+            }
+            if (window.scrollY !== 0) setIsTopOfPage(false);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+    return (
+        <>
+            <Navbar isTopOfPage={isTopOfPage} />
+            <Routes>
+                <Route element={<PrivateRoutes />}>
+                    {/* <Route element={<HomeScreen />} path="/" /> */}
+                </Route>
+                <Route element={<HomeScreen />} path="/" />
+                <Route element={<Login />} path="/login" />
+                <Route element={<Services />} path="/services" />
+                <Route element={<Pricing />} path="/pricing" />
+                <Route element={<Areas />} path="/areas" />
+                <Route element={<Branches />} path="/branches" />
+                <Route element={<FAQ />} path="/faqs" />
+                <Route element={<Corporates />} path="/corperates" />
+                <Route element={<PricingDetailed />} path="/pricing/:name" />
+                <Route element={<PageNotFound />} path="*" />
+            </Routes>
+            <Footer />
+        </>
+    );
 }
 
-export default App
+export default App;

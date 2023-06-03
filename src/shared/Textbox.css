@@ -1,0 +1,16 @@
+.textbox-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.textbox-input {
+  border: none;
+  outline: none;
+}
