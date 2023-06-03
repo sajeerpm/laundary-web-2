@@ -15,7 +15,7 @@ const Home = ({}: Props) => {
       className="gap-16 bg-[#fffaf0] py-10 md:h-[100vh] md:pb-0"
     >
       {/* IMAGE AND MAIN HEADER */}
-      <div>
+      <div className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6">
         {/* IMAGE */}
         <div
           className="flex basis-3/4 justify-center md:z-10
