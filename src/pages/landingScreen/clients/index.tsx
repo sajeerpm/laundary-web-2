@@ -7,9 +7,9 @@ import SHText from "@/shared/SHText";
 
 type Props = {};
 
-const Clients = (props: Props) => {
+const Clients = ({}: Props) => {
   return (
-    <section className="w-full bg-primary-100 py-6">
+    <section className="bg-primary-100 w-full py-6">
       <div>
         <SHText textAlign="text-center">
           <p className="">OUR LAUNDARY CLIENTS</p>

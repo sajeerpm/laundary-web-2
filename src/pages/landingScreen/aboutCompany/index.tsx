@@ -5,9 +5,9 @@ import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
-type Props = { setSelectedPage: (value: SelectedPage) => void };
+type Props = {};
 
-const AboutCompany = ({ setSelectedPage }: Props) => {
+const AboutCompany = ({}: Props) => {
   const lineHeadCap = "pb-20";
   const lineParagraphCap = "pb-6";
   return (
@@ -235,7 +235,7 @@ const AboutCompany = ({ setSelectedPage }: Props) => {
       <div className="flex w-full justify-center">
         <AnchorLink
           className="rounded-none border border-white bg-black px-28 py-2 text-center"
-          onClick={() => setSelectedPage(SelectedPage.Home)}
+          onClick={() => {}}
           href={`#${SelectedPage.Home}`}
         >
           BOOK AN ORDER

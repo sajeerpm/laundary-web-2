@@ -1,18 +1,11 @@
-import Editon from "@/assets/clients/Editon.png";
-import Estee from "@/assets/clients/Estee.png";
-import Ibis from "@/assets/clients/Ibis.png";
-import MotelOne from "@/assets/clients/Motel-one.png";
-import TheHarleyStreet from "@/assets/clients/The-Harley-Street.png";
 import SHText from "@/shared/SHText";
-import { SelectedPage } from "@/shared/types";
-import { motion } from "framer-motion";
 
-type Props = { setSelectedPage: (value: SelectedPage) => void };
+type Props = {};
 
-const Pricing = ({ setSelectedPage }: Props) => {
+const Pricing = ({}: Props) => {
   return (
     <section id="pricing" className="w-full py-16">
-      <motion.div onViewportEnter={() => setSelectedPage(SelectedPage.Pricing)}>
+      <div>
         <div>
           <SHText textAlign="text-center">
             <p className="">PRICES</p>
@@ -353,7 +346,7 @@ const Pricing = ({ setSelectedPage }: Props) => {
             FULL PRICE LIST
           </button>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
