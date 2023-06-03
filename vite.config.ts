@@ -7,6 +7,11 @@ export default defineConfig({
   plugins: [react()],
   base: "/laundary-web-2/",
   resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    alias: [
+      {
+        find: "@",
+        replacement: path.resolve(__dirname, "/laundary-web-2/src"),
+      },
+    ],
   },
 });
