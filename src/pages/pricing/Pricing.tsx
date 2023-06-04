@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DryCleaningBackground from "@/assets/images/dry-cleaning.jpg";
 
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -15,7 +16,7 @@ const Pricing = () => {
         <div
           className="h-[70vh] w-full"
           style={{
-            backgroundImage: "url(/src/assets/images/dry-cleaning.jpg)",
+            backgroundImage: `url(${DryCleaningBackground})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

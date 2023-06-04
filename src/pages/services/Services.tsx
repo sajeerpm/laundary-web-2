@@ -3,6 +3,17 @@ import SText from "@/shared/SText";
 import { Link } from "react-router-dom";
 
 import DryImage from "@/assets/dry.png";
+import ShirtService from "@/assets/clean-clothes.png";
+import LaundaryService from "@/assets/laundry.png";
+import WashAndFold from "@/assets/clothes-folded.png";
+import CurtainService from "@/assets/curtain.png";
+import ShoeRepair from "@/assets/cleaning.png";
+import RunningService from "@/assets/running.png";
+import WeddingDresses from "@/assets/wedding.png";
+import AlterationAndRepair from "@/assets/ribbon-cutting.png";
+import LeatherFurSuede from "@/assets/leather-jacket.png";
+import SpecialistItems from "@/assets/jeans.png";
+import Ironing from "@/assets/ironing-board.png";
 
 const Services = () => {
   const products = [
@@ -10,84 +21,84 @@ const Services = () => {
       id: 1,
       name: "Dry Cleaning",
       price: "$10",
-      image: "/src/assets/dry.png",
+      image: `${DryImage}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 2,
       name: "Shirt Service",
       price: "$20",
-      image: "/src/assets/clean-clothes.png",
+      image: `${ShirtService}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 3,
       name: "Laundry Services",
       price: "$30",
-      image: "/src/assets/laundry.png",
+      image: `${LaundaryService}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 4,
       name: "wash and fold services",
       price: "$40",
-      image: "/src/assets/clothes-folded.png",
+      image: `${WashAndFold}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 5,
       name: "Curtain Cleaning",
       price: "$40",
-      image: "/src/assets/curtain.png",
+      image: `${CurtainService}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 6,
       name: "SHOE REPAIR AND COMPLIMENT POLISH",
       price: "$40",
-      image: "/src/assets/cleaning.png",
+      image: `${ShoeRepair}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 7,
       name: "Trainer Cleaning",
       price: "$40",
-      image: "/src/assets/running.png",
+      image: `${RunningService}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 8,
       name: "Wedding Dresses",
       price: "$40",
-      image: "/src/assets/wedding.png",
+      image: `${WeddingDresses}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 9,
       name: "Alterations & Repairs",
       price: "$40",
-      image: "/src/assets/ribbon-cutting.png",
+      image: `${AlterationAndRepair}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 10,
       name: "Leather, Fur and Suede",
       price: "$40",
-      image: "/src/assets/leather-jacket.png",
+      image: `${LeatherFurSuede}`,
       description: "On the other hand.",
     },
     {
       id: 11,
       name: "Specialist items",
       price: "$40",
-      image: "/src/assets/jeans.png",
+      image: `${SpecialistItems}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     {
       id: 12,
       name: "Ironing",
       price: "$40",
-      image: "/src/assets/ironing-board.png",
+      image: `${Ironing}`,
       description: "On the other hand, we denounce with righteous indignation.",
     },
     // Add more products as needed
