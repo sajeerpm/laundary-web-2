@@ -5,6 +5,7 @@ import Estee from "@/assets/clients/Estee.png";
 import Ibis from "@/assets/clients/Ibis.png";
 import MotelOne from "@/assets/clients/Motel-one.png";
 import TheHarleyStreet from "@/assets/clients/The-Harley-Street.png";
+import BackgroundImage from "@/assets/images/unsplash-4.jpg";
 
 interface Tile {
   id: number;
@@ -56,7 +57,7 @@ const Corperates: React.FC = () => {
     <section
       className="items-center justify-center md:flex"
       style={{
-        backgroundImage: "url(/src/assets/images/unsplash-4.jpg)",
+        backgroundImage: `url(${BackgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
