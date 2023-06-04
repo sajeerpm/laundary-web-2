@@ -9,29 +9,29 @@ type Props = {};
 
 const Clients = ({}: Props) => {
   return (
-    <section className="bg-primary-100 w-full py-6">
-      <div>
+    <section className="bg-primary-100 w-full py-16">
+      <div className="pb-16">
         <SHText textAlign="text-center">
           <p className="">OUR LAUNDARY CLIENTS</p>
         </SHText>
         <hr className="m-auto mt-[12px] h-[2px] w-[30%] bg-gray-400" />
       </div>
-      <div className="mx-auto w-5/6 py-12">
+      <div className="mx-auto w-5/6">
         <div className="w-full">
-          <ul className="flex justify-between gap-16 whitespace-nowrap">
-            <li>
+          <ul className="justify-center gap-16 whitespace-nowrap md:flex">
+            <li className="flex justify-center">
               <img src={Editon} />
             </li>
-            <li>
+            <li className="flex justify-center">
               <img src={Estee} />
             </li>
-            <li>
+            <li className="flex justify-center">
               <img src={Ibis} />
             </li>
-            <li>
+            <li className="flex justify-center">
               <img src={MotelOne} />
             </li>
-            <li>
+            <li className="flex justify-center">
               <img src={TheHarleyStreet} />
             </li>
           </ul>

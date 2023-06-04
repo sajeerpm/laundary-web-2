@@ -232,9 +232,9 @@ const AboutCompany = ({}: Props) => {
           <div className={`${lineHeadCap}`}></div>
         </motion.div>
       </div>
-      <div className="flex w-full justify-center">
+      <div className="flex justify-center md:w-full">
         <AnchorLink
-          className="rounded-none border border-white bg-black px-28 py-2 text-center"
+          className="rounded-none border border-white bg-black px-14 py-2 text-center md:px-28"
           onClick={() => {}}
           href={`#${SelectedPage.Home}`}
         >

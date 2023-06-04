@@ -12,10 +12,10 @@ const Pricing = ({}: Props) => {
           </SHText>
           <hr className="m-auto mt-[12px] h-[2px] w-[10%] bg-gray-400" />
         </div>
-        <div className="mx-auto w-5/6 py-24">
+        <div className="mx-auto w-5/6 py-16">
           <div className="w-full">
-            <ul className="flex justify-center gap-16 whitespace-nowrap">
-              <li className="flex flex-col items-center justify-center">
+            <ul className="justify-center gap-16 whitespace-nowrap md:flex">
+              <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
                   height="145px"
@@ -96,7 +96,7 @@ const Pricing = ({}: Props) => {
                   <p className="py-2 text-center font-extrabold">From £2.50</p>
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center">
+              <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
                   height="145px"
@@ -179,7 +179,7 @@ const Pricing = ({}: Props) => {
                   <p className="py-2 text-center font-extrabold">From £11.50</p>
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center">
+              <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
                   height="145px"
@@ -251,7 +251,7 @@ const Pricing = ({}: Props) => {
                   <p className="py-2 text-center font-extrabold">From £16.95</p>
                 </div>
               </li>
-              <li className="flex flex-col items-center justify-center">
+              <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
                   height="145px"

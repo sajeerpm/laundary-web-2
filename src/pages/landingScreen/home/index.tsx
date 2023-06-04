@@ -12,7 +12,7 @@ const Home = ({}: Props) => {
   return (
     <section
       id="home"
-      className="gap-16 bg-[#fffaf0] py-10 md:h-[100vh] md:pb-0"
+      className="gap-16 bg-[#fffaf0] py-20 md:h-[100vh] md:pb-0"
     >
       {/* IMAGE AND MAIN HEADER */}
       <div className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6">

@@ -14,7 +14,7 @@ const HowItWorks = ({}: Props) => {
           </SHText>
           <hr className="m-auto mt-[12px] h-[2px] w-[20%] bg-gray-400" />
         </div>
-        <div className="flex justify-between py-[139px]">
+        <div className="justify-between py-16 md:flex">
           <div className="flex flex-col items-center">
             <svg
               className="how-step-image h-[119px] w-[79px]"
