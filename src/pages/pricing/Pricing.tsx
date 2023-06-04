@@ -25,7 +25,7 @@ const Pricing = () => {
         </div>
       </div>
       <div className="mx-auto w-5/6 py-8">
-        <div className="grid w-full grid-cols-1 gap-4 pb-16 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
           <button
             className={`rounded-none border border-black px-4 py-4 text-xs uppercase ${
               activeTab === 1
@@ -68,10 +68,10 @@ const Pricing = () => {
           </button>
         </div>
 
-        <div className="w-full">
+        <div className="w-full py-8">
           <p className="w-full text-center uppercase">{activeTabName}</p>
           {activeTab === 1 && (
-            <div className="mx-auto max-w-[650px] py-8 text-center text-xl">
+            <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
                 Your clothes are individually inspected, cleaned (stains treated
                 and then dry cleaned or laundered as appropriate) and ironed.
@@ -81,7 +81,7 @@ const Pricing = () => {
             </div>
           )}
           {activeTab === 2 && (
-            <div className="mx-auto max-w-[650px] py-8 text-center text-xl">
+            <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
                 Enjoy machine washed, tumble dried, and neatly folded garments
                 when opting for our time saving service wash. All clothes will
@@ -91,7 +91,7 @@ const Pricing = () => {
             </div>
           )}
           {activeTab === 3 && (
-            <div className="mx-auto max-w-[650px] py-8 text-center text-xl">
+            <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
                 Relax in a clean home with our specialized household items
                 cleaning service. We clean a range of items including curtains,
@@ -102,7 +102,7 @@ const Pricing = () => {
             </div>
           )}
           {activeTab === 4 && (
-            <div className="mx-auto max-w-[650px] py-8 text-center text-xl">
+            <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
                 Repairs and adjustments are undertaken by our expert tailors and
                 cobblers. We offer a range of services from suit repairs and zip
@@ -113,7 +113,7 @@ const Pricing = () => {
           )}
         </div>
 
-        <div className="mx-auto w-4/6">
+        <div className="mx-auto md:w-4/6">
           {activeTab === 1 && (
             <div>
               <div className="w-full py-6">
@@ -217,7 +217,7 @@ const Pricing = () => {
         </div>
       </div>
       <div className="w-full">
-        <ul className="flex justify-center gap-16 whitespace-nowrap">
+        <ul className="justify-center gap-16 whitespace-nowrap py-8 md:flex">
           <li className="flex flex-col items-center justify-center">
             <svg
               className="h-[65px]"

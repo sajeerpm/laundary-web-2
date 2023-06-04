@@ -39,7 +39,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
         <div className={`${flexBetween} mx-auto w-5/6`}>
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            <img className="h-[52px]" alt="logo" src={Logo} />
+            <img className="h-[42px] md:h-[52px]" alt="logo" src={Logo} />
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
@@ -161,16 +161,16 @@ const Navbar = ({ isTopOfPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed bottom-0 right-0 z-40 h-full w-full bg-black drop-shadow-xl">
+        <div className="fixed bottom-0 right-0 z-40 h-full w-full overflow-y-auto bg-black py-8 font-montserrat font-extralight drop-shadow-xl">
           {/* CLOSE ICON */}
-          <div className="flex justify-end p-12">
+          <div className="flex justify-end px-8">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
               <XMarkIcon className="h-6 w-6 text-gray-400" />
             </button>
           </div>
 
           {/* MENU ITEMS */}
-          <div className="flex flex-col justify-center gap-10 text-2xl text-white">
+          <div className="flex flex-col justify-center gap-6 text-lg text-white">
             {selectedPage !== SelectedPage.Home && (
               <Link
                 className={`text-center uppercase`}
