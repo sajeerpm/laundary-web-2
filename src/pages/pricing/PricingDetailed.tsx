@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
 import { useParams } from "react-router-dom";
+import PricingDetailsBackgroundImage from "@/assets/images/unsplash-1.jpg";
 
 const PricingDetailed = () => {
   const { name } = useParams();
@@ -64,7 +65,7 @@ const PricingDetailed = () => {
         <div
           className="top-0 flex h-[90vh] w-full flex-col items-center justify-center"
           style={{
-            backgroundImage: "url(/src/assets/images/unsplash-1.jpg)",
+            backgroundImage: `url(${PricingDetailsBackgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
