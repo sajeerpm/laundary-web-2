@@ -113,11 +113,11 @@ const Services = () => {
       <div className="w-full py-8">
         <HText textAlign="text-center">SERVICES & PRICES</HText>
       </div>
-      <div className="mx-auto grid w-4/6 grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+      <div className="lg:grid-cols-3 mx-auto grid w-4/6 grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         {products.map((product) => (
           <div
             key={product.id}
-            className="flex flex-col items-center justify-center bg-white p-8"
+            className="flex flex-col items-center justify-center bg-white p-2 md:p-8"
           >
             <img src={product.image} alt="dry-cleaning" />
             <SText textAlign="text-center">{product.name}</SText>
