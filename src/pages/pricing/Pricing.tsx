@@ -69,7 +69,7 @@ const Pricing = () => {
         </div>
 
         <div className="w-full py-8">
-          <p className="w-full text-center uppercase">{activeTabName}</p>
+          <p className="w-full py-8 text-center uppercase">{activeTabName}</p>
           {activeTab === 1 && (
             <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
