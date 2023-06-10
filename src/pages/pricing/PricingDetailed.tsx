@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PricingDetailsBackgroundImage from "@/assets/images/unsplash-1.jpg";
+import { SelectedPage } from "@/shared/types";
 
 const PricingDetailed = () => {
   const { name } = useParams();
@@ -63,7 +64,7 @@ const PricingDetailed = () => {
     <section id="home" className="flex flex-col bg-[#edecef] md:pb-0">
       <div className="items-center justify-center md:flex">
         <div
-          className="top-0 flex h-[90vh] w-full flex-col items-center justify-center"
+          className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
           style={{
             backgroundImage: `url(${PricingDetailsBackgroundImage})`,
             backgroundSize: "cover",
@@ -77,11 +78,33 @@ const PricingDetailed = () => {
             <p className="w-full">COLLECTED AND DELIVERED</p>
             <p className="w-full">TO YOUR DOOR</p>
           </SHText>
+          <div className="flex w-full justify-center py-16">
+            <Link
+              className="rounded-none bg-black px-12 py-2 text-center uppercase text-white"
+              to={`/${SelectedPage.Pricing}`}
+            >
+              Price List
+            </Link>
+          </div>
         </div>
       </div>
-      <div className="mx-auto flex w-5/6 flex-col items-center">
-        <div className="py-16">
+      <div className="mx-auto flex h-[50vh] w-5/6 flex-col items-center">
+        <div className="pt-8">
           <SHText textAlign="text center">{categoryName} PRICES</SHText>
+        </div>
+        <div className="py-12">
+          <p className="text-lg">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use Lorem Ipsum as their default
+            model text, and a search for 'lorem ipsum' will uncover many web
+            sites still in their infancy. Various versions have evolved over the
+            years, sometimes by accident, sometimes on purpose (injected humour
+            and the like).
+          </p>
         </div>
         {/* <div className="flex w-full flex-col justify-between gap-16 py-8 md:flex-row">
           <div className="w-full md:w-1/2">
