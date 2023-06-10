@@ -1,5 +1,5 @@
 import HText from "@/shared/HText";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AreaBackgroundImage from "@/assets/images/unsplash-4.jpg";
 
 interface Areas {
@@ -190,6 +190,10 @@ const Corperates: React.FC = () => {
     setItems(filteredItems);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section
       className="items-center justify-center md:flex"
@@ -214,7 +218,7 @@ const Corperates: React.FC = () => {
             />
             {/* <button onClick={filterItems}>Search</button> */}
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-4">
+          <div className="lg:grid-cols-4 grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-6">
             {items.map((tile) => (
               <div
                 key={tile.id}

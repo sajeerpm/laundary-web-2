@@ -54,6 +54,7 @@ const Branches: React.FC = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setSelectedStore(stores[0]);
   }, []);
 

@@ -1,5 +1,5 @@
 import HText from "@/shared/HText";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FAQBackgroundImage from "@/assets/images/unsplash-4.jpg";
 
 interface FAQItem {
@@ -52,6 +52,10 @@ const FAQ: React.FC = () => {
       setExpandedItem(itemId);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section

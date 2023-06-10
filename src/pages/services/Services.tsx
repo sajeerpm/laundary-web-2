@@ -14,6 +14,7 @@ import AlterationAndRepair from "@/assets/ribbon-cutting.png";
 import LeatherFurSuede from "@/assets/leather-jacket.png";
 import SpecialistItems from "@/assets/jeans.png";
 import Ironing from "@/assets/ironing-board.png";
+import { useEffect } from "react";
 
 const Services = () => {
   const products = [
@@ -107,6 +108,10 @@ const Services = () => {
   // const handlePriceButton = (categoryId: number) => {
   //     return <Navigate to="/pricing" />;
   // };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="mt-20">

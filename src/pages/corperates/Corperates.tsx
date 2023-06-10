@@ -1,5 +1,5 @@
 import HText from "@/shared/HText";
-import React from "react";
+import React, { useEffect } from "react";
 import Editon from "@/assets/clients/Editon.png";
 import Estee from "@/assets/clients/Estee.png";
 import Ibis from "@/assets/clients/Ibis.png";
@@ -53,6 +53,10 @@ const Corperates: React.FC = () => {
     // Add more tiles as needed
   ];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section
       className="items-center justify-center md:flex"
@@ -74,7 +78,7 @@ const Corperates: React.FC = () => {
             cs@masterdrycleaner.co.uk.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 py-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="lg:grid-cols-4 grid grid-cols-1 gap-6 py-8 sm:grid-cols-2 md:grid-cols-3">
           {tiles.map((tile) => (
             <div
               key={tile.id}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DryCleaningBackground from "@/assets/images/dry-cleaning.jpg";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -41,20 +42,21 @@ const Pricing = () => {
       <div className="mx-auto w-5/6 py-8">
         <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
           {categories.map((category) => (
-            <button
-              className={`rounded-none border border-black px-4 py-4 text-xs uppercase md:tracking-[1.8px] ${
+            <AnchorLink
+              className={`rounded-none border border-black px-4 py-4 text-center text-xs uppercase md:tracking-[1.8px] ${
                 activeTab === category.id
                   ? "text bg-black text-white"
                   : "bg-white text-black"
               }`}
               onClick={() => handleTabClick(category.id, category.name)}
+              href={`#price-list`}
             >
               {category.name}
-            </button>
+            </AnchorLink>
           ))}
         </div>
 
-        <div className="w-full py-12">
+        <div id="price-list" className="w-full py-12">
           <p className="w-full py-4 text-center uppercase">{activeTabName}</p>
           {activeTab === 1 && (
             <div className="mx-auto max-w-[650px] text-center text-xl">
