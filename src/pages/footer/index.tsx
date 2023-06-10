@@ -1,4 +1,5 @@
 import SubscribeTextBox from "@/shared/SubscribeTextBox";
+import PaymentMethods from "@/assets/payment-methods.png";
 
 const Footer = () => {
   return (
@@ -39,8 +40,8 @@ const Footer = () => {
             <p className="mr-2 text-xs">Accepted payment methods:</p>
             <img
               className="h-8 w-auto"
-              src="https://d150we8dervy8c.cloudfront.net/static/images/payments/payments-sprite-black.png"
-              alt="payment methods"
+              src={PaymentMethods}
+              alt="payment-methods"
             />
           </div>
         </div>

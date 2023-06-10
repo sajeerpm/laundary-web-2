@@ -23,6 +23,7 @@ const Services = () => {
       name: "Dry Cleaning",
       price: "$10",
       image: `${DryImage}`,
+      alt: "dry-cleaning",
       description:
         "Blouses, bow ties, knitwear, coats, dinner suits, dresses, gloves & more.",
     },
@@ -31,6 +32,7 @@ const Services = () => {
       name: "Shirt Service",
       price: "$20",
       image: `${ShirtService}`,
+      alt: "shirt-service",
       description:
         "Beautifully cleaned and crisply pressed shirts. Returned on hangers or folded",
     },
@@ -39,6 +41,7 @@ const Services = () => {
       name: "Laundry Services",
       price: "$30",
       image: `${LaundaryService}`,
+      alt: "laundary-services",
       description: "Hotel crisp bed linen, duvets and blankets.",
     },
     {
@@ -46,6 +49,7 @@ const Services = () => {
       name: "wash and fold services",
       price: "$40",
       image: `${WashAndFold}`,
+      alt: "wash-and-fold-service",
       description: "Service washes (wash, dry and fold)",
     },
     {
@@ -53,6 +57,7 @@ const Services = () => {
       name: "Curtain Cleaning",
       price: "$40",
       image: `${CurtainService}`,
+      alt: "curtain-cleaning",
       description: "Curtain cleaning service per m^2",
     },
     {
@@ -60,6 +65,7 @@ const Services = () => {
       name: "SHOE REPAIR AND COMPLIMENT POLISH",
       price: "$40",
       image: `${ShoeRepair}`,
+      alt: "shoe-repair-and-compliment-polish",
       description:
         "Professional shoe cleaning, zip repairs, rubber sole replacement and more.",
     },
@@ -68,6 +74,7 @@ const Services = () => {
       name: "Trainer Cleaning",
       price: "$40",
       image: `${RunningService}`,
+      alt: "trainer-cleaning",
       description:
         "High tops, sneakers, trainers, runners, plimsolls and more.",
     },
@@ -76,6 +83,7 @@ const Services = () => {
       name: "Wedding Dresses",
       price: "$40",
       image: `${WeddingDresses}`,
+      alt: "wedding-dresses",
       description:
         "Beautifully cleaned, restored and presented to keep forever",
     },
@@ -84,6 +92,7 @@ const Services = () => {
       name: "Alterations & Repairs",
       price: "$40",
       image: `${AlterationAndRepair}`,
+      alt: "alterations-repairs",
       description:
         "Trouser, dress, skirt, suit, and jackets & children’s clothing.",
     },
@@ -92,6 +101,7 @@ const Services = () => {
       name: "Leather, Fur and Suede",
       price: "$40",
       image: `${LeatherFurSuede}`,
+      alt: "leather-fur-and-suede",
       description: "Rejuvenate your favourite coats",
     },
     {
@@ -99,6 +109,7 @@ const Services = () => {
       name: "Specialist items",
       price: "$40",
       image: `${SpecialistItems}`,
+      alt: "specialist-items",
       description: "Specialist couture and designer goods",
     },
     {
@@ -106,6 +117,7 @@ const Services = () => {
       name: "Ironing",
       price: "$40",
       image: `${Ironing}`,
+      alt: "ironing",
       description: "Ironing collected and delivered to your door.",
     },
     // Add more products as needed
@@ -130,7 +142,7 @@ const Services = () => {
             key={product.id}
             className="flex flex-col items-center justify-center bg-white p-2 md:p-8"
           >
-            <img src={product.image} alt="dry-cleaning" />
+            <img src={product.image} alt={product.alt} />
             <SText textAlign="text-center">{product.name}</SText>
             <p className="text-center align-top">{product.description}</p>
             <Link to={`/pricing/${product.name}`}>

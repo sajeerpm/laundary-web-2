@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import Corporates from "./pages/corperates/Corperates";
 import Branches from "./pages/branches/Branches";
 import FloatingButton from "./shared/FloatingButton";
+import { Helmet } from "react-helmet";
 
 function App() {
   const location = useLocation();
@@ -35,6 +36,28 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <meta
+          name="description"
+          content="Get professional laundry and dry cleaning services in London at MasterDryCleaners Sevice Ltd. We are the go-to destination for meticulous garment care, offering eco-friendly and same-day services. Our experienced team specializes in wedding dress cleaning, curtain cleaning, leather cleaning, suit cleaning, and more. With convenient pickup and delivery options, we make the process hassle-free. Trust us to remove stubborn stains and restore your garments to their original brilliance. Discover competitive dry cleaning prices and exceptional customer service. Experience the best laundry and dry cleaning in London with MasterDryCleaners Sevice Ltd."
+        />
+        <meta
+          name="keywords"
+          content="London dry cleaners, Dry cleaning services London, Professional dry cleaners London, Dry cleaning London, Same-day dry cleaners London, Eco-friendly dry cleaners London, Wedding dress dry cleaners London, Curtain dry cleaning London, Leather jacket cleaners London, Dry cleaners near me (if you want to target local searches), Curtain cleaners London, Suit dry cleaners London, Shirt ironing service London, Stain removal London, Dry cleaning prices London, Dry cleaning pickup and delivery London, London garment cleaning, Best dry cleaners in London"
+        />
+        <meta
+          property="og:title"
+          content="London Dry Cleaners | MasterDryCleaners Sevice Ltd"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Get professional laundry and dry cleaning services in London at MasterDryCleaners Sevice Ltd."
+        ></meta>
+        <meta
+          property="og:url"
+          content="https://masterdrycleaner.co.uk/"
+        ></meta>
+      </Helmet>
       <Navbar isTopOfPage={isTopOfPage} />
       <Routes>
         <Route element={<PrivateRoutes />}>

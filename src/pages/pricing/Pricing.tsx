@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DryCleaningBackground from "@/assets/images/dry-cleaning.jpg";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import HText from "@/shared/HText";
+import SHText from "@/shared/SHText";
 
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -25,18 +27,28 @@ const Pricing = () => {
     setActiveTabName(tabName);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section id="home" className="flex flex-col bg-[#edecef] md:pb-8">
       <div className="items-center justify-center md:flex">
         <div
-          className="h-[50vh] w-full"
+          className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
           style={{
             backgroundImage: `url(${DryCleaningBackground})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          {/* <img className="w-full" src={PricingImage} /> */}
+          <HText textAlign="text-center">
+            <p className="w-full uppercase">Price List</p>
+          </HText>
+          <SHText textAlign="text-center">
+            <p className="w-full">COLLECTED AND DELIVERED</p>
+            <p className="w-full">TO YOUR DOOR</p>
+          </SHText>
         </div>
       </div>
       <div className="mx-auto w-5/6 py-8">

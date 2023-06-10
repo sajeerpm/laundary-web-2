@@ -1,4 +1,6 @@
 import SHText from "@/shared/SHText";
+import { SelectedPage } from "@/shared/types";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -342,9 +344,11 @@ const Pricing = ({}: Props) => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <button className="rounded-none border border-gray-700 px-12 py-3 text-gray-700">
-            FULL PRICE LIST
-          </button>
+          <Link to={`/${SelectedPage.Pricing}`}>
+            <button className="rounded-none border border-gray-700 px-12 py-3 text-gray-700">
+              FULL PRICE LIST
+            </button>
+          </Link>
         </div>
       </div>
     </section>

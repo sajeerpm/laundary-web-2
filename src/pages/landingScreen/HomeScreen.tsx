@@ -4,6 +4,7 @@ import Pricing from "./pricing";
 import HowItWorks from "./howitworks";
 import Home from "./home";
 import { useEffect } from "react";
+import Services from "./services";
 
 function HomeScreen() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function HomeScreen() {
       <Clients />
       <Pricing />
       <AboutCompany />
+      <Services />
     </div>
   );
 }

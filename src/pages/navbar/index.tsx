@@ -168,9 +168,9 @@ const Navbar = ({ isTopOfPage }: Props) => {
           </div>
 
           {/* MENU ITEMS */}
-          <div className="flex flex-col justify-center gap-6 text-lg text-white">
+          <div className="flex flex-col items-center justify-center gap-6 text-lg text-white">
             <Link
-              className={`text-center uppercase`}
+              className={`w-60 rounded-full bg-secondary-500 px-8 py-2 text-center uppercase text-gray-700 shadow-2xl`}
               to="/"
               onClick={() => handleOnClick(SelectedPage.Home)}
             >
