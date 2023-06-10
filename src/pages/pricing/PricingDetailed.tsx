@@ -88,11 +88,11 @@ const PricingDetailed = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto flex h-[50vh] w-5/6 flex-col items-center">
+      <div className="mx-auto flex w-5/6 flex-col items-center">
         <div className="pt-8">
           <SHText textAlign="text center">{categoryName} PRICES</SHText>
         </div>
-        <div className="py-12">
+        <div className="flex py-12">
           <p className="text-lg">
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point

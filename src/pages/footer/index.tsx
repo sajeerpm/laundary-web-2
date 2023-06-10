@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="flex flex-col items-center md:flex-row">
             <p className="mr-2 text-xs">Accepted payment methods:</p>
             <img
-              className="h-8 w-auto"
+              className="h-12 w-auto"
               src={PaymentMethods}
               alt="payment-methods"
             />
