@@ -23,84 +23,90 @@ const Services = () => {
       name: "Dry Cleaning",
       price: "$10",
       image: `${DryImage}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "Blouses, bow ties, knitwear, coats, dinner suits, dresses, gloves & more.",
     },
     {
       id: 2,
       name: "Shirt Service",
       price: "$20",
       image: `${ShirtService}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "Beautifully cleaned and crisply pressed shirts. Returned on hangers or folded",
     },
     {
       id: 3,
       name: "Laundry Services",
       price: "$30",
       image: `${LaundaryService}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description: "Hotel crisp bed linen, duvets and blankets.",
     },
     {
       id: 4,
       name: "wash and fold services",
       price: "$40",
       image: `${WashAndFold}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description: "Service washes (wash, dry and fold)",
     },
     {
       id: 5,
       name: "Curtain Cleaning",
       price: "$40",
       image: `${CurtainService}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description: "Curtain cleaning service per m^2",
     },
     {
       id: 6,
       name: "SHOE REPAIR AND COMPLIMENT POLISH",
       price: "$40",
       image: `${ShoeRepair}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "Professional shoe cleaning, zip repairs, rubber sole replacement and more.",
     },
     {
       id: 7,
       name: "Trainer Cleaning",
       price: "$40",
       image: `${RunningService}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "High tops, sneakers, trainers, runners, plimsolls and more.",
     },
     {
       id: 8,
       name: "Wedding Dresses",
       price: "$40",
       image: `${WeddingDresses}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "Beautifully cleaned, restored and presented to keep forever",
     },
     {
       id: 9,
       name: "Alterations & Repairs",
       price: "$40",
       image: `${AlterationAndRepair}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description:
+        "Trouser, dress, skirt, suit, and jackets & children’s clothing.",
     },
     {
       id: 10,
       name: "Leather, Fur and Suede",
       price: "$40",
       image: `${LeatherFurSuede}`,
-      description: "On the other hand.",
+      description: "Rejuvenate your favourite coats",
     },
     {
       id: 11,
       name: "Specialist items",
       price: "$40",
       image: `${SpecialistItems}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description: "Specialist couture and designer goods",
     },
     {
       id: 12,
       name: "Ironing",
       price: "$40",
       image: `${Ironing}`,
-      description: "On the other hand, we denounce with righteous indignation.",
+      description: "Ironing collected and delivered to your door.",
     },
     // Add more products as needed
   ];
@@ -126,7 +132,7 @@ const Services = () => {
           >
             <img src={product.image} alt="dry-cleaning" />
             <SText textAlign="text-center">{product.name}</SText>
-            <p className="text-center">{product.description}</p>
+            <p className="text-center align-top">{product.description}</p>
             <Link to={`/pricing/${product.name}`}>
               <button
                 key={product.id}

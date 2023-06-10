@@ -55,9 +55,11 @@ const Pricing = () => {
             </AnchorLink>
           ))}
         </div>
-
-        <div id="price-list" className="w-full py-12">
-          <p className="w-full py-4 text-center uppercase">{activeTabName}</p>
+        <div id="price-list" className="h-6"></div>
+        <div className="w-full py-12">
+          <p className="w-full py-4 text-center text-lg uppercase">
+            {activeTabName}
+          </p>
           {activeTab === 1 && (
             <div className="mx-auto max-w-[650px] text-center text-xl">
               <p>
