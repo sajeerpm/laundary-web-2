@@ -134,7 +134,7 @@ const Services = () => {
   return (
     <div className="mt-20">
       <div className="w-full py-8">
-        <HText textAlign="text-center">SERVICES & PRICES</HText>
+        <HText textAlign="text-center">SERVICES</HText>
       </div>
       <div className="lg:grid-cols-3 mx-auto grid w-4/6 grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
         {products.map((product) => (
