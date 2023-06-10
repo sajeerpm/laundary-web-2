@@ -45,15 +45,13 @@ const Navbar = ({ isTopOfPage }: Props) => {
             {isAboveMediumScreens ? (
               <div className={`${flexBetween}`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  {selectedPage !== SelectedPage.Home && (
-                    <Link
-                      className={`uppercase`}
-                      to="/"
-                      onClick={() => handleOnClick(SelectedPage.Home)}
-                    >
-                      Orders
-                    </Link>
-                  )}
+                  <Link
+                    className={`rounded-full bg-secondary-500 px-8 py-2 uppercase text-gray-700 shadow-2xl`}
+                    to="/"
+                    onClick={() => handleOnClick(SelectedPage.Home)}
+                  >
+                    Order
+                  </Link>
                   <Link
                     className={`uppercase ${
                       selectedPage === SelectedPage.Pricing
@@ -171,15 +169,13 @@ const Navbar = ({ isTopOfPage }: Props) => {
 
           {/* MENU ITEMS */}
           <div className="flex flex-col justify-center gap-6 text-lg text-white">
-            {selectedPage !== SelectedPage.Home && (
-              <Link
-                className={`text-center uppercase`}
-                to="/"
-                onClick={() => handleOnClick(SelectedPage.Home)}
-              >
-                Orders
-              </Link>
-            )}
+            <Link
+              className={`text-center uppercase`}
+              to="/"
+              onClick={() => handleOnClick(SelectedPage.Home)}
+            >
+              Orders
+            </Link>
             <Link
               className={`text-center uppercase ${
                 selectedPage === SelectedPage.Pricing

@@ -3,8 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
-const FloatingButton: React.FC = () => {
+interface FloatingButtonProps {
+  path: string;
+}
+
+const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -46,11 +51,19 @@ const FloatingButton: React.FC = () => {
           <FontAwesomeIcon icon={faWhatsapp} size="xl" />
         </button>
       </a>
-      <Link to={`/`}>
-        <button className="rounded-full bg-secondary-500 px-12 py-3 text-gray-700 shadow-2xl">
-          Book Order Now
-        </button>
-      </Link>
+      {path == "/laundary-web-2/" || path == "/" ? (
+        <AnchorLink href={`#home`}>
+          <button className="rounded-full bg-secondary-500 px-12 py-3 text-gray-700 shadow-2xl">
+            Book Order Now
+          </button>
+        </AnchorLink>
+      ) : (
+        <Link to={`/`}>
+          <button className="rounded-full bg-secondary-500 px-12 py-3 text-gray-700 shadow-2xl">
+            Book Order Now
+          </button>
+        </Link>
+      )}
     </div>
   );
 };

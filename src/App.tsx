@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./pages/navbar";
 import PrivateRoutes from "./components/PrivateRoutes";
 import HomeScreen from "./pages/landingScreen/HomeScreen";
@@ -16,7 +16,11 @@ import Branches from "./pages/branches/Branches";
 import FloatingButton from "./shared/FloatingButton";
 
 function App() {
+  const location = useLocation();
+  const path = location.pathname;
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+
+  console.log(path);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +52,7 @@ function App() {
         <Route element={<PageNotFound />} path="*" />
       </Routes>
       <Footer />
-      <FloatingButton />
+      <FloatingButton path={path} />
     </>
   );
 }
