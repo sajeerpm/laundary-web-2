@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 type Props = {};
 
-const Services = (props: Props) => {
+const Services = ({}: Props) => {
   return (
     <section className="">
       <div className="mx-auto w-5/6 justify-between gap-16 md:flex md:flex-row">
