@@ -127,7 +127,7 @@ const Services = () => {
                 key={product.id}
                 className="my-8 rounded-none border border-black px-12 py-2"
               >
-                INFO + PRICING
+                INFO
               </button>
             </Link>
           </div>

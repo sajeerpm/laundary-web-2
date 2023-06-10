@@ -13,41 +13,43 @@ import FAQ from "./pages/faq/faq";
 import { useEffect, useState } from "react";
 import Corporates from "./pages/corperates/Corperates";
 import Branches from "./pages/branches/Branches";
+import FloatingButton from "./shared/FloatingButton";
 
 function App() {
-    const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+  const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY === 0) {
-                setIsTopOfPage(true);
-            }
-            if (window.scrollY !== 0) setIsTopOfPage(false);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-    return (
-        <>
-            <Navbar isTopOfPage={isTopOfPage} />
-            <Routes>
-                <Route element={<PrivateRoutes />}>
-                    {/* <Route element={<HomeScreen />} path="/" /> */}
-                </Route>
-                <Route element={<HomeScreen />} path="/" />
-                <Route element={<Login />} path="/login" />
-                <Route element={<Services />} path="/services" />
-                <Route element={<Pricing />} path="/pricing" />
-                <Route element={<Areas />} path="/areas" />
-                <Route element={<Branches />} path="/branches" />
-                <Route element={<FAQ />} path="/faqs" />
-                <Route element={<Corporates />} path="/corperates" />
-                <Route element={<PricingDetailed />} path="/pricing/:name" />
-                <Route element={<PageNotFound />} path="*" />
-            </Routes>
-            <Footer />
-        </>
-    );
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setIsTopOfPage(true);
+      }
+      if (window.scrollY !== 0) setIsTopOfPage(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  return (
+    <>
+      <Navbar isTopOfPage={isTopOfPage} />
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+          {/* <Route element={<HomeScreen />} path="/" /> */}
+        </Route>
+        <Route element={<HomeScreen />} path="/" />
+        <Route element={<Login />} path="/login" />
+        <Route element={<Services />} path="/services" />
+        <Route element={<Pricing />} path="/pricing" />
+        <Route element={<Areas />} path="/areas" />
+        <Route element={<Branches />} path="/branches" />
+        <Route element={<FAQ />} path="/faqs" />
+        <Route element={<Corporates />} path="/corperates" />
+        <Route element={<PricingDetailed />} path="/pricing/:name" />
+        <Route element={<PageNotFound />} path="*" />
+      </Routes>
+      <Footer />
+      <FloatingButton />
+    </>
+  );
 }
 
 export default App;

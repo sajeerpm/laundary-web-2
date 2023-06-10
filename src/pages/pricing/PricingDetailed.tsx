@@ -83,7 +83,7 @@ const PricingDetailed = () => {
         <div className="py-16">
           <SHText textAlign="text center">{categoryName} PRICES</SHText>
         </div>
-        <div className="flex w-full flex-col justify-between gap-16 py-8 md:flex-row">
+        {/* <div className="flex w-full flex-col justify-between gap-16 py-8 md:flex-row">
           <div className="w-full md:w-1/2">
             {priceList1.map((price) => (
               <div className="flex flex-col">
@@ -106,7 +106,7 @@ const PricingDetailed = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

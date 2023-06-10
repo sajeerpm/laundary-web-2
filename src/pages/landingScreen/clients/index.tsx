@@ -9,7 +9,7 @@ type Props = {};
 
 const Clients = ({}: Props) => {
   return (
-    <section className="bg-primary-100 w-full py-16">
+    <section className="w-full bg-primary-100 py-16">
       <div className="pb-16">
         <SHText textAlign="text-center">
           <p className="">OUR LAUNDARY CLIENTS</p>
