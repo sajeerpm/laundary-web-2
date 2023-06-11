@@ -63,8 +63,8 @@ const Branches: React.FC = () => {
       <div className="w-full py-8">
         <HText textAlign="text-center">SERVICE AREAS</HText>
       </div>
-      <div className="mx-auto flex w-5/6 md:h-[100vh]">
-        <div className="w-1/4 bg-gray-400 p-2">
+      <div className="mx-auto w-5/6 md:flex md:h-[100vh]">
+        <div className="bg-gray-400 p-2 md:w-1/4">
           <ul className="space-y-2 ">
             {stores.map((store) => (
               <li

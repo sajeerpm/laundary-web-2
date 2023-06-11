@@ -10,33 +10,39 @@ const Footer = () => {
             <p className="text-sm">Download our new app:</p>
             <div className="mt-2 flex">
               <img
-                className="mr-2 h-8 w-auto"
+                className="mr-2 h-8 w-auto cursor-pointer"
                 alt="logo"
                 src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/apple.png"
+                onClick={() => {
+                  alert("Coming soon");
+                }}
               />
               <img
-                className="h-8 w-auto"
+                className="h-8 w-auto cursor-pointer"
                 alt="logo"
                 src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/google.png"
+                onClick={() => {
+                  alert("Coming soon");
+                }}
               />
             </div>
           </div>
           <div className="flex flex-col md:flex-row md:items-center">
             <p className="text-sm md:mr-4">Subscribe to our newsletter:</p>
-            <div className="flex flex-row gap-2">
+            <div className="gap-2 md:flex md:flex-row">
               <SubscribeTextBox placeholder="Email Address" />
-              <button className="rounded-none border border-black px-12 md:mt-0">
+              <button className="mt-3 w-full rounded-none border border-black px-12 py-1 md:mt-0">
                 SUBSCRIBE
               </button>
             </div>
           </div>
         </div>
-        <div className="mt-8 flex justify-between">
+        <div className="mt-8 md:flex md:justify-between">
           <p className="pt-3 text-xs">
             &copy; MASTERCLEAN DRYCLEANER SERVICE LTD. – ALL RIGHTS RESERVED.
             REGISTERED IN 294 MERTON ROAD SW18 5JW, WALES: 11606198
           </p>
-          <div className="flex flex-col items-center md:flex-row">
+          <div className="mt-3 flex flex-col items-start md:mt-0 md:flex-row md:items-center">
             <p className="mr-2 text-xs">Accepted payment methods:</p>
             <img
               className="h-12 w-auto"
