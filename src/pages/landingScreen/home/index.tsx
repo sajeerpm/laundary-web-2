@@ -23,7 +23,7 @@ const Home = ({}: Props) => {
         >
           <img
             alt="home-pageGraphic"
-            className="h-[50vh] rounded-sm"
+            className="rounded-sm md:h-[50vh]"
             src={HomePageGraphic}
           />
         </div>
@@ -35,13 +35,13 @@ const Home = ({}: Props) => {
           <p className="text-center font-extralight">
             with Collection and Delivery in 24 hours
           </p>
-          <div className="mt-16">
+          <div className="mt-8 md:mt-16">
             <TextBox placeholder="Flat 554" />
             <TextBox placeholder="TIME SLOTS" />
           </div>
 
           {/* ACTIONS */}
-          <div className="mt-8 flex items-center gap-8">
+          <div className="mt-4 flex items-center gap-8">
             <ActionButton
               selectedPage={SelectedPage.Pricing}
               setSelectedPage={() => {}}

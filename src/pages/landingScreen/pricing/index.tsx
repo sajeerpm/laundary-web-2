@@ -20,9 +20,6 @@ const Pricing = ({}: Props) => {
               <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
-                  height="145px"
-                  x-width="153px"
-                  x-height="192px"
                   viewBox="0 0 153 192"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,9 +98,6 @@ const Pricing = ({}: Props) => {
               <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
-                  height="145px"
-                  x-width="153px"
-                  x-height="200px"
                   viewBox="0 0 153 200"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,9 +178,6 @@ const Pricing = ({}: Props) => {
               <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
-                  height="145px"
-                  x-width="141px"
-                  x-height="178px"
                   viewBox="0 0 141 178"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -256,9 +247,6 @@ const Pricing = ({}: Props) => {
               <li className="flex flex-col items-center justify-center pb-6">
                 <svg
                   className="h-[65px]"
-                  height="145px"
-                  x-width="222px"
-                  x-height="156px"
                   viewBox="0 0 222 156"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
