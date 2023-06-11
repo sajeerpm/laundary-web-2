@@ -307,18 +307,18 @@ const Pricing = () => {
           )}
         </div>
 
-        <div className="mx-auto md:w-4/6">
+        <div className="mx-auto md:w-5/6">
           {categories.map(
             (category) =>
               activeTab === category.id && (
-                <div>
+                <div className="grid gap-8 md:grid-cols-2">
                   {category.prices.map((price) => (
                     <div className="flex w-full flex-col">
                       <div className="flex w-full justify-between">
                         <p>{price.name}</p>
                         <p>{price.price}</p>
                       </div>
-                      <hr className="my-4 w-full border-black" />
+                      <hr className="mt-2 w-full border-black" />
                     </div>
                   ))}
                 </div>
