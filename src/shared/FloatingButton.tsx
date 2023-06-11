@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
