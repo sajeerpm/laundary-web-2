@@ -10,30 +10,31 @@ interface FloatingButtonProps {
 }
 
 const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const isVisible = true;
+  // const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const footerElement = document.getElementById("footer");
-      const buttonElement = document.getElementById("floating-button");
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const footerElement = document.getElementById("footer");
+  //     const buttonElement = document.getElementById("floating-button");
 
-      if (footerElement && buttonElement) {
-        const footerRect = footerElement.getBoundingClientRect();
-        const buttonRect = buttonElement.getBoundingClientRect();
+  //     if (footerElement && buttonElement) {
+  //       const footerRect = footerElement.getBoundingClientRect();
+  //       const buttonRect = buttonElement.getBoundingClientRect();
 
-        if (buttonRect.bottom >= footerRect.top) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-      }
-    };
+  //       if (buttonRect.bottom >= footerRect.top) {
+  //         setIsVisible(false);
+  //       } else {
+  //         setIsVisible(true);
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div
