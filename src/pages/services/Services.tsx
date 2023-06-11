@@ -145,7 +145,9 @@ const Services = () => {
             <img src={product.image} alt={product.alt} />
             <SText textAlign="text-center">{product.name}</SText>
             <p className="text-center align-top">{product.description}</p>
-            <Link to={`/pricing/${product.name}`}>
+            <Link
+              to={`/pricing/${product.name.toLowerCase().replace(/\s/g, "_")}`}
+            >
               <button
                 key={product.id}
                 className="my-8 rounded-none border border-black px-12 py-2"

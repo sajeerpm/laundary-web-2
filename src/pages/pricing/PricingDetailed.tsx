@@ -7,7 +7,7 @@ import { SelectedPage } from "@/shared/types";
 
 const PricingDetailed = () => {
   const { name } = useParams();
-  const categoryName = name;
+  const categoryName = name?.replace(/_/g, " ");
   // const priceList1 = [
   //   { id: 1, name: "2pc Suit", price: "£13.95" },
   //   { id: 2, name: "Burberry Coat", price: "£39.99" },
