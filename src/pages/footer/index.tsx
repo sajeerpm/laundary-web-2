@@ -27,11 +27,11 @@ const Footer = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row md:items-center">
+          <div className="flex flex-col md:w-4/6 md:flex-row md:items-center">
             <p className="text-sm md:mr-4">Subscribe to our newsletter:</p>
-            <div className="gap-2 md:flex md:flex-row">
+            <div className="flex-1 gap-2 md:flex md:flex-row">
               <SubscribeTextBox placeholder="Email Address" />
-              <button className="mt-3 w-full rounded-none border border-black px-12 py-1 md:mt-0">
+              <button className="mt-3 rounded-none border border-gray-300 px-4 py-1 md:mt-0">
                 SUBSCRIBE
               </button>
             </div>

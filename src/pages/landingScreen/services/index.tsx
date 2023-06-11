@@ -8,7 +8,7 @@ const Services = ({}: Props) => {
       <div className="mx-auto w-5/6 justify-between gap-16 md:flex md:flex-row">
         <div className="flex flex-col pt-6 md:w-1/6">
           <p className="text-md uppercase">Services</p>
-          <hr className="my-2 h-[2px] bg-gray-700" />
+          <hr className="my-2 h-[2px] bg-gray-400" />
           <Link className="hover:underline" to={`#`}>
             Corporate Services
           </Link>
@@ -51,7 +51,7 @@ const Services = ({}: Props) => {
         </div>
         <div className="flex flex-col pt-6 md:w-1/6">
           <p className="text-md uppercase">About Us</p>
-          <hr className="my-2 h-[2px] bg-gray-700" />
+          <hr className="my-2 h-[2px] bg-gray-400" />
           <Link className="hover:underline" to={`#`}>
             Blog
           </Link>
@@ -85,7 +85,7 @@ const Services = ({}: Props) => {
         </div>
         <div className="flex-1 pt-6 md:w-1/2">
           <p className="text-md uppercase">Selected Locations</p>
-          <hr className="my-2 h-[2px] bg-gray-700" />
+          <hr className="my-2 h-[2px] bg-gray-400" />
           <div className="w-full justify-between gap-8 md:flex">
             <div className="flex flex-col md:w-1/4">
               <Link className="hover:underline" to={`#`}>

@@ -46,7 +46,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               <div className={`${flexBetween}`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
                   <Link
-                    className={`rounded-full bg-secondary-500 px-8 py-2 uppercase text-gray-700 shadow-2xl`}
+                    className={`rounded-full bg-secondary-500 px-8 py-2 uppercase text-gray-700 shadow-md hover:shadow-lg`}
                     to="/"
                     onClick={() => handleOnClick(SelectedPage.Home)}
                   >
@@ -170,7 +170,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
           {/* MENU ITEMS */}
           <div className="flex flex-col items-center justify-center gap-6 text-lg text-white">
             <Link
-              className={`w-60 rounded-full bg-secondary-500 px-8 py-2 text-center uppercase text-gray-700 shadow-2xl`}
+              className={`w-60 rounded-full bg-secondary-500 px-8 py-2 text-center uppercase text-gray-700 shadow-md hover:shadow-lg`}
               to="/"
               onClick={() => handleOnClick(SelectedPage.Home)}
             >
