@@ -70,7 +70,7 @@ const FAQ: React.FC = () => {
         <div className="w-full py-20">
           <HText textAlign="text-center">FEQUENTLY ASKED QUESTIONS</HText>
         </div>
-        <div className="h-full px-4 py-8">
+        <div className="h-full py-8 md:px-4">
           <div className="mx-auto max-w-5xl">
             {faqItems.map((item) => (
               <div
