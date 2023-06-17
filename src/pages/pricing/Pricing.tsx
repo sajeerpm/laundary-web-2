@@ -4,248 +4,282 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
 
+interface Price {
+  id: number;
+  name: string;
+  price: string;
+}
+
+interface Service {
+  id: number;
+  name: string;
+  description: string;
+  prices: Price[];
+}
+
 const Pricing = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeTabName, setActiveTabName] = useState("Dry Cleaning");
-  const categories = [
-    {
-      id: 1,
-      name: "Dry Cleaning",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 1, name: "2pc Suit", price: "£13.95" },
-        { id: 2, name: "Burberry Coat", price: "£39.99" },
-        { id: 3, name: "Cardigan", price: "£7.95" },
-        { id: 4, name: "Cotton Blouse Iron Only", price: "£3.95" },
-        { id: 5, name: "Dinner suit", price: "£15.00" },
-        { id: 6, name: "Dry Clean Shirt", price: "£4.95" },
-        { id: 7, name: "Folded Cotton Blouse", price: "£5.50" },
-        { id: 8, name: "Jump Suit", price: "£13.95" },
-        { id: 9, name: "Long Silk Dress", price: "£24.95" },
-        { id: 10, name: "Moncler jacket", price: "£39.99" },
-        { id: 11, name: "Padded Coat", price: "£24.95" },
-        { id: 12, name: "Pashmina Scarf", price: "£9.00" },
-        { id: 13, name: "Plain scarf", price: "£5.95" },
-        { id: 14, name: "Raincoat", price: "£16.50" },
-        { id: 15, name: "Silk Dress", price: "£19.95" },
-        { id: 16, name: "Silk Skirt", price: "£7.95" },
-        { id: 17, name: "Silk Waistcoat", price: "£8.95" },
-        { id: 18, name: "Suit Jacket Or Blazer", price: "£8.50" },
-        { id: 19, name: "Top", price: "£6.95" },
-        { id: 20, name: "Trousers Iron Only", price: "£5.50" },
-        { id: 21, name: "Waistcoat", price: "£5.95" },
-      ],
-    },
-    {
-      id: 2,
-      name: "Shirt Service",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 28, name: "Jacket Iron Only", price: "£6.25" },
-        { id: 29, name: "Jumper", price: "£6.95" },
-        { id: 30, name: "Maxmara Coat", price: "£39.99" },
-        { id: 31, name: "Overcoat (From)", price: "£22.00" },
-        { id: 32, name: "Padded Jacket", price: "£19.50" },
-        { id: 33, name: "Plain Dress", price: "£11.50" },
-        { id: 34, name: "Plain Skirt", price: "£6.95" },
-        { id: 35, name: "Silk Blouse", price: "£6.95" },
-        { id: 36, name: "Silk Jacket", price: "£9.95" },
-        { id: 37, name: "Silk Trouser", price: "£9.50" },
-        { id: 38, name: "Skirt with Trim", price: "£8.95" },
-        { id: 39, name: "Tie", price: "£4.00" },
-        { id: 40, name: "Trousers", price: "£6.95" },
-        { id: 41, name: "Trousers with Trim", price: "£8.50" },
-        { id: 42, name: "Winter Jackets", price: "£16.50" },
-      ],
-    },
-    {
-      id: 3,
-      name: "Laundry Services",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-      ],
-    },
-    {
-      id: 4,
-      name: "wash and fold services",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 28, name: "Jacket Iron Only", price: "£6.25" },
-        { id: 29, name: "Jumper", price: "£6.95" },
-        { id: 30, name: "Maxmara Coat", price: "£39.99" },
-        { id: 31, name: "Overcoat (From)", price: "£22.00" },
-        { id: 32, name: "Padded Jacket", price: "£19.50" },
-      ],
-    },
-    {
-      id: 5,
-      name: "Curtain Cleaning",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 35, name: "Silk Blouse", price: "£6.95" },
-        { id: 36, name: "Silk Jacket", price: "£9.95" },
-        { id: 37, name: "Silk Trouser", price: "£9.50" },
-        { id: 38, name: "Skirt with Trim", price: "£8.95" },
-        { id: 39, name: "Tie", price: "£4.00" },
-        { id: 40, name: "Trousers", price: "£6.95" },
-        { id: 41, name: "Trousers with Trim", price: "£8.50" },
-        { id: 42, name: "Winter Jackets", price: "£16.50" },
-      ],
-    },
-    {
-      id: 6,
-      name: "SHOE REPAIR AND COMPLIMENT POLISH",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 33, name: "Plain Dress", price: "£11.50" },
-        { id: 34, name: "Plain Skirt", price: "£6.95" },
-        { id: 35, name: "Silk Blouse", price: "£6.95" },
-        { id: 36, name: "Silk Jacket", price: "£9.95" },
-        { id: 37, name: "Silk Trouser", price: "£9.50" },
-        { id: 38, name: "Skirt with Trim", price: "£8.95" },
-        { id: 39, name: "Tie", price: "£4.00" },
-        { id: 40, name: "Trousers", price: "£6.95" },
-        { id: 41, name: "Trousers with Trim", price: "£8.50" },
-        { id: 42, name: "Winter Jackets", price: "£16.50" },
-      ],
-    },
-    {
-      id: 7,
-      name: "Trainer Cleaning",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 28, name: "Jacket Iron Only", price: "£6.25" },
-        { id: 29, name: "Jumper", price: "£6.95" },
-        { id: 30, name: "Maxmara Coat", price: "£39.99" },
-        { id: 31, name: "Overcoat (From)", price: "£22.00" },
-        { id: 32, name: "Padded Jacket", price: "£19.50" },
-        { id: 33, name: "Plain Dress", price: "£11.50" },
-        { id: 34, name: "Plain Skirt", price: "£6.95" },
-      ],
-    },
-    {
-      id: 8,
-      name: "Wedding Dresses",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 28, name: "Jacket Iron Only", price: "£6.25" },
-        { id: 29, name: "Jumper", price: "£6.95" },
-        { id: 30, name: "Maxmara Coat", price: "£39.99" },
-        { id: 31, name: "Overcoat (From)", price: "£22.00" },
-        { id: 32, name: "Padded Jacket", price: "£19.50" },
-      ],
-    },
-    {
-      id: 9,
-      name: "Alterations & Repairs",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 33, name: "Plain Dress", price: "£11.50" },
-        { id: 34, name: "Plain Skirt", price: "£6.95" },
-        { id: 35, name: "Silk Blouse", price: "£6.95" },
-        { id: 36, name: "Silk Jacket", price: "£9.95" },
-        { id: 37, name: "Silk Trouser", price: "£9.50" },
-        { id: 38, name: "Skirt with Trim", price: "£8.95" },
-        { id: 39, name: "Tie", price: "£4.00" },
-        { id: 40, name: "Trousers", price: "£6.95" },
-        { id: 41, name: "Trousers with Trim", price: "£8.50" },
-        { id: 42, name: "Winter Jackets", price: "£16.50" },
-      ],
-    },
-    {
-      id: 10,
-      name: "Leather, Fur and Suede",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 38, name: "Skirt with Trim", price: "£8.95" },
-        { id: 39, name: "Tie", price: "£4.00" },
-        { id: 40, name: "Trousers", price: "£6.95" },
-        { id: 41, name: "Trousers with Trim", price: "£8.50" },
-        { id: 42, name: "Winter Jackets", price: "£16.50" },
-      ],
-    },
-    {
-      id: 11,
-      name: "Specialist",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-      ],
-    },
-    {
-      id: 12,
-      name: "Ironing",
-      description:
-        "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
-      prices: [
-        { id: 22, name: "3pc Suit", price: "£16.00" },
-        { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
-        { id: 24, name: "Cotton Blouse ", price: "£4.95" },
-        { id: 25, name: "Designer Jumper ", price: "£11.95" },
-        { id: 26, name: "Dress with Trim", price: "£13.95" },
-        { id: 27, name: "Evening Dress", price: "£35.00" },
-        { id: 28, name: "Jacket Iron Only", price: "£6.25" },
-        { id: 29, name: "Jumper", price: "£6.95" },
-        { id: 30, name: "Maxmara Coat", price: "£39.99" },
-        { id: 31, name: "Overcoat (From)", price: "£22.00" },
-        { id: 32, name: "Padded Jacket", price: "£19.50" },
-      ],
-    },
-  ];
+  const [categories, setData] = useState<Service[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://www.drivin.co.in/aqil/prices.php"); // Replace with your server endpoint
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  // const categories = [
+  //   {
+  //     id: 1,
+  //     name: "Dry Cleaning",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 1, name: "2pc Suit", price: "£13.95" },
+  //       { id: 2, name: "Burberry Coat", price: "£39.99" },
+  //       { id: 3, name: "Cardigan", price: "£7.95" },
+  //       { id: 4, name: "Cotton Blouse Iron Only", price: "£3.95" },
+  //       { id: 5, name: "Dinner suit", price: "£15.00" },
+  //       { id: 6, name: "Dry Clean Shirt", price: "£4.95" },
+  //       { id: 7, name: "Folded Cotton Blouse", price: "£5.50" },
+  //       { id: 8, name: "Jump Suit", price: "£13.95" },
+  //       { id: 9, name: "Long Silk Dress", price: "£24.95" },
+  //       { id: 10, name: "Moncler jacket", price: "£39.99" },
+  //       { id: 11, name: "Padded Coat", price: "£24.95" },
+  //       { id: 12, name: "Pashmina Scarf", price: "£9.00" },
+  //       { id: 13, name: "Plain scarf", price: "£5.95" },
+  //       { id: 14, name: "Raincoat", price: "£16.50" },
+  //       { id: 15, name: "Silk Dress", price: "£19.95" },
+  //       { id: 16, name: "Silk Skirt", price: "£7.95" },
+  //       { id: 17, name: "Silk Waistcoat", price: "£8.95" },
+  //       { id: 18, name: "Suit Jacket Or Blazer", price: "£8.50" },
+  //       { id: 19, name: "Top", price: "£6.95" },
+  //       { id: 20, name: "Trousers Iron Only", price: "£5.50" },
+  //       { id: 21, name: "Waistcoat", price: "£5.95" },
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Shirt Service",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 28, name: "Jacket Iron Only", price: "£6.25" },
+  //       { id: 29, name: "Jumper", price: "£6.95" },
+  //       { id: 30, name: "Maxmara Coat", price: "£39.99" },
+  //       { id: 31, name: "Overcoat (From)", price: "£22.00" },
+  //       { id: 32, name: "Padded Jacket", price: "£19.50" },
+  //       { id: 33, name: "Plain Dress", price: "£11.50" },
+  //       { id: 34, name: "Plain Skirt", price: "£6.95" },
+  //       { id: 35, name: "Silk Blouse", price: "£6.95" },
+  //       { id: 36, name: "Silk Jacket", price: "£9.95" },
+  //       { id: 37, name: "Silk Trouser", price: "£9.50" },
+  //       { id: 38, name: "Skirt with Trim", price: "£8.95" },
+  //       { id: 39, name: "Tie", price: "£4.00" },
+  //       { id: 40, name: "Trousers", price: "£6.95" },
+  //       { id: 41, name: "Trousers with Trim", price: "£8.50" },
+  //       { id: 42, name: "Winter Jackets", price: "£16.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Laundry Services",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //     ],
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "wash and fold services",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 28, name: "Jacket Iron Only", price: "£6.25" },
+  //       { id: 29, name: "Jumper", price: "£6.95" },
+  //       { id: 30, name: "Maxmara Coat", price: "£39.99" },
+  //       { id: 31, name: "Overcoat (From)", price: "£22.00" },
+  //       { id: 32, name: "Padded Jacket", price: "£19.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Curtain Cleaning",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 35, name: "Silk Blouse", price: "£6.95" },
+  //       { id: 36, name: "Silk Jacket", price: "£9.95" },
+  //       { id: 37, name: "Silk Trouser", price: "£9.50" },
+  //       { id: 38, name: "Skirt with Trim", price: "£8.95" },
+  //       { id: 39, name: "Tie", price: "£4.00" },
+  //       { id: 40, name: "Trousers", price: "£6.95" },
+  //       { id: 41, name: "Trousers with Trim", price: "£8.50" },
+  //       { id: 42, name: "Winter Jackets", price: "£16.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "SHOE REPAIR AND COMPLIMENT POLISH",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 33, name: "Plain Dress", price: "£11.50" },
+  //       { id: 34, name: "Plain Skirt", price: "£6.95" },
+  //       { id: 35, name: "Silk Blouse", price: "£6.95" },
+  //       { id: 36, name: "Silk Jacket", price: "£9.95" },
+  //       { id: 37, name: "Silk Trouser", price: "£9.50" },
+  //       { id: 38, name: "Skirt with Trim", price: "£8.95" },
+  //       { id: 39, name: "Tie", price: "£4.00" },
+  //       { id: 40, name: "Trousers", price: "£6.95" },
+  //       { id: 41, name: "Trousers with Trim", price: "£8.50" },
+  //       { id: 42, name: "Winter Jackets", price: "£16.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Trainer Cleaning",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 28, name: "Jacket Iron Only", price: "£6.25" },
+  //       { id: 29, name: "Jumper", price: "£6.95" },
+  //       { id: 30, name: "Maxmara Coat", price: "£39.99" },
+  //       { id: 31, name: "Overcoat (From)", price: "£22.00" },
+  //       { id: 32, name: "Padded Jacket", price: "£19.50" },
+  //       { id: 33, name: "Plain Dress", price: "£11.50" },
+  //       { id: 34, name: "Plain Skirt", price: "£6.95" },
+  //     ],
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Wedding Dresses",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 28, name: "Jacket Iron Only", price: "£6.25" },
+  //       { id: 29, name: "Jumper", price: "£6.95" },
+  //       { id: 30, name: "Maxmara Coat", price: "£39.99" },
+  //       { id: 31, name: "Overcoat (From)", price: "£22.00" },
+  //       { id: 32, name: "Padded Jacket", price: "£19.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Alterations & Repairs",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 33, name: "Plain Dress", price: "£11.50" },
+  //       { id: 34, name: "Plain Skirt", price: "£6.95" },
+  //       { id: 35, name: "Silk Blouse", price: "£6.95" },
+  //       { id: 36, name: "Silk Jacket", price: "£9.95" },
+  //       { id: 37, name: "Silk Trouser", price: "£9.50" },
+  //       { id: 38, name: "Skirt with Trim", price: "£8.95" },
+  //       { id: 39, name: "Tie", price: "£4.00" },
+  //       { id: 40, name: "Trousers", price: "£6.95" },
+  //       { id: 41, name: "Trousers with Trim", price: "£8.50" },
+  //       { id: 42, name: "Winter Jackets", price: "£16.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Leather, Fur and Suede",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 38, name: "Skirt with Trim", price: "£8.95" },
+  //       { id: 39, name: "Tie", price: "£4.00" },
+  //       { id: 40, name: "Trousers", price: "£6.95" },
+  //       { id: 41, name: "Trousers with Trim", price: "£8.50" },
+  //       { id: 42, name: "Winter Jackets", price: "£16.50" },
+  //     ],
+  //   },
+  //   {
+  //     id: 11,
+  //     name: "Specialist",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //     ],
+  //   },
+  //   {
+  //     id: 12,
+  //     name: "Ironing",
+  //     description:
+  //       "Your clothes are individually inspected, cleaned (stains treated and then dry cleaned or laundered as appropriate) and ironed. Each item is quality checked and then packed by our master cleaners and can be returned to you within 24 hours.",
+  //     prices: [
+  //       { id: 22, name: "3pc Suit", price: "£16.00" },
+  //       { id: 23, name: "Canada Goose Jacket ", price: "£39.99" },
+  //       { id: 24, name: "Cotton Blouse ", price: "£4.95" },
+  //       { id: 25, name: "Designer Jumper ", price: "£11.95" },
+  //       { id: 26, name: "Dress with Trim", price: "£13.95" },
+  //       { id: 27, name: "Evening Dress", price: "£35.00" },
+  //       { id: 28, name: "Jacket Iron Only", price: "£6.25" },
+  //       { id: 29, name: "Jumper", price: "£6.95" },
+  //       { id: 30, name: "Maxmara Coat", price: "£39.99" },
+  //       { id: 31, name: "Overcoat (From)", price: "£22.00" },
+  //       { id: 32, name: "Padded Jacket", price: "£19.50" },
+  //     ],
+  //   },
+  // ];
 
   const handleTabClick = (tabNumber: number, tabName: string) => {
     setActiveTab(tabNumber);
