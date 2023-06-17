@@ -28,7 +28,7 @@ const Pricing = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://www.drivin.co.in/aqil/prices.php"); // Replace with your server endpoint
+      const response = await fetch("https://drivin.co.in/aqil/prices.php"); // Replace with your server endpoint
 
       if (!response.ok) {
         throw new Error("Failed to fetch data");
