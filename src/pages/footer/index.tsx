@@ -1,10 +1,22 @@
 import SubscribeTextBox from "@/shared/SubscribeTextBox";
 import PaymentMethods from "@/assets/payment-methods.png";
+import { useState } from "react";
+import AlertPopup from "@/shared/AlertPopup";
 
 const Footer = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
   return (
-    <footer id="footer" className="bg-white py-8 md:py-16">
-      <div className="mx-auto w-5/6">
+    <footer id="footer1" className="bg-white py-8 md:py-16">
+      <div className="footer mx-auto w-5/6">
         <div className="flex flex-col md:flex-row md:justify-between">
           <div className="mb-8 flex flex-col md:mb-0">
             <p className="text-sm">Download our new app:</p>
@@ -13,17 +25,13 @@ const Footer = () => {
                 className="mr-2 h-8 w-auto cursor-pointer"
                 alt="logo"
                 src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/apple.png"
-                onClick={() => {
-                  alert("Coming soon");
-                }}
+                onClick={handleShowAlert}
               />
               <img
                 className="h-8 w-auto cursor-pointer"
                 alt="logo"
                 src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/google.png"
-                onClick={() => {
-                  alert("Coming soon");
-                }}
+                onClick={handleShowAlert}
               />
             </div>
           </div>
@@ -52,6 +60,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {showAlert && (
+        <AlertPopup message="App Coming Soon!" onClose={handleCloseAlert} />
+      )}
     </footer>
   );
 };

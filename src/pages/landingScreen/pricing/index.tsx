@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 type Props = {};
 
-const Pricing = ({}: Props) => {
+const Pricing1 = ({}: Props) => {
   return (
     <section id="pricing" className="w-full py-16">
       <div>
@@ -28,17 +28,17 @@ const Pricing = ({}: Props) => {
                   <g
                     id="Page-1"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fill-rule="evenodd"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
                     <g
                       id="desktop-example-3-"
                       transform="translate(-555.000000, -3302.000000)"
                       stroke="#000000"
-                      stroke-width="2.90999991"
+                      strokeWidth="2.90999991"
                     >
                       <g
                         id="Group-2"
@@ -106,14 +106,14 @@ const Pricing = ({}: Props) => {
                   <g
                     id="Page-1"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fill-rule="evenodd"
                   >
                     <g
                       id="desktop-example-3-"
                       transform="translate(-984.000000, -3289.000000)"
-                      stroke-width="2.69999993"
+                      strokeWidth="2.69999993"
                     >
                       <g
                         id="Group-3"
@@ -149,13 +149,13 @@ const Pricing = ({}: Props) => {
                         <polyline
                           id="Path-8"
                           stroke="#000000"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           points="34.4344495 109.529412 11.4615385 180.850283 35.8173077 185.911765"
                         ></polyline>
                         <polyline
                           id="Path-8-Copy"
                           stroke="#000000"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                           transform="translate(128.225962, 149.161765) scale(-1, 1) translate(-128.225962, -149.161765) "
                           points="139.020988 110.970588 116.048077 182.29146 140.403846 187.352941"
                         ></polyline>
@@ -163,7 +163,7 @@ const Pricing = ({}: Props) => {
                           d="M37.25,186.632353 C51.1689712,192.661825 64.2431735,195.78062 76.4726069,195.988736 C88.7020402,196.196853 101.655082,193.520981 115.331731,187.961121"
                           id="Path-9"
                           stroke="#000000"
-                          stroke-linecap="round"
+                          strokeLinecap="round"
                         ></path>
                       </g>
                     </g>
@@ -186,7 +186,7 @@ const Pricing = ({}: Props) => {
                   <g
                     id="Page-1"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fill-rule="evenodd"
                   >
@@ -194,7 +194,7 @@ const Pricing = ({}: Props) => {
                       id="desktop-example-3-"
                       transform="translate(-1410.000000, -3303.000000)"
                       stroke="#000000"
-                      stroke-width="2.99999982"
+                      strokeWidth="2.99999982"
                     >
                       <g
                         id="Group-4"
@@ -255,7 +255,7 @@ const Pricing = ({}: Props) => {
                   <g
                     id="Page-1"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fill-rule="evenodd"
                   >
@@ -263,7 +263,7 @@ const Pricing = ({}: Props) => {
                       id="desktop-example-3-"
                       transform="translate(-1847.000000, -3324.000000)"
                       stroke="#000000"
-                      stroke-width="2.8"
+                      strokeWidth="2.8"
                     >
                       <polyline
                         id="Path-32-Copy-2"
@@ -343,4 +343,4 @@ const Pricing = ({}: Props) => {
   );
 };
 
-export default Pricing;
+export default Pricing1;

@@ -3,6 +3,8 @@ import ActionButton from "@/shared/ActionButton";
 import HomePageGraphic from "@/assets/HomePageGraphic.png";
 import TextBox from "@/shared/TextBox";
 import HText from "@/shared/HText";
+import InputWithSuggestions from "@/shared/InputWithSuggenstions";
+import SlotPicker from "@/shared/SlotPicker";
 
 type Props = {};
 
@@ -36,8 +38,9 @@ const Home = ({}: Props) => {
             with Collection and Delivery in 24 hours
           </p>
           <div className="mt-8 md:mt-16">
-            <TextBox placeholder="Flat 554" />
+            <InputWithSuggestions placeholder="POSTAL CODE" />
             <TextBox placeholder="TIME SLOTS" />
+            {/* <SlotPicker /> */}
           </div>
 
           {/* ACTIONS */}

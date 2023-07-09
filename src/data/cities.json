@@ -1,0 +1,867 @@
+[
+    {
+        "postalCode": "EC1A",
+        "city": "Barbican, Clerkenwell",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1M",
+        "city": "Clerkenwell",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1N",
+        "city": "Hatton Garden, Finsbury",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1P",
+        "city": "Non-geographic postcode",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1R",
+        "city": "Finsbury, Finsbury Estate (west)",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1V",
+        "city": "Finsbury, Moorfields Eye Hospital",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC1Y",
+        "city": "St Luke's, Bunhill Fields",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2A",
+        "city": "Shoreditch, Hackney",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2M",
+        "city": "Liverpool Street, Broadgate",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2N",
+        "city": "Old Broad Street, Tower 42",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2P",
+        "city": "Non-geographic postcode",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2R",
+        "city": "Bank of England, Mansion House",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2V",
+        "city": "Guildhall",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC2Y",
+        "city": "Barbican, Golden Lane Estate",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3A",
+        "city": "Tower Hill, Aldgate",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3M",
+        "city": "Fenchurch Street, Tower of London",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3N",
+        "city": "Tower Hill, Tower of London",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3P",
+        "city": "Non-geographic postcode",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3R",
+        "city": "Monument, Billingsgate",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC3V",
+        "city": "Royal Exchange, Lombard Street",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4A",
+        "city": "Fleet Street, St Paul's",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4M",
+        "city": "St Paul's",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4N",
+        "city": "Mansion House",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4P",
+        "city": "Non-geographic postcode",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4R",
+        "city": "Cannon Street",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4V",
+        "city": "Blackfriars",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "EC4Y",
+        "city": "Temple",
+        "area": "City of London"
+    },
+    {
+        "postalCode": "WC1A",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1B",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1E",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1H",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1N",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1R",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1V",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC1X",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2A",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2B",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2E",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2H",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2N",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "WC2R",
+        "city": "Central London",
+        "area": "Central London"
+    },
+    {
+        "postalCode": "E1",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E2",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E3",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E4",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E5",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E6",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E7",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E8",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E9",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E10",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E11",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E12",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E13",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E14",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E15",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E16",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E17",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "E18",
+        "city": "East London",
+        "area": "East London"
+    },
+    {
+        "postalCode": "N1",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N2",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N3",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N4",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N5",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N6",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N7",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N8",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N9",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N10",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N11",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N12",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N13",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N14",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N15",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N16",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N17",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N18",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N19",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N20",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N21",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "N22",
+        "city": "North London",
+        "area": "North London"
+    },
+    {
+        "postalCode": "NW1",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW2",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW3",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW4",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW5",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW6",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW7",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW8",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW9",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW10",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "NW11",
+        "city": "North West London",
+        "area": "North West London"
+    },
+    {
+        "postalCode": "SE1",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE2",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE3",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE4",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE5",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE6",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE7",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE8",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE9",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE10",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE11",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE12",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE13",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE14",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE15",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE16",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE17",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE18",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE19",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE20",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE21",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE22",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE23",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE24",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE25",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE26",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE27",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SE28",
+        "city": "South East London",
+        "area": "South East London"
+    },
+    {
+        "postalCode": "SW1A",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1E",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1H",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1P",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1V",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1W",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1X",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW1Y",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW2",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW3",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW4",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW5",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW6",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW7",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW8",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW9",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW10",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW11",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW12",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW13",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW14",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW15",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW16",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW17",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW18",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW19",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "SW20",
+        "city": "South West London",
+        "area": "South West London"
+    },
+    {
+        "postalCode": "W1A",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1B",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1C",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1D",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1F",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1G",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1H",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1J",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1K",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1S",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1T",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1U",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W1W",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W2",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W3",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W4",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W5",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W6",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W7",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W8",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W9",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W10",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W11",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W12",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W13",
+        "city": "West London",
+        "area": "West London"
+    },
+    {
+        "postalCode": "W14",
+        "city": "West London",
+        "area": "West London"
+    }
+]
