@@ -4,7 +4,6 @@ import HomePageGraphic from "@/assets/HomePageGraphic.png";
 import TextBox from "@/shared/TextBox";
 import HText from "@/shared/HText";
 import InputWithSuggestions from "@/shared/InputWithSuggenstions";
-import SlotPicker from "@/shared/SlotPicker";
 
 type Props = {};
 
@@ -40,7 +39,6 @@ const Home = ({}: Props) => {
           <div className="mt-8 md:mt-16">
             <InputWithSuggestions placeholder="POSTAL CODE" />
             <TextBox placeholder="TIME SLOTS" />
-            {/* <SlotPicker /> */}
           </div>
 
           {/* ACTIONS */}

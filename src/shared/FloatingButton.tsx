@@ -30,7 +30,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
   }, []);
 
   return (
-    location.pathname != "/" && (
+    (location.pathname != "/" && (
       <div
         className="fixed bottom-5 right-5 flex flex-col items-end justify-end gap-5 md:bottom-10 md:right-10"
         id="floating-button"
@@ -60,7 +60,8 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
           </Link>
         )}
       </div>
-    )
+    )) ||
+    null
   );
 };
 
