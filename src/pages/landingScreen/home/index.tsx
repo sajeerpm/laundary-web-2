@@ -1,7 +1,6 @@
 import { SelectedPage } from "@/shared/types";
 import ActionButton from "@/shared/ActionButton";
 import HomePageGraphic from "@/assets/HomePageGraphic.png";
-import TextBox from "@/shared/TextBox";
 import HText from "@/shared/HText";
 import InputWithSuggestions from "@/shared/InputWithSuggenstions";
 
@@ -32,13 +31,33 @@ const Home = ({}: Props) => {
         {/* MAIN HEADER */}
         <div className="z-10 md:basis-3/6">
           {/* LOGIN INPUTS */}
-          <HText textAlign="text-center">DRY CLEANING & LAUNDARY EXPERTS</HText>
+          <p className="text-center font-montserrat text-2xl">
+            25+ years Experience in
+          </p>
+          <HText textAlign="text-center">
+            DRY CLEANING & LAUNDARY SERVICES
+          </HText>
           <p className="text-center font-extralight">
-            with Collection and Delivery in 24 hours
+            Free collection and Delivery
           </p>
           <div className="mt-8 md:mt-16">
-            <InputWithSuggestions placeholder="POSTAL CODE" />
-            <TextBox placeholder="TIME SLOTS" />
+            <InputWithSuggestions placeholder="POST CODE" />
+            <div className="flex">
+              <div className="textbox-container mt-3 h-[48px] w-full bg-white">
+                <select className="w-full bg-white text-center">
+                  <option>Collection Slot</option>
+                  <option>Slot 2</option>
+                  <option>Slot 3</option>
+                </select>
+              </div>
+              <div className="textbox-container mt-3 h-[48px] w-full bg-white">
+                <select className="w-full bg-white text-center">
+                  <option>Delivery Slot</option>
+                  <option>Slot 2</option>
+                  <option>Slot 3</option>
+                </select>
+              </div>
+            </div>
           </div>
 
           {/* ACTIONS */}
@@ -47,7 +66,7 @@ const Home = ({}: Props) => {
               selectedPage={SelectedPage.Pricing}
               setSelectedPage={() => {}}
             >
-              SEE AVAILABLE TIMES
+              CHOOSE YOUR SLOT
             </ActionButton>
           </div>
         </div>

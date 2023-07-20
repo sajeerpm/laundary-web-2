@@ -19,9 +19,6 @@ const Services = ({}: Props) => {
             Dry Cleaning
           </Link>
           <Link className="hover:underline" to={`#`}>
-            Gift Vouchers
-          </Link>
-          <Link className="hover:underline" to={`#`}>
             Ironing
           </Link>
           <Link className="hover:underline" to={`#`}>
@@ -55,32 +52,20 @@ const Services = ({}: Props) => {
           <Link className="hover:underline" to={`#`}>
             Blog
           </Link>
-          <Link className="hover:underline" to={`#`}>
-            Careers
-          </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/branches`}>
             Customer Reviews
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/login`}>
             Log In
           </Link>
           <Link className="hover:underline" to={`#`}>
             Our Company
           </Link>
-          <Link className="hover:underline" to={`#`}>
-            Press Informations
-          </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/privacy`}>
             Privacy & Cookies
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/terms`}>
             Terms & Conditions
-          </Link>
-          <Link className="hover:underline" to={`#`}>
-            Why Us?
-          </Link>
-          <Link className="hover:underline" to={`#`}>
-            Work With Us
           </Link>
         </div>
         <div className="flex-1 pt-6 md:w-1/2">

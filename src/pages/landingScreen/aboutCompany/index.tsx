@@ -8,7 +8,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 type Props = {};
 
 const AboutCompany = ({}: Props) => {
-  const lineHeadCap = "pb-20";
+  const lineHeadCap = "pb-12";
   const lineParagraphCap = "pb-6";
   return (
     <section id="about-company" className="w-full bg-black py-16 text-white">
@@ -29,55 +29,20 @@ const AboutCompany = ({}: Props) => {
           <div className="flex items-center justify-center py-6">
             <HText textAlign="text-center">
               <p className="text-center uppercase">
-                The best Dry Cleaning delivered directly to your door
+                AWARD WINNING DRY CLEANERS IN LONDON
               </p>
             </HText>
           </div>
           <TextMedium textAlign="text-center">
-            masterclean is a network of the very best dry cleaners.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            We provide the finest dry cleaning and laundry services, combined
-            with exceptional customer service and convenient collection and
-            delivery suited perfectly to your schedule.
+            Dry Cleaners In London are an important part of modern life. Because
+            in a city like London, residents are always on the go and busy.
+            People are more fashion conscious and like to wear a variety of
+            clothes. We always believe that quality Dry cleaners in London
+            should be accessible to everyone. That’s why we offer competitive
+            pricing options without compromising the standard of our services.
           </TextMedium>
         </motion.div>
         <div className={`${lineHeadCap}`}></div>
-
-        {/* DRY CLEANING DELIVERY - HOW DOES IT WORK? */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <TextMedium textAlign="text-center">
-            DRY CLEANING DELIVERY - HOW DOES IT WORK?
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-          <TextMedium textAlign="text-center">
-            The service is simple: we collect your items, professionally clean
-            or repair them, and deliver them back to your doorstep in less than
-            24 hours.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            We offer flexible collection and delivery time slots, allowing us to
-            work around your schedule and deliver your clothes beautifully
-            washed, pressed and finished exactly when you need them.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            If you’re especially pressed for time, you can opt for same day
-            laundry delivery on items collected before 10am.
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div>
 
         {/* EXPERT DRY CLEANERS */}
         <motion.div
@@ -90,33 +55,34 @@ const AboutCompany = ({}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <TextMedium textAlign="text-center">EXPERT DRY CLEANERS</TextMedium>
+          <TextMedium textAlign="text-center uppercase">
+            Find the most affordable and efficient dry cleaners in London.
+          </TextMedium>
           <div className={`${lineHeadCap}`}></div>
           <TextMedium textAlign="text-center">
-            Founded in 2014, masterclean was the first on demand laundry service
-            in London, and has since expanded its horizons to operate in cities
-            across the UK, as well as in New York City.
+            Dry cleaning in london has become mainstream in modern society due
+            to its efficiency and effectiveness in cleaning delicate and
+            expensive clothes. Dry cleaning in London is an essential service
+            for professional individuals who want to take care of delicate
+            fabrics. However, the cost of dry cleaning can be beyond the reach
+            of some. And there can be great variation in efficiency between
+            providers.
           </TextMedium>
           <div className={`${lineParagraphCap}`}></div>
           <TextMedium textAlign="text-center">
-            We work with a network of the best local dry cleaners, ensuring the
-            best quality dry cleaning, repairs, alterations and more.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            Every item is treated with care and respect by our master cleaners,
-            who provide world-class cleaning services time and time again.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            If you’re looking to find the best dry cleaner near you, then look
-            no further than masterclean.
+            Finding a reliable, affordable and efficient dry cleaner is critical
+            to keeping your favorite clothes in top condition. With multiple dry
+            cleaning companies flooding the industry, many consumers find it
+            increasingly difficult to find an affordable and efficient dry
+            cleaning service. We will provide you with an overview of the
+            different services available, pricing and customer reviews so that
+            you can make an informed decision when selecting your dry cleaner.
           </TextMedium>
           <div className={`${lineHeadCap}`}></div>
         </motion.div>
 
         {/* MASTERCLEAN LOCATIONS */}
-        <motion.div
+        {/* <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -140,101 +106,11 @@ const AboutCompany = ({}: Props) => {
           <div className={`${lineParagraphCap}`}></div>
           <TextMedium textAlign="text-center">Oxford Dry Cleaners</TextMedium>
           <div className={`${lineHeadCap}`}></div>
-        </motion.div>
-
-        {/* EXPERT LAUNDRY SERVICES */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <TextMedium textAlign="text-center">
-            EXPERT LAUNDRY SERVICES
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-          <TextMedium textAlign="text-center">
-            We have a range of premium laundry services on offer, from dry
-            cleaning for your favourite suits, shirts and dresses, to expert
-            tailoring and repairs on any of your garments, and everything in
-            between.
-          </TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">
-            For more information, visit our services page, or reach out to our
-            friendly Customer Care team with your queries.
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div>
-
-        {/* LAUNDRY AND DRY CLEANING BLOG */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <TextMedium textAlign="text-center">
-            LAUNDRY AND DRY CLEANING BLOG
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-          <TextMedium textAlign="text-center">
-            Follow our masterclean blog to stay up to date with industry and
-            sustainability news and keep up with the exciting things we're doing
-            as a business. You can also find plenty of tips and tricks and
-            in-depth step by step guides to help you navigate all kinds laundry
-            and dry cleaning on our blog.
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div>
-
-        {/* SERVICE COUNT */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <HText textAlign="text-center">
-            <p className="text-center uppercase">
-              ARE MY CLOTHES SAFE WITH YOUR SERVICE?
-            </p>
-          </HText>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div>
-
-        {/* OUR PROMISE */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <HText textAlign="text-center">
-            <p className="text-center uppercase">OUR PROMISE TO YOU</p>
-          </HText>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div>
+        </motion.div> */}
       </div>
       <div className="flex justify-center md:w-full">
         <AnchorLink
-          className="rounded-none border border-white bg-black px-14 py-2 text-center md:px-28"
+          className="rounded-full bg-secondary-500 px-14 py-2 text-center text-black md:px-14"
           onClick={() => {}}
           href={`#${SelectedPage.Home}`}
         >

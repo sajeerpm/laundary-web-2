@@ -14,9 +14,21 @@ import AlterationAndRepair from "@/assets/ribbon-cutting.png";
 import LeatherFurSuede from "@/assets/leather-jacket.png";
 import SpecialistItems from "@/assets/jeans.png";
 import Ironing from "@/assets/ironing-board.png";
-import { useEffect } from "react";
+import InvisibleMending from "@/assets/invisible-mending.png";
+import HandBagRepair from "@/assets/hand-bag.png";
+import AsianTraditionalDryCleaning from "@/assets/traditional-wear.png";
+import { useEffect, useState } from "react";
+import axiosClient from "@/axiosClient";
+
+interface Service {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
 
 const Services = () => {
+  const [categories, setData] = useState<Service[]>([]);
   const products = [
     {
       id: 1,
@@ -120,6 +132,30 @@ const Services = () => {
       alt: "ironing",
       description: "Ironing collected and delivered to your door.",
     },
+    {
+      id: 13,
+      name: "Invisible Mending",
+      price: "$40",
+      image: `${InvisibleMending}`,
+      alt: "invisible-mending",
+      description: "Ironing collected and delivered to your door.",
+    },
+    {
+      id: 14,
+      name: "Hand Bag Cleaning & Repair",
+      price: "$40",
+      image: `${HandBagRepair}`,
+      alt: "hand-bag-cleaning",
+      description: "Ironing collected and delivered to your door.",
+    },
+    {
+      id: 15,
+      name: "Asian & Traditional Dry Cleaning",
+      price: "$40",
+      image: `${AsianTraditionalDryCleaning}`,
+      alt: "traditional-dry",
+      description: "Ironing collected and delivered to your door.",
+    },
     // Add more products as needed
   ];
 
@@ -128,6 +164,17 @@ const Services = () => {
   // };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosClient.get("/pricelist");
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
     window.scrollTo(0, 0);
   }, []);
 
@@ -137,17 +184,15 @@ const Services = () => {
         <HText textAlign="text-center">SERVICES</HText>
       </div>
       <div className="lg:grid-cols-3 mx-auto grid w-4/6 grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
-        {products.map((product) => (
+        {categories.map((product) => (
           <div
             key={product.id}
             className="flex flex-col items-center justify-center bg-white p-2 md:p-8"
           >
-            <img src={product.image} alt={product.alt} />
+            <img src={product.image} alt={product.name} />
             <SText textAlign="text-center">{product.name}</SText>
             <p className="text-center align-top">{product.description}</p>
-            <Link
-              to={`/pricing/${product.name.toLowerCase().replace(/\s/g, "_")}`}
-            >
+            <Link to={`/pricing/${product.id}`}>
               <button
                 key={product.id}
                 className="my-8 rounded-none border border-black px-12 py-2"

@@ -12,33 +12,33 @@ const FAQ: React.FC = () => {
   const [faqItems] = useState<FAQItem[]>([
     {
       id: 1,
-      question: "What is the futuristic design?",
+      question: "Can I trust you with my clothes?",
       answer:
-        "The futuristic design is a modern and innovative approach that incorporates sleek and minimalist elements, bold typography, vibrant colors, and geometric shapes.",
+        "Yes, you can trust us as we have been trading for more than 25 years and with that experience we do know how to take care of your clothes. Also we do work for designers like Burberry Acne studio MaxmaraOzwald boateng Ami boutique etc.",
     },
     {
       id: 2,
-      question: "How can I create a futuristic design?",
+      question: "Where are the items cleaned?",
       answer:
-        "To create a futuristic design, you can use clean and minimalistic layouts, bold and futuristic fonts, vibrant color schemes, and incorporate geometric shapes and patterns.",
+        "We have our own processing unit where we clean all the garments according to the required process. We do not outsource anything like some other Dry cleaners.",
     },
     {
       id: 3,
-      question: "How can I create a futuristic design?",
+      question: "How long does cleaning take?",
       answer:
-        "To create a futuristic design, you can use clean and minimalistic layouts, bold and futuristic fonts, vibrant color schemes, and incorporate geometric shapes and patterns.",
+        "The cleaning process takes 24 to 48 hours depending on the garments. Please call us now if you require a same day service.",
     },
     {
       id: 4,
-      question: "How can I create a futuristic design?",
+      question: "Can you clean any kind of items?",
       answer:
-        "To create a futuristic design, you can use clean and minimalistic layouts, bold and futuristic fonts, vibrant color schemes, and incorporate geometric shapes and patterns.",
+        "Having our 25 years' experience we are confident to clean any kind of garments.",
     },
     {
       id: 5,
-      question: "How can I create a futuristic design?",
+      question: "What is the minimum order charge?",
       answer:
-        "To create a futuristic design, you can use clean and minimalistic layouts, bold and futuristic fonts, vibrant color schemes, and incorporate geometric shapes and patterns.",
+        "The minimum order charge is 25 with free collection and delivery.",
     },
     // Add more FAQ items as needed
   ]);
@@ -70,7 +70,7 @@ const FAQ: React.FC = () => {
         <div className="w-full py-20">
           <HText textAlign="text-center">FEQUENTLY ASKED QUESTIONS</HText>
         </div>
-        <div className="h-full py-8 md:px-4">
+        <div className="h-[100vh] py-8 md:px-4">
           <div className="mx-auto max-w-5xl">
             {faqItems.map((item) => (
               <div

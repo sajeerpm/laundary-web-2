@@ -15,6 +15,8 @@ import Corporates from "./pages/corperates/Corperates";
 import Branches from "./pages/branches/Branches";
 import FloatingButton from "./shared/FloatingButton";
 import { Helmet } from "react-helmet";
+import TermsAndConditions from "./pages/cms/TermsAndConditions";
+import PrivacyPolicy from "./pages/cms/PrivacyPolicy";
 
 function App() {
   const location = useLocation();
@@ -71,7 +73,9 @@ function App() {
         <Route element={<Branches />} path="/branches" />
         <Route element={<FAQ />} path="/faqs" />
         <Route element={<Corporates />} path="/corperates" />
-        <Route element={<PricingDetailed />} path="/pricing/:name" />
+        <Route element={<PricingDetailed />} path="/pricing/:id" />
+        <Route element={<TermsAndConditions />} path="/terms" />
+        <Route element={<PrivacyPolicy />} path="/privacy" />
         <Route element={<PageNotFound />} path="*" />
       </Routes>
       <Footer />
