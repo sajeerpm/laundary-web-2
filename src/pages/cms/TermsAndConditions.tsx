@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 type Props = {};
 
-const TermsAndConditions = (props: Props) => {
+const TermsAndConditions = ({}: Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

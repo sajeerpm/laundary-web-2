@@ -68,7 +68,7 @@ const PricingDetailed = () => {
         <div className="flex py-12">
           <div
             dangerouslySetInnerHTML={{
-              __html: categories?.details,
+              __html: categories?.details ?? "",
             }}
           />
         </div>

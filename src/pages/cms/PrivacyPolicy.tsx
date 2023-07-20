@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 type Props = {};
 
-const PrivacyPolicy = (props: Props) => {
+const PrivacyPolicy = ({}: Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
