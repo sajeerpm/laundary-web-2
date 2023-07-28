@@ -9,7 +9,7 @@ const Services = ({}: Props) => {
         <div className="flex flex-col pt-6 md:w-1/6">
           <p className="text-md uppercase">Services</p>
           <hr className="my-2 h-[2px] bg-gray-400" />
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/corperates`}>
             Corporate Services
           </Link>
           <Link className="hover:underline" to={`#`}>

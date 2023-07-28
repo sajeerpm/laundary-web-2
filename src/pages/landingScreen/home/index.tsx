@@ -93,10 +93,10 @@ const Home = ({}: Props) => {
         {/* MAIN HEADER */}
         <div className="z-10 md:basis-3/6">
           {/* LOGIN INPUTS */}
-          <p className="text-center font-montserrat text-2xl">
+          <p className="text-center font-montserrat text-2xl text-red-700">
             25+ years Experience in
           </p>
-          <HText textAlign="text-center">
+          <HText textAlign="text-center text-black">
             DRY CLEANING & LAUNDARY SERVICES
           </HText>
           <p className="text-center font-extralight">

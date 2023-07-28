@@ -61,10 +61,12 @@ const Pricing = () => {
         >
           <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">
             <HText textAlign="text-center">
-              <p className="w-full uppercase">Our Prices</p>
+              <p className="w-full uppercase text-black">Our Prices</p>
             </HText>
             <SHText textAlign="text-center">
-              <p className="w-full">Price may vary according to the garments</p>
+              <p className="w-full text-black">
+                Price may vary according to the garments
+              </p>
             </SHText>
           </div>
         </div>

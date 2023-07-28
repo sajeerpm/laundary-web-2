@@ -38,7 +38,7 @@ const FAQ: React.FC = () => {
       id: 5,
       question: "What is the minimum order charge?",
       answer:
-        "The minimum order charge is 25 with free collection and delivery.",
+        "The minimum order charge is £30 with free collection and delivery.",
     },
     // Add more FAQ items as needed
   ]);
@@ -68,7 +68,7 @@ const FAQ: React.FC = () => {
     >
       <div className="mx-auto mt-20 w-5/6">
         <div className="w-full py-20">
-          <HText textAlign="text-center">FEQUENTLY ASKED QUESTIONS</HText>
+          <HText textAlign="text-center">FREQUENTLY ASKED QUESTIONS</HText>
         </div>
         <div className="h-[100vh] py-8 md:px-4">
           <div className="mx-auto max-w-5xl">

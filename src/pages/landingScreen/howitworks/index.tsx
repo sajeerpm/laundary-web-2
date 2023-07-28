@@ -24,6 +24,7 @@ const HowItWorks = ({}: Props) => {
               <p className="text-[18px]">1.</p>
               <p className="text-[18px]">
                 Select your time slot for <strong>Collection & Delivery</strong>
+                .
               </p>
             </div>
           </div>
@@ -35,7 +36,7 @@ const HowItWorks = ({}: Props) => {
                 We <strong>pick</strong> up your{" "}
                 <strong>Dry cleaning & Laundry</strong> Make an{" "}
                 <strong>invoice & clean</strong> your items as per{" "}
-                <strong>requirements</strong>
+                <strong>requirements</strong>.
               </p>
             </div>
           </div>

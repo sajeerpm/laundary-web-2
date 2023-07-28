@@ -45,6 +45,27 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="mt-8 gap-16 md:flex md:justify-start">
+          <p className="text-left">
+            <strong>Main Address</strong>
+            <br />
+            6 Langtry Walk,
+            <br />
+            London
+            <br />
+            NW8 0DU, UK
+          </p>
+
+          <p className="text-left">
+            <strong>Contact Details</strong>
+            <br />
+            Main: 020 7328 5621
+            <br />
+            Mobile 07950 455241
+            <br />
+            cs@masterdrycleaner.co.uk
+          </p>
+        </div>
         <div className="mt-8 md:flex md:justify-between">
           <p className="pt-3 text-xs">
             &copy; MASTERCLEAN DRYCLEANER SERVICE LTD. – ALL RIGHTS RESERVED.
