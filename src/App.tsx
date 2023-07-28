@@ -17,6 +17,7 @@ import FloatingButton from "./shared/FloatingButton";
 import { Helmet } from "react-helmet";
 import TermsAndConditions from "./pages/cms/TermsAndConditions";
 import PrivacyPolicy from "./pages/cms/PrivacyPolicy";
+import CustomerInfo from "./pages/order/CustomerInfo";
 
 function App() {
   const location = useLocation();
@@ -76,6 +77,7 @@ function App() {
         <Route element={<PricingDetailed />} path="/pricing/:id" />
         <Route element={<TermsAndConditions />} path="/terms" />
         <Route element={<PrivacyPolicy />} path="/privacy" />
+        <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
       </Routes>
       <Footer />

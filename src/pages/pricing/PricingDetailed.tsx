@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
-import { Link, useParams } from "react-router-dom";
-import PricingDetailsBackgroundImage from "@/assets/images/unsplash-1.jpg";
-import { SelectedPage } from "@/shared/types";
+import { useParams } from "react-router-dom";
+import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
+import LoadingImage from "@/assets/images/loading.gif";
 import axiosClient from "@/axiosClient";
 
 interface Service {
   id: number;
   name: string;
   image: string;
+  bannerimage: string;
   description: string;
   details: string;
 }
@@ -18,12 +19,14 @@ const PricingDetailed = () => {
   const { id } = useParams();
   console.log("id = " + id);
   const [categories, setData] = useState<Service>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axiosClient.get("/service/" + id);
         setData(response.data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -34,45 +37,59 @@ const PricingDetailed = () => {
   }, []);
 
   return (
-    <section id="home" className="flex flex-col bg-[#edecef] md:pb-0">
-      <div className="items-center justify-center md:flex">
-        <div
-          className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
-          style={{
-            backgroundImage: `url(${PricingDetailsBackgroundImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <HText textAlign="text-center">
-            <p className="w-full uppercase">{categories?.name ?? ""}</p>
-          </HText>
-          <SHText textAlign="text-center">
-            <p className="w-full">COLLECTED AND DELIVERED</p>
-            <p className="w-full">TO YOUR DOOR</p>
-          </SHText>
-          <div className="flex w-full justify-center py-16">
+    <section id="home" className="mt-[76px] flex flex-col bg-[#edecef] md:pb-0">
+      {loading ? (
+        <div className="flex min-h-[80vh]">
+          <div className="flex w-full items-center justify-center">
+            <img src={LoadingImage} />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div className="items-center justify-center md:flex">
+            <div
+              className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
+              style={{
+                backgroundImage: `url(${
+                  categories?.bannerimage ?? PricingDetailsBackgroundImage
+                })`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">
+                <HText textAlign="text-center text-black">
+                  <p className="w-full uppercase">{categories?.name ?? ""}</p>
+                </HText>
+                <SHText textAlign="text-center text-black">
+                  <p className="w-full">COLLECTED AND DELIVERED</p>
+                  <p className="w-full">TO YOUR DOOR</p>
+                </SHText>
+              </div>
+              {/* <div className="flex w-full justify-center py-16">
             <Link
               className="rounded-none bg-black px-12 py-2 text-center uppercase text-white"
               to={`/${SelectedPage.Pricing}`}
             >
               Price List
             </Link>
+          </div> */}
+            </div>
+          </div>
+          <div className="mx-auto flex w-5/6 flex-col items-center">
+            <div className="pt-8">
+              <SHText textAlign="text center">{categories?.name ?? ""}</SHText>
+            </div>
+            <div className="w-full py-12">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: categories?.details ?? "",
+                }}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="mx-auto flex w-5/6 flex-col items-center">
-        <div className="pt-8">
-          <SHText textAlign="text center">{categories?.name ?? ""}</SHText>
-        </div>
-        <div className="flex py-12">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: categories?.details ?? "",
-            }}
-          />
-        </div>
-      </div>
+      )}
     </section>
   );
 };

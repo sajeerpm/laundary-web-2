@@ -10,9 +10,10 @@ interface Suggestion {
 
 type Props = {
   placeholder: string;
+  onChange: (value: string) => void;
 };
 
-const InputWithSuggestions = ({ placeholder }: Props) => {
+const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -47,6 +48,7 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
 
   const handleSuggestionClick = (suggestion: Suggestion) => {
     setInputValue(suggestion.postalCode);
+    onChange(suggestion.postalCode);
     setSuggestions([]);
     setShowSuggestions(false);
   };

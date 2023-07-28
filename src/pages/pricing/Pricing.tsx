@@ -59,12 +59,14 @@ const Pricing = () => {
             backgroundPosition: "center",
           }}
         >
-          <HText textAlign="text-center">
-            <p className="w-full uppercase">Our Prices</p>
-          </HText>
-          <SHText textAlign="text-center">
-            <p className="w-full">Price may vary according to the garments</p>
-          </SHText>
+          <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">
+            <HText textAlign="text-center">
+              <p className="w-full uppercase">Our Prices</p>
+            </HText>
+            <SHText textAlign="text-center">
+              <p className="w-full">Price may vary according to the garments</p>
+            </SHText>
+          </div>
         </div>
       </div>
       <div className="mx-auto w-5/6 py-8">
