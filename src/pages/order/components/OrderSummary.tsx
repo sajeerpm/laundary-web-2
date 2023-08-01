@@ -1,6 +1,6 @@
 // OrderSummaryPage.tsx
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   MapPinIcon,
@@ -8,7 +8,29 @@ import {
   ScissorsIcon,
 } from "@heroicons/react/24/solid";
 
+interface Data {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  postcode: string;
+  pickupdate: Slot;
+  deliverydate: Slot;
+  notes: string;
+}
+interface Slot {
+  slot: string;
+  display: string;
+}
+
 const OrderSummaryPage: React.FC = () => {
+  const [receivedData, setData] = useState<Data>();
+  useEffect(() => {
+    const data = localStorage.getItem("customer_register");
+    if (data) {
+      setData(JSON.parse(data));
+    }
+  }, []);
   return (
     <div className="flex">
       <div className="w-full space-y-8 rounded-lg bg-white pb-8">
@@ -19,12 +41,7 @@ const OrderSummaryPage: React.FC = () => {
 
           <div className="flex flex-row">
             <MapPinIcon className="mr-3 h-6 w-6 text-gray-600" />
-            <p className="text-lg text-gray-600">
-              1234 Futuristic Street, City, State <br />
-              GGGGGG <br />
-              MMMMM <br />
-              KKKKK
-            </p>
+            <p className="text-lg text-gray-600">{receivedData?.address}</p>
           </div>
         </div>
 
@@ -37,12 +54,16 @@ const OrderSummaryPage: React.FC = () => {
 
           <div className="flex flex-row">
             <CalendarDaysIcon className="mr-3 h-6 w-6 text-gray-600" />
-            <p className="text-lg text-gray-600">July 30, 20XX</p>
+            <p className="text-lg text-gray-600">
+              {receivedData?.pickupdate.display}
+            </p>
           </div>
 
           <div className="flex flex-row">
             <CalendarDaysIcon className="mr-3 h-6 w-6 text-gray-600" />
-            <p className="text-lg text-gray-600">August 3, 20XX</p>
+            <p className="text-lg text-gray-600">
+              {receivedData?.deliverydate.display}
+            </p>
           </div>
         </div>
 

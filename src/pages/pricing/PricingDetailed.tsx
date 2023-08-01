@@ -48,7 +48,7 @@ const PricingDetailed = () => {
         <div>
           <div className="items-center justify-center md:flex">
             <div
-              className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
+              className="top-0 flex h-[80vh] w-full flex-col items-center justify-center"
               style={{
                 backgroundImage: `url(${
                   categories?.bannerimage ?? PricingDetailsBackgroundImage

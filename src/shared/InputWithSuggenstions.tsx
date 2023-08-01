@@ -77,6 +77,7 @@ const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
       <div className="textbox-container mt-3 h-[48px] bg-white">
         <ArrowLongRightIcon className="h-6 w-6 text-black" />
         <input
+          required
           placeholder={placeholder}
           type="text"
           value={inputValue}

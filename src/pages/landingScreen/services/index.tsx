@@ -12,37 +12,37 @@ const Services = ({}: Props) => {
           <Link className="hover:underline" to={`/corperates`}>
             Corporate Services
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Curtain Cleaning
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Dry Cleaning
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Ironing
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Laundry Services
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Leather, Fur and Suede
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Shirt Service
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Shoe Repairs
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Specialist items
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Tailoring & Repairs
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Trainer Cleaning
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/pricing`}>
             Wedding Dresses
           </Link>
         </div>
@@ -58,7 +58,7 @@ const Services = ({}: Props) => {
           <Link className="hover:underline" to={`/login`}>
             Log In
           </Link>
-          <Link className="hover:underline" to={`#`}>
+          <Link className="hover:underline" to={`/aboutus`}>
             Our Company
           </Link>
           <Link className="hover:underline" to={`/privacy`}>

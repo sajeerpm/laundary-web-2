@@ -18,6 +18,7 @@ import { Helmet } from "react-helmet";
 import TermsAndConditions from "./pages/cms/TermsAndConditions";
 import PrivacyPolicy from "./pages/cms/PrivacyPolicy";
 import CustomerInfo from "./pages/order/CustomerInfo";
+import AboutUs from "./pages/cms/AboutUs";
 
 function App() {
   const location = useLocation();
@@ -61,7 +62,7 @@ function App() {
           content="https://masterdrycleaner.co.uk/"
         ></meta>
       </Helmet>
-      <Navbar isTopOfPage={isTopOfPage} />
+      {path != "/customer" && <Navbar isTopOfPage={isTopOfPage} />}
       <Routes>
         <Route element={<PrivateRoutes />}>
           {/* <Route element={<HomeScreen />} path="/" /> */}
@@ -77,11 +78,12 @@ function App() {
         <Route element={<PricingDetailed />} path="/pricing/:id" />
         <Route element={<TermsAndConditions />} path="/terms" />
         <Route element={<PrivacyPolicy />} path="/privacy" />
+        <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
       </Routes>
-      <Footer />
-      <FloatingButton path={path} />
+      {path != "/customer" && <Footer />}
+      {path != "/customer" && <FloatingButton path={path} />}
     </>
   );
 }
