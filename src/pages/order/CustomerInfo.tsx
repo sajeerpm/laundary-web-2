@@ -27,7 +27,7 @@ const CustomerInfo = ({}: Props) => {
   const [notes, setNotes] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [progress, setProgress] = useState<number>(0);
+  const [progress, setProgress] = useState<number>(33.3);
   const [receivedData, setData] = useState<Data>();
 
   const [step, setStep] = useState<number>(0);
@@ -63,7 +63,7 @@ const CustomerInfo = ({}: Props) => {
 
           if (step < 2) {
             setStep(step + 1);
-            setProgress(50 * (step + 1));
+            setProgress(33.3 * (step + 1));
           }
         })
         .catch((err) => {
@@ -102,7 +102,7 @@ const CustomerInfo = ({}: Props) => {
 
           if (step < 2) {
             setStep(step + 1);
-            setProgress(50 * (step + 1));
+            setProgress(33.3 * (step + 1));
           }
         })
         .catch((err) => {
@@ -119,7 +119,7 @@ const CustomerInfo = ({}: Props) => {
     } else {
       if (step < 2) {
         setStep(step + 1);
-        setProgress(50 * (step + 1));
+        setProgress(33.3 * (step + 1));
       }
     }
   };
@@ -138,17 +138,17 @@ const CustomerInfo = ({}: Props) => {
       className="flex min-h-[100vh] flex-col bg-[#edecef] md:pb-0"
     >
       <div className="flex h-[36px] items-center justify-center bg-white p-10 shadow-sm">
-        <div className="w-1/4 bg-gray-400 rounded-full">
+        <div className="w-10/12 rounded-full bg-gray-400 md:w-1/4">
           <div
             className="h-2 rounded-full bg-secondary-500 transition-all duration-300 ease-in-out"
             style={{ width: `${progress}%` }}
           />
         </div>
       </div>
-      <div className="m-6 mx-auto flex w-3/5 flex-col items-center">
+      <div className="m-6 mx-auto flex w-10/12 flex-col items-center md:w-3/5">
         <div className="w-full items-start justify-center gap-8 md:flex md:flex-row">
           {/* Customer Information Section */}
-          <div className="rounded-md bg-white px-20 py-6 md:w-2/3">
+          <div className="h-full rounded-md bg-white px-4 py-6 md:w-2/3 md:px-20">
             <form onSubmit={handleNext}>
               <div className="w-full">
                 <SHText textAlign="text-center text-black mb-5">
@@ -159,7 +159,7 @@ const CustomerInfo = ({}: Props) => {
               </div>
               {/* Input fields for customer details */}
               {step == 0 && (
-                <div>
+                <div className="h-full">
                   <div className="flex">
                     <div className="input-container mb-4 w-full">
                       <label className="mb-1 text-sm font-bold text-gray-600">
@@ -258,7 +258,10 @@ const CustomerInfo = ({}: Props) => {
                 </button>
               )} */}
                 {step < 2 && (
-                  <button type="submit" className="float-right rounded-none bg-secondary-500 px-8 py-1">
+                  <button
+                    type="submit"
+                    className="float-right rounded-none bg-secondary-500 px-8 py-1"
+                  >
                     {step == 1 ? "Place Order" : "Next"}
                   </button>
                 )}

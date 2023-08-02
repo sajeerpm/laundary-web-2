@@ -21,7 +21,7 @@ const Pricing1 = ({}: Props) => {
         </div>
         <div className="mx-auto w-5/6 py-16">
           <div className="w-full">
-            <ul className="justify-center gap-16 whitespace-nowrap md:flex">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5">
               <li className="flex flex-col items-center justify-center pb-6">
                 <img className="w-[84px]" src={AsianTraditionalDryCleaning} />
                 <div className="">

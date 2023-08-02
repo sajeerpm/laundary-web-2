@@ -4,6 +4,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
 import axiosClient from "@/axiosClient";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface Price {
   id: number;
@@ -23,6 +24,8 @@ const Pricing = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [activeTabName, setActiveTabName] = useState("");
   const [categories, setData] = useState<Service[]>([]);
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1600px)");
+  const gridButtonHight = !isAboveMediumScreens ? "h-[60px]" : "";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,11 +75,11 @@ const Pricing = () => {
         </div>
       </div>
       <div className="mx-auto w-5/6 py-8">
-        <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-4">
           {categories.map((category) => (
             <AnchorLink
               key={category.id}
-              className={`rounded-none border border-black px-4 py-4 text-center text-xs uppercase md:tracking-[1.8px] ${
+              className={`${gridButtonHight} rounded-none border border-black px-4 py-4 text-center text-xs uppercase md:tracking-[1.8px] ${
                 activeTab === category.id
                   ? "text bg-black text-white"
                   : "bg-white text-black"

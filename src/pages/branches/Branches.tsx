@@ -1,3 +1,4 @@
+import useMediaQuery from "@/hooks/useMediaQuery";
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
 
@@ -9,6 +10,7 @@ interface Store {
 }
 
 const Branches: React.FC = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const stores: Store[] = [
     {
       id: 1,
@@ -52,6 +54,11 @@ const Branches: React.FC = () => {
   const handleStoreClick = (store: Store) => {
     setSelectedStore(store);
   };
+  const handleStoreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log("GHJJGHJGHJGHJ");
+
+    setSelectedStore(stores[parseInt(event.target.value) - 1]);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -65,25 +72,48 @@ const Branches: React.FC = () => {
       </div>
       <div className="mx-auto w-5/6 md:flex md:h-[100vh]">
         <div className="bg-gray-400 p-2 md:w-1/4">
-          <ul className="space-y-2 ">
-            {stores.map((store) => (
-              <li
-                key={store.id}
-                onClick={() => handleStoreClick(store)}
-                className={`cursor-pointer rounded p-2 ${
-                  selectedStore?.id === store.id
-                    ? "bg-white/30 backdrop-blur-xl"
-                    : ""
-                }`}
+          {isAboveMediumScreens ? (
+            <ul className="space-y-2 ">
+              {stores.map((store) => (
+                <li
+                  key={store.id}
+                  onClick={() => handleStoreClick(store)}
+                  className={`cursor-pointer rounded p-2 ${
+                    selectedStore?.id === store.id
+                      ? "bg-white/30 backdrop-blur-xl"
+                      : ""
+                  }`}
+                >
+                  <strong>{store.name}</strong>
+                  <br />
+                  {store.address}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div>
+              <select
+                className="w-full bg-white px-4 py-2"
+                onChange={handleStoreChange}
               >
-                <strong>{store.name}</strong>
-                <br />
-                {store.address}
-              </li>
-            ))}
-          </ul>
+                {stores.map((store) => (
+                  <option
+                    key={store.id}
+                    value={store.id}
+                    className={`cursor-pointer rounded p-2 ${
+                      selectedStore?.id === store.id
+                        ? "bg-white/30 backdrop-blur-xl"
+                        : ""
+                    }`}
+                  >
+                    <strong>{store.address}</strong>
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
-        <div className="h-500 w-full bg-gray-300">
+        <div className="h-[50vh] w-full bg-gray-300 md:h-[100vh]">
           {selectedStore && (
             <iframe
               src={selectedStore.mapUrl}

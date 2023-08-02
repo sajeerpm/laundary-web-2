@@ -1,11 +1,11 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import React, { useEffect, useRef, useState } from "react";
-import jsonData from "@/data/cities.json";
+import { getAddressSuggestions } from "@/hooks/LoqateService";
 
 interface Suggestion {
-  postalCode: string;
-  city: string;
-  area: string;
+  Text: string;
+  Id: string;
+  Description: string;
 }
 
 type Props = {
@@ -15,42 +15,38 @@ type Props = {
 
 const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
   const [inputValue, setInputValue] = useState("");
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [suggestions, setAddressSuggestions] = useState<Suggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLUListElement>(null);
 
-  const fetchSuggestions = (inputValue: string): Suggestion[] => {
-    // Placeholder logic for fetching suggestions
-    // You can replace this with your own implementation
+  const handleInputChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const searchTerm = event.target.value;
+    setInputValue(searchTerm);
 
-    const filteredSuggestions = jsonData.filter(
-      (suggestion) =>
-        suggestion.postalCode
-          .toLowerCase()
-          .includes(inputValue.toLowerCase()) ||
-        suggestion.city.toLowerCase().includes(inputValue.toLowerCase())
-    );
-
-    return filteredSuggestions;
-  };
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setInputValue(value);
-
-    const fetchedSuggestions = fetchSuggestions(value);
-    setSuggestions(fetchedSuggestions);
-
+    if (searchTerm.length >= 2) {
+      const suggestions = await getAddressSuggestions(searchTerm);
+      console.log(suggestions);
+      setAddressSuggestions(suggestions ? suggestions : []);
+    } else {
+      setAddressSuggestions([]);
+    }
     setShowSuggestions(true);
   };
 
-  const handleSuggestionClick = (suggestion: Suggestion) => {
-    setInputValue(suggestion.postalCode);
-    onChange(suggestion.postalCode);
-    setSuggestions([]);
-    setShowSuggestions(false);
+  const handleSuggestionClick = async (suggestion: Suggestion) => {
+    setInputValue(suggestion.Text);
+    onChange(suggestion.Text);
+    // setAddressSuggestions([]);
+    const suggestions = await getAddressSuggestions(JSON.stringify(suggestion));
+    console.log(suggestions);
+    setAddressSuggestions(suggestions ? suggestions : []);
+    suggestions.length > 0
+      ? setShowSuggestions(true)
+      : setShowSuggestions(false);
   };
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -97,7 +93,7 @@ const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
               onClick={() => handleSuggestionClick(suggestion)}
               className="cursor-pointer px-4 py-2 hover:bg-gray-100"
             >
-              {suggestion.postalCode} - {suggestion.city}
+              {suggestion.Text} {suggestion.Description}
             </li>
           ))}
         </ul>

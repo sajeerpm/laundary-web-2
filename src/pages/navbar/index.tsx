@@ -140,8 +140,8 @@ const Navbar = ({ isTopOfPage }: Props) => {
                       LOGOUT
                     </Link>
                   )}
-                  <Link className="uppercase" to="/login">
-                    T (020) 6010 3949
+                  <Link className="uppercase" to="#">
+                    T (020) 7328 5621
                   </Link>
                 </div>
               </div>

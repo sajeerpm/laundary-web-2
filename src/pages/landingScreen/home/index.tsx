@@ -75,13 +75,18 @@ const Home = ({}: Props) => {
   };
 
   const handleDeliverySlotChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setDeliverySlot(JSON.parse(event.target.value));
+    const selectedSlot = JSON.parse(event.target.value);
+    if (selectedSlot.slot == "express") {
+      setExpressDelivery(true);
+    }
+    setDeliverySlot(selectedSlot);
   };
 
   return (
     <section
       id="home"
-      className="gap-16 bg-[#fffaf0] py-20 md:h-[100vh] md:pb-0" style={{
+      className="h-[100vh] gap-16 bg-[#fffaf0] py-20 md:pb-0"
+      style={{
         backgroundImage: `url(${HomePageGraphic})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -102,7 +107,7 @@ const Home = ({}: Props) => {
         </div>
 
         {/* MAIN HEADER */}
-        <div className="z-10 md:basis-3/6 mt-40">
+        <div className="z-10 mt-[40vh] md:basis-3/6">
           {/* LOGIN INPUTS */}
           <form onSubmit={handlePlaceOrder}>
             <p className="text-center text-2xl text-blue-600">
@@ -186,7 +191,7 @@ const Home = ({}: Props) => {
       )} */}
       {express && (
         <AlertPopup
-          message="Please contact customer service for better delivery date and time!"
+          message="Please call us at T (020) 7328 5621 for same day service."
           onClose={() => {
             setExpressDelivery(false);
           }}
