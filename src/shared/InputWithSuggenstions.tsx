@@ -10,10 +10,9 @@ interface Suggestion {
 
 type Props = {
   placeholder: string;
-  onChange: (value: string) => void;
 };
 
-const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
+const InputWithSuggestions = ({ placeholder }: Props) => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setAddressSuggestions] = useState<Suggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -39,14 +38,16 @@ const InputWithSuggestions = ({ placeholder, onChange }: Props) => {
 
   const handleSuggestionClick = async (suggestion: Suggestion) => {
     setInputValue(suggestion.Text);
-    onChange(suggestion.Text);
     // setAddressSuggestions([]);
     const suggestions = await getAddressSuggestions(JSON.stringify(suggestion));
     console.log(suggestions);
     setAddressSuggestions(suggestions ? suggestions : []);
-    suggestions.length > 0
-      ? setShowSuggestions(true)
-      : setShowSuggestions(false);
+
+    if (suggestions.length > 0) {
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
   };
 
   const handleClickOutside = (event: MouseEvent) => {

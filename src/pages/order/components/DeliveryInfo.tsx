@@ -17,7 +17,7 @@ const DeliveryInfo = ({}: Props) => {
   const [receivedData, setData] = useState<Data>();
 
   useEffect(() => {
-    const data = localStorage.getItem("data");
+    const data = localStorage.getItem("delivery_details");
     if (data) {
       setData(JSON.parse(data));
     }

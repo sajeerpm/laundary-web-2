@@ -1,6 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./pages/navbar";
-import PrivateRoutes from "./components/PrivateRoutes";
 import HomeScreen from "./pages/landingScreen/HomeScreen";
 import Login from "./pages/login/Login";
 import Footer from "./pages/footer";
@@ -19,6 +18,8 @@ import TermsAndConditions from "./pages/cms/TermsAndConditions";
 import PrivacyPolicy from "./pages/cms/PrivacyPolicy";
 import CustomerInfo from "./pages/order/CustomerInfo";
 import AboutUs from "./pages/cms/AboutUs";
+import UserAccount from "./pages/user/User";
+import OrderDetails from "./pages/user/OrderDetails";
 
 function App() {
   const location = useLocation();
@@ -64,9 +65,6 @@ function App() {
       </Helmet>
       {path != "/customer" && <Navbar isTopOfPage={isTopOfPage} />}
       <Routes>
-        <Route element={<PrivateRoutes />}>
-          {/* <Route element={<HomeScreen />} path="/" /> */}
-        </Route>
         <Route element={<HomeScreen />} path="/" />
         <Route element={<Login />} path="/login" />
         <Route element={<Services />} path="/services" />
@@ -81,6 +79,8 @@ function App() {
         <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
+        <Route element={<UserAccount />} path="/account" />
+        <Route element={<OrderDetails />} path="/order/details/:id" />
       </Routes>
       {path != "/customer" && <Footer />}
       {path != "/customer" && <FloatingButton path={path} />}

@@ -1,36 +1,45 @@
 // OrderSummaryPage.tsx
 
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 
-import {
-  MapPinIcon,
-  CalendarDaysIcon,
-  ScissorsIcon,
-} from "@heroicons/react/24/solid";
+import { MapPinIcon, CalendarDaysIcon } from "@heroicons/react/24/solid";
+import { Delivery } from "@/model/Slot";
+import { Address } from "@/model/Address";
 
-interface Data {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  postcode: string;
-  pickupdate: Slot;
-  deliverydate: Slot;
-  notes: string;
-}
-interface Slot {
-  slot: string;
-  display: string;
+interface Props {
+  doorNumber: string;
+  customerNotes: string;
+  doorNumberChange: (value: string) => void;
+  customerNotesChange: (value: string) => void;
 }
 
-const OrderSummaryPage: React.FC = () => {
-  const [receivedData, setData] = useState<Data>();
+const OrderSummaryPage: React.FC<Props> = ({
+  doorNumber,
+  customerNotes,
+  doorNumberChange,
+  customerNotesChange,
+}) => {
+  const [customerData, setData] = useState<Address>();
+  const [deliveryData, setAddressData] = useState<Delivery>();
+
   useEffect(() => {
-    const data = localStorage.getItem("customer_register");
+    const data = localStorage.getItem("selected_location");
     if (data) {
       setData(JSON.parse(data));
     }
+    const deliveryData = localStorage.getItem("delivery_details");
+    if (deliveryData) {
+      console.log(deliveryData);
+      setAddressData(JSON.parse(deliveryData));
+    }
   }, []);
+
+  const handleDoorNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    doorNumberChange(e.target.value);
+  };
+  const handleCustomerNotesChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    customerNotesChange(e.target.value);
+  };
   return (
     <div className="flex">
       <div className="w-full space-y-8 rounded-lg bg-white pb-8">
@@ -41,7 +50,16 @@ const OrderSummaryPage: React.FC = () => {
 
           <div className="flex flex-row">
             <MapPinIcon className="mr-3 h-6 w-6 text-gray-600" />
-            <p className="text-lg text-gray-600">{receivedData?.address}</p>
+            <p className="text-lg text-gray-600">{customerData?.Label}</p>
+          </div>
+          <div className="input-container mb-4 w-full">
+            <input
+              type="text"
+              value={doorNumber}
+              onChange={handleDoorNumberChange}
+              placeholder="Enter Door Number"
+              className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
+            />
           </div>
         </div>
 
@@ -55,31 +73,27 @@ const OrderSummaryPage: React.FC = () => {
           <div className="flex flex-row">
             <CalendarDaysIcon className="mr-3 h-6 w-6 text-gray-600" />
             <p className="text-lg text-gray-600">
-              {receivedData?.pickupdate.display}
+              {deliveryData?.pickup.display}
             </p>
           </div>
 
           <div className="flex flex-row">
             <CalendarDaysIcon className="mr-3 h-6 w-6 text-gray-600" />
             <p className="text-lg text-gray-600">
-              {receivedData?.deliverydate.display}
+              {deliveryData?.delivery.display}
             </p>
           </div>
         </div>
-
-        {/* Promo Code Section */}
-        <div className="flex flex-col space-y-4">
-          <p className="font-montserrat text-xl text-gray-600">Promo Code</p>
-          <hr></hr>
-
-          <div className="flex items-center">
-            <ScissorsIcon className=" mr-3 h-6 w-6 text-gray-600" />
-            <p className="text-lg text-gray-600">FUTURE20</p>
-          </div>
+        <div className="mb-4flex flex-col space-y-4">
+          <textarea
+            placeholder="Please provide any other specific details"
+            className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
+            rows={4}
+            onChange={handleCustomerNotesChange}
+          >
+            {customerNotes}
+          </textarea>
         </div>
-
-        {/* Additional order summary details */}
-        {/* ... */}
       </div>
     </div>
   );

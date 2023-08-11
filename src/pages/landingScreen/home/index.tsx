@@ -5,19 +5,14 @@ import axiosClient from "@/axiosClient";
 import { useNavigate } from "react-router-dom";
 import AlertPopup from "@/shared/AlertPopup";
 import HomePageGraphic from "@/assets/slider1.webp";
+import { Slot } from "@/model/Slot";
 
 type Props = {};
-
-interface Slot {
-  slot: string;
-  display: string;
-}
 
 const Home = ({}: Props) => {
   // const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [slots, setData] = useState<Slot[]>([]);
   const [delivery, setDeliveryData] = useState<Slot[]>([]);
-  const [postCode, setPostCode] = useState<string>("");
   const [express, setExpressDelivery] = useState<boolean>(false);
   const [pickupSlot, setPickupSlot] = useState<Slot>();
   const [deliverySlot, setDeliverySlot] = useState<Slot>();
@@ -47,31 +42,28 @@ const Home = ({}: Props) => {
     }
   };
 
-  const handlePlaceOrder = () => {
-    if (deliverySlot?.slot != "express") {
-      localStorage.setItem(
-        "data",
-        JSON.stringify({
-          postcode: postCode,
-          pickup: pickupSlot,
-          delivery: deliverySlot,
-          address: "6 Langtry Walk, London NW8 0DU, UK",
-        })
-      );
-      navigate("/customer");
+  const handlePlaceOrder = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (deliverySlot?.display != "express") {
+      if (pickupSlot && deliverySlot) {
+        localStorage.setItem(
+          "delivery_details",
+          JSON.stringify({
+            pickup: pickupSlot,
+            delivery: deliverySlot,
+          })
+        );
+        navigate("/customer");
+      }
     } else {
       setExpressDelivery(true);
     }
   };
 
-  const handlePostCodeChange = (value: string) => {
-    setPostCode(value);
-  };
-
   const handlePickupSlotChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = JSON.parse(event.target.value);
     setPickupSlot(selectedValue);
-    fetchDeliveryData(selectedValue.slot);
+    fetchDeliveryData(selectedValue.slot_date + " " + selectedValue.slot_start);
   };
 
   const handleDeliverySlotChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -107,7 +99,7 @@ const Home = ({}: Props) => {
         </div>
 
         {/* MAIN HEADER */}
-        <div className="z-10 mt-[40vh] md:basis-3/6">
+        <div className="z-10 mt-[30vh] md:basis-3/6">
           {/* LOGIN INPUTS */}
           <form onSubmit={handlePlaceOrder}>
             <p className="text-center text-2xl text-blue-600">
@@ -120,19 +112,17 @@ const Home = ({}: Props) => {
               Free collection and Delivery
             </p>
             <div className="mt-8 md:mt-16">
-              <InputWithSuggestions
-                placeholder="POST CODE"
-                onChange={handlePostCodeChange}
-              />
+              <InputWithSuggestions placeholder="Your Location Or Postcode" />
               <div className="textbox-container mt-3 flex h-[48px] bg-white">
                 <div className="w-full border-r-2 bg-white pr-3">
                   <select
                     className="w-full bg-white text-center"
                     onChange={handlePickupSlotChange}
+                    required
                   >
                     <option>Collection Slot</option>
                     {slots.map((slot) => (
-                      <option value={JSON.stringify(slot)}>
+                      <option className="py-8" value={JSON.stringify(slot)}>
                         {slot.display}
                       </option>
                     ))}
@@ -142,6 +132,7 @@ const Home = ({}: Props) => {
                   <select
                     className="w-full bg-white text-center"
                     onChange={handleDeliverySlotChange}
+                    required
                   >
                     <option>Delivery Slot</option>
                     {delivery.length && (

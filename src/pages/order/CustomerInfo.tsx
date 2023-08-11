@@ -4,67 +4,99 @@ import OrderSummaryPage from "./components/OrderSummary";
 import axiosClient from "@/axiosClient";
 import { useNavigate } from "react-router-dom";
 import OrderSuccess from "./components/OrderSuccess";
+import { Delivery } from "@/model/Slot";
+// import { Registration } from "@/model/Registration";
+import { Address } from "@/model/Address";
+import { Order } from "@/model/Order";
+import { User } from "@/model/User";
 
 type Props = {};
-
-interface Data {
-  delivery: Slot;
-  pickup: Slot;
-  postcode: string;
-  address: string;
-}
-
-interface Slot {
-  slot: string;
-  display: string;
-}
 
 const CustomerInfo = ({}: Props) => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [notes, setNotes] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [progress, setProgress] = useState<number>(33.3);
-  const [receivedData, setData] = useState<Data>();
+  const [doorNumber, setDoorNumber] = useState("");
+  const [customerNotes, setCustomerNotes] = useState("");
 
-  const [step, setStep] = useState<number>(0);
+  const [customerId, setCustomerId] = useState("");
+  const [customerAddressId, setCustomerAddressId] = useState("");
+
+  const [deliveryData, setDeliveryData] = useState<Delivery>();
+  // const [customerData, setRegistrationData] = useState<Registration>();
+  const [selectedAddress, setAddressData] = useState<Address>();
+  const [progress, setProgress] = useState<number>(66.3);
+  const [step, setStep] = useState<number>(1);
+  const [userData, setUserData] = useState<User>();
 
   useEffect(() => {
-    const data = localStorage.getItem("data");
-    if (data) {
-      setData(JSON.parse(data));
-      localStorage.removeItem("data");
+    if (localStorage.getItem("ACCESS_TOKEN")) {
+      setStep(2);
+    }
+
+    const deliveryData = localStorage.getItem("delivery_details");
+    if (deliveryData) {
+      setDeliveryData(JSON.parse(deliveryData));
+    }
+
+    const selectedAddress = localStorage.getItem("selected_location");
+    if (selectedAddress) {
+      setAddressData(JSON.parse(selectedAddress));
+    }
+
+    // const registrationData = localStorage.getItem("customer_register");
+    // if (registrationData) {
+    //   setRegistrationData(JSON.parse(registrationData));
+    // }
+
+    const userData = localStorage.getItem("USER_DATA");
+    if (userData) {
+      setUserData(JSON.parse(userData));
     }
   }, []);
 
+  const handleDoorNumberChange = (value: string) => {
+    setDoorNumber(value);
+  };
+  const handleCustomerNotesChange = (value: string) => {
+    setCustomerNotes(value);
+  };
+
   const handleNext = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (step == 0) {
-      const payload = {
+    if (step == 1) {
+      if (password !== confirmPassword) {
+        alert("Confirm password does not match");
+        return false;
+      }
+      setProgress(33.3);
+
+      var payload = {
         name: firstName,
         email: email,
         phone: phoneNumber,
         password: password,
-        address: receivedData?.address,
-        postcode: receivedData?.postcode,
-        pickupdate: receivedData?.pickup,
-        deliverydate: receivedData?.delivery,
-        notes: notes,
+        address: selectedAddress,
       };
+
+      console.log(JSON.stringify(payload));
+
       localStorage.setItem("customer_register", JSON.stringify(payload));
 
       axiosClient
         .post("/register", payload)
         .then(({ data }) => {
           console.log(data);
-
-          if (step < 2) {
-            setStep(step + 1);
-            setProgress(33.3 * (step + 1));
+          if (data.status == "1") {
+            setCustomerId(data.customer_id);
+            setCustomerAddressId(data.address_id);
           }
+          // if (step < 2) {
+          setStep(step + 1);
+          // }
         })
         .catch((err) => {
           const response = err.response;
@@ -84,15 +116,31 @@ const CustomerInfo = ({}: Props) => {
             console.log(response.data.errors);
           }
         });
-    } else if (step == 1) {
-      const payload = {
+    } else if (step == 2) {
+      setProgress(66.66);
+      const payload: Order = {
+        customer_id: customerId !== "" ? customerId : userData?.customer_id,
+        customer_address_id: customerAddressId,
+        pickup_date: deliveryData?.pickup.slot_date,
+        pickup_start: deliveryData?.pickup.slot_start,
+        pickup_end: deliveryData?.pickup.slot_end,
+        pickup_display: deliveryData?.pickup.display,
+        delivery_date: deliveryData?.delivery.slot_date,
+        delivery_start: deliveryData?.delivery.slot_start,
+        delivery_end: deliveryData?.delivery.slot_end,
+        delivery_display: deliveryData?.delivery.display,
         customer_name: firstName,
         customer_email: email,
         customer_phone: phoneNumber,
-        billing_address: receivedData?.address,
-        shipping_address: receivedData?.address,
-        pickup_date: receivedData?.pickup.slot,
-        delivery_date: receivedData?.delivery.slot,
+        billing_address: selectedAddress?.Label,
+        shipping_address: selectedAddress?.Label,
+        postalcode: selectedAddress?.PostalCode,
+        door_number: doorNumber,
+        customer_notes: customerNotes,
+        company_name: selectedAddress?.Company,
+        full_address: selectedAddress?.Label,
+        address_type: selectedAddress?.Type,
+        address: JSON.stringify(selectedAddress),
       };
 
       axiosClient
@@ -100,9 +148,8 @@ const CustomerInfo = ({}: Props) => {
         .then(({ data }) => {
           console.log(data);
 
-          if (step < 2) {
+          if (step < 3) {
             setStep(step + 1);
-            setProgress(33.3 * (step + 1));
           }
         })
         .catch((err) => {
@@ -117,9 +164,9 @@ const CustomerInfo = ({}: Props) => {
           }
         });
     } else {
+      setProgress(99.99);
       if (step < 2) {
         setStep(step + 1);
-        setProgress(33.3 * (step + 1));
       }
     }
   };
@@ -158,7 +205,7 @@ const CustomerInfo = ({}: Props) => {
                 </SHText>
               </div>
               {/* Input fields for customer details */}
-              {step == 0 && (
+              {step == 1 && (
                 <div className="h-full">
                   <div className="flex">
                     <div className="input-container mb-4 w-full">
@@ -182,8 +229,9 @@ const CustomerInfo = ({}: Props) => {
                       Phone <span className="text-red-500">*</span>
                     </label>
                     <input
-                      type="phone"
+                      type="decimal"
                       required
+                      maxLength={11}
                       autoComplete="off"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
@@ -233,7 +281,7 @@ const CustomerInfo = ({}: Props) => {
                       className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
                     />
                   </div>
-                  <div className="mb-4">
+                  {/* <div className="mb-4">
                     <label className="block text-gray-600">Notes:</label>
                     <textarea
                       value={notes}
@@ -242,12 +290,19 @@ const CustomerInfo = ({}: Props) => {
                       className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
                       rows={4}
                     />
-                  </div>
+                  </div> */}
                 </div>
               )}
-              {step == 1 && <OrderSummaryPage />}
+              {step == 2 && (
+                <OrderSummaryPage
+                  customerNotes={customerNotes}
+                  doorNumber={doorNumber}
+                  customerNotesChange={handleCustomerNotesChange}
+                  doorNumberChange={handleDoorNumberChange}
+                />
+              )}
               {/* Delivery Information Section */}
-              {step == 2 && <OrderSuccess />}
+              {step == 3 && <OrderSuccess />}
               <div className="mb-4">
                 {/* {step > 0 && (
                 <button
@@ -257,12 +312,12 @@ const CustomerInfo = ({}: Props) => {
                   Back
                 </button>
               )} */}
-                {step < 2 && (
+                {step < 3 && (
                   <button
                     type="submit"
                     className="float-right rounded-none bg-secondary-500 px-8 py-1"
                   >
-                    {step == 1 ? "Place Order" : "Next"}
+                    {step == 2 ? "Place Order" : "Next"}
                   </button>
                 )}
               </div>

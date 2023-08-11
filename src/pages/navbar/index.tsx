@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { User } from "@/model/User";
 
 type Props = {
   isTopOfPage: boolean;
@@ -12,14 +15,22 @@ type Props = {
 };
 
 const Navbar = ({ isTopOfPage }: Props) => {
+  const navigate = useNavigate();
   const flexBetween = "flex items-center justify-between";
+  const [isOpenAvatarPopup, setIsDropdownOpen] = useState<boolean>(false);
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage ? "" : "bg-white drop-shadow";
   const [selectedPage, setSelectedPage] = useState(SelectedPage.Home);
+  const [userData, setUserData] = useState<User | undefined>();
   const token = localStorage.getItem("ACCESS_TOKEN");
 
-  // console.log("Selected Page: " + selectedPage);
+  useEffect(() => {
+    const user = localStorage.getItem("USER_DATA");
+    if (user) {
+      setUserData(JSON.parse(user));
+    }
+  }, []);
 
   const handleOnClick = (pageName: SelectedPage) => {
     setSelectedPage(pageName);
@@ -29,6 +40,14 @@ const Navbar = ({ isTopOfPage }: Props) => {
   const handleLogOut = () => {
     localStorage.removeItem("ACCESS_TOKEN");
     window.location.href = "/login";
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prevState) => !prevState);
+  };
+
+  const handleAccountClick = () => {
+    navigate("/account");
   };
 
   return (
@@ -131,18 +150,40 @@ const Navbar = ({ isTopOfPage }: Props) => {
                       LOGIN
                     </Link>
                   )}
-                  {token != null && (
-                    <Link
-                      className={`uppercase`}
-                      to="#"
-                      onClick={() => handleLogOut()}
-                    >
-                      LOGOUT
-                    </Link>
-                  )}
-                  <Link className="uppercase" to="#">
+                  <a
+                    className="uppercase hover:text-blue-700"
+                    href="tel:+442073285621"
+                  >
                     T (020) 7328 5621
-                  </Link>
+                  </a>
+                  {token != null && (
+                    <div
+                      className="relative cursor-pointer"
+                      onClick={toggleDropdown}
+                    >
+                      <button className="mx-2 h-[38px] w-[38px] rounded-full border border-gray-600 bg-white p-2 text-gray-600 shadow-2xl md:h-[48px] md:w-[48px]">
+                        <FontAwesomeIcon icon={faUserAlt} size="lg" />
+                      </button>
+                      <span>{userData?.name}</span>
+                      {isOpenAvatarPopup && (
+                        <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg">
+                          <p
+                            onClick={handleAccountClick}
+                            className="w-[100%] cursor-pointer p-2 hover:bg-secondary-400"
+                          >
+                            Account
+                          </p>
+                          <p
+                            className="cursor-pointer p-2 hover:bg-secondary-400"
+                            onClick={() => handleLogOut()}
+                          >
+                            Logout
+                          </p>
+                          {/* Add other dropdown items here */}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (

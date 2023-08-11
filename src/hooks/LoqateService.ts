@@ -32,6 +32,12 @@ export const getAddressSuggestions = async (searchTerm: string) => {
     const response = await axios.get(url, {
       params: params,
     });
+    if (isFinal) {
+      localStorage.setItem(
+        "selected_location",
+        JSON.stringify(response.data.Items[0])
+      );
+    }
     return isFinal ? [] : response.data.Items;
   } catch (error) {
     console.error("Error fetching address suggestions:", error);

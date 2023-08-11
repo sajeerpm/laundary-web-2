@@ -77,18 +77,22 @@ const Pricing = () => {
       <div className="mx-auto w-5/6 py-8">
         <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-4">
           {categories.map((category) => (
-            <AnchorLink
-              key={category.id}
-              className={`${gridButtonHight} rounded-none border border-black px-4 py-4 text-center text-xs uppercase md:tracking-[1.8px] ${
+            <div
+              className={`${gridButtonHight} flex cursor-pointer flex-col items-center justify-center rounded-none border border-black px-4 py-1 text-center text-xs uppercase md:py-4 md:tracking-[1.8px] ${
                 activeTab === category.id
                   ? "text bg-black text-white"
                   : "bg-white text-black"
               }`}
               onClick={() => handleTabClick(category.id, category.name)}
-              href={`#price-list`}
             >
-              {category.name}
-            </AnchorLink>
+              <AnchorLink
+                className="content-center"
+                key={category.id}
+                href="#price-list"
+              >
+                {category.name}
+              </AnchorLink>
+            </div>
           ))}
         </div>
         <div id="price-list" className="h-6"></div>
