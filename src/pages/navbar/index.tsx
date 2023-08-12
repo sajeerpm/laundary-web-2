@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { User } from "@/model/User";
+import axiosClient from "@/axiosClient";
 
 type Props = {
   isTopOfPage: boolean;
@@ -16,6 +17,8 @@ type Props = {
 
 const Navbar = ({ isTopOfPage }: Props) => {
   const navigate = useNavigate();
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  const avatarRef = useRef<HTMLDivElement | null>(null);
   const flexBetween = "flex items-center justify-between";
   const [isOpenAvatarPopup, setIsDropdownOpen] = useState<boolean>(false);
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
@@ -24,22 +27,36 @@ const Navbar = ({ isTopOfPage }: Props) => {
   const [selectedPage, setSelectedPage] = useState(SelectedPage.Home);
   const [userData, setUserData] = useState<User | undefined>();
   const token = localStorage.getItem("ACCESS_TOKEN");
+  const user = localStorage.getItem("USER_DATA");
 
-  useEffect(() => {
-    const user = localStorage.getItem("USER_DATA");
-    if (user) {
-      setUserData(JSON.parse(user));
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      popupRef.current &&
+      !popupRef.current.contains(event.target as Node) &&
+      avatarRef.current &&
+      !avatarRef.current.contains(event.target as Node)
+    ) {
+      setIsDropdownOpen(false);
     }
-  }, []);
+  };
 
   const handleOnClick = (pageName: SelectedPage) => {
     setSelectedPage(pageName);
     setIsMenuToggled(!isMenuToggled);
   };
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    try {
+      await axiosClient.post("/logout", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
     localStorage.removeItem("ACCESS_TOKEN");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   const toggleDropdown = () => {
@@ -49,6 +66,17 @@ const Navbar = ({ isTopOfPage }: Props) => {
   const handleAccountClick = () => {
     navigate("/account");
   };
+
+  useEffect(() => {
+    if (user) {
+      setUserData(JSON.parse(user));
+    }
+
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav>
@@ -159,6 +187,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
                   {token != null && (
                     <div
                       className="relative cursor-pointer"
+                      ref={avatarRef}
                       onClick={toggleDropdown}
                     >
                       <button className="mx-2 h-[38px] w-[38px] rounded-full border border-gray-600 bg-white p-2 text-gray-600 shadow-2xl md:h-[48px] md:w-[48px]">
@@ -166,7 +195,10 @@ const Navbar = ({ isTopOfPage }: Props) => {
                       </button>
                       <span>{userData?.name}</span>
                       {isOpenAvatarPopup && (
-                        <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg">
+                        <div
+                          ref={popupRef}
+                          className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg"
+                        >
                           <p
                             onClick={handleAccountClick}
                             className="w-[100%] cursor-pointer p-2 hover:bg-secondary-400"
@@ -296,18 +328,26 @@ const Navbar = ({ isTopOfPage }: Props) => {
                 LOGIN
               </Link>
             )}
-            {token != null && (
-              <Link
-                className={`text-center uppercase`}
-                to="#"
-                onClick={() => handleLogOut()}
-              >
-                LOGOUT
-              </Link>
-            )}
             <Link className="text-center uppercase" to="/login">
               T (020) 6010 3949
             </Link>
+            {token != null && (
+              <Link
+                className="text-center uppercase"
+                to="/account"
+                onClick={() => handleOnClick(SelectedPage.Account)}
+              >
+                Account
+              </Link>
+            )}
+            {token != null && (
+              <span
+                className={`cursor-pointer text-center uppercase`}
+                onClick={() => handleLogOut()}
+              >
+                LOGOUT
+              </span>
+            )}
           </div>
         </div>
       )}

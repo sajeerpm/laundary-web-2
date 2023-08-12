@@ -4,7 +4,6 @@ import { CustomerOrder } from "@/model/CustomerOrder";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -17,7 +16,7 @@ interface Customer {
   orders: CustomerOrder[];
 }
 
-const UserAccount = ({}: Props) => {
+const Account = ({}: Props) => {
   const [isShowPasswordSection, setShowPasswordSection] =
     useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<number>(1);
@@ -70,8 +69,8 @@ const UserAccount = ({}: Props) => {
 
   return (
     <section>
-      <div className="mx-auto mt-20 flex min-h-[100vh] w-3/5">
-        <div className="w-1/4 bg-white p-4">
+      <div className="mx-auto mt-20 min-h-[100vh] w-full md:flex md:w-3/5">
+        <div className="bg-white p-4 md:w-1/4">
           <SHText textAlign={"left text-black"}>My Account</SHText>
           <ul className="mt-6 font-dmsans">
             <li className="mb-2">
@@ -103,7 +102,7 @@ const UserAccount = ({}: Props) => {
             </li>
           </ul>
         </div>
-        <div className="w-3/4 bg-white p-4">
+        <div className="bg-white p-4 md:w-3/4">
           {activeTab == 1 && (
             <div>
               <HText textAlign={"text-left text-black uppercase"}>
@@ -347,25 +346,31 @@ const UserAccount = ({}: Props) => {
                   <td className="text-right" colSpan={3}>
                     Subtotal
                   </td>
-                  <td className="text-right">100.00</td>
+                  <td className="text-right">
+                    {"£" +
+                      Number(customerData?.orders[orderIndex].total).toFixed(2)}
+                  </td>
                 </tr>
                 <tr>
                   <td className="text-right" colSpan={3}>
                     Discount
                   </td>
-                  <td className="text-right">100.00</td>
+                  <td className="text-right">0.00</td>
                 </tr>
                 <tr>
                   <td className="text-right" colSpan={3}>
                     Tax
                   </td>
-                  <td className="text-right">100.00</td>
+                  <td className="text-right">0.00</td>
                 </tr>
                 <tr>
                   <td className="text-right" colSpan={3}>
-                    Grand Total
+                    Total
                   </td>
-                  <td className="text-right">100.00</td>
+                  <td className="text-right">
+                    {"£" +
+                      Number(customerData?.orders[orderIndex].total).toFixed(2)}
+                  </td>
                 </tr>
               </table>
             </div>
@@ -376,4 +381,4 @@ const UserAccount = ({}: Props) => {
   );
 };
 
-export default UserAccount;
+export default Account;

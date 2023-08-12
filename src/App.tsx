@@ -18,13 +18,16 @@ import TermsAndConditions from "./pages/cms/TermsAndConditions";
 import PrivacyPolicy from "./pages/cms/PrivacyPolicy";
 import CustomerInfo from "./pages/order/CustomerInfo";
 import AboutUs from "./pages/cms/AboutUs";
-import UserAccount from "./pages/user/User";
-import OrderDetails from "./pages/user/OrderDetails";
+import Account from "./pages/user/Account";
+import PrivateRoutes from "./components/PrivateRoutes";
+import useMediaQuery from "./hooks/useMediaQuery";
+import AccountMobile from "./pages/user/AccountMobile";
 
 function App() {
   const location = useLocation();
   const path = location.pathname;
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
+  const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
 
   console.log(path);
 
@@ -65,6 +68,14 @@ function App() {
       </Helmet>
       {path != "/customer" && <Navbar isTopOfPage={isTopOfPage} />}
       <Routes>
+        <Route element={<PrivateRoutes />}>
+          {/* <Route element={<HomeScreen />} path="/" /> */}
+
+          <Route
+            element={isAboveMediumScreens ? <Account /> : <AccountMobile />}
+            path="/account"
+          />
+        </Route>
         <Route element={<HomeScreen />} path="/" />
         <Route element={<Login />} path="/login" />
         <Route element={<Services />} path="/services" />
@@ -79,10 +90,8 @@ function App() {
         <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
-        <Route element={<UserAccount />} path="/account" />
-        <Route element={<OrderDetails />} path="/order/details/:id" />
       </Routes>
-      {path != "/customer" && <Footer />}
+      {!(path === "/customer" || path === "/account") && <Footer />}
       {path != "/customer" && <FloatingButton path={path} />}
     </>
   );
