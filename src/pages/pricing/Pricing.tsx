@@ -122,11 +122,17 @@ const Pricing = () => {
                     <div key={price.id} className="flex w-full flex-col">
                       <div className="flex w-full justify-between">
                         <p>{price.service_name}</p>
-                        <p>
-                          {price.price == "0.00"
-                            ? price.description
-                            : "£" + price.price}
-                        </p>
+
+                        {price.price == "0.00" ? (
+                          <a
+                            className="text-blue-500 underline"
+                            href="tel:+442073285621"
+                          >
+                            {price.description}
+                          </a>
+                        ) : (
+                          <p>{"£" + price.price}</p>
+                        )}
                       </div>
                       <hr className="mt-2 w-full border-black" />
                     </div>

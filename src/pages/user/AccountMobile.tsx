@@ -47,7 +47,6 @@ const AccountMobile = ({}: Props) => {
   const handleSelectedOrderIndex = (orderIndex: number) => {
     setActiveTab(3);
     setSelectedOrder(customerData?.orders[orderIndex]);
-    alert(JSON.stringify(customerData?.orders[orderIndex].items));
   };
 
   return (
@@ -55,15 +54,17 @@ const AccountMobile = ({}: Props) => {
       <div className="mx-auto mt-20 flex min-h-[100vh] w-full flex-col gap-2">
         <div className="flex flex-col items-center justify-between bg-white p-6 shadow-md">
           <div className="w-full">
-            <h2 className="text-center">Hi, {customerData?.name}</h2>
+            <h2 className="text-center text-lg font-semibold">
+              Hi, {customerData?.name}
+            </h2>
           </div>
           <div className="w-full">
-            <p className="text-center">
+            <p className="text-center text-gray-400">
               {customerData?.phone_number} | {customerData?.email}
             </p>
           </div>
         </div>
-        {activeTab > 1 && (
+        {(activeTab === 2 || activeTab === 4) && (
           <div className="flex flex-row justify-between bg-white px-3 py-4 shadow-md">
             <h3 className="text-lg font-bold">Orders</h3>
             <button
@@ -72,6 +73,18 @@ const AccountMobile = ({}: Props) => {
             >
               <ChevronLeftIcon className="w-6" />
               Account
+            </button>
+          </div>
+        )}
+        {activeTab === 3 && (
+          <div className="flex flex-row justify-between bg-white px-3 py-4 shadow-md">
+            <h3 className="text-lg font-bold">Orders</h3>
+            <button
+              className="flex flex-row text-blue-600"
+              onClick={() => handleActiveTab(2)}
+            >
+              <ChevronLeftIcon className="w-6" />
+              Orders
             </button>
           </div>
         )}
@@ -173,14 +186,18 @@ const AccountMobile = ({}: Props) => {
                 <p>Discount</p>
                 <p className="text-lg font-bold">{"£" + "0.00"}</p>
               </div>
-              <div className="flow-col mt-2 flex justify-between">
+              {/* <div className="flow-col mt-2 flex justify-between">
                 <p>Tax</p>
                 <p className="text-lg font-bold">{"£" + "0.00"}</p>
-              </div>
+              </div> */}
               <div className="flow-col mt-2 flex justify-between">
                 <p>Total</p>
                 <p className="text-lg font-bold">
-                  {"£" + Number(selectedOrder?.total).toFixed(2)}
+                  {"£" +
+                    (
+                      Number(selectedOrder?.total) -
+                      Number(selectedOrder?.discount)
+                    ).toFixed(2)}
                 </p>
               </div>
             </div>
@@ -196,7 +213,9 @@ const AccountMobile = ({}: Props) => {
               </div>
               <div className="flow-col mt-2 flex justify-between">
                 <p>Amount Due</p>
-                <p className="text-lg font-bold">{"£" + "0.00"}</p>
+                <p className="text-lg font-bold">
+                  {"£" + selectedOrder?.amount_due}
+                </p>
               </div>
             </div>
           </>
@@ -204,13 +223,13 @@ const AccountMobile = ({}: Props) => {
 
         {activeTab === 4 && (
           <>
-            <div className="bg-white px-6 py-4 shadow-md">
+            {/* <div className="bg-white px-6 py-4 shadow-md">
               <div className="">
                 <p>{customerData?.name}</p>
                 <p>E: {customerData?.email}</p>
                 <p>T: {customerData?.phone_number}</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="bg-white px-6 py-4 shadow-md">
               <h3 className="text-lg font-bold">Address book</h3>

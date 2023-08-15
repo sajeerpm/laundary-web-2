@@ -29,7 +29,6 @@ const OrderSummaryPage: React.FC<Props> = ({
     }
     const deliveryData = localStorage.getItem("delivery_details");
     if (deliveryData) {
-      console.log(deliveryData);
       setAddressData(JSON.parse(deliveryData));
     }
   }, []);

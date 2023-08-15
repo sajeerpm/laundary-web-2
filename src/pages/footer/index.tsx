@@ -37,9 +37,9 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:w-4/6 md:flex-row md:items-center">
             <p className="text-sm md:mr-4">Subscribe to our newsletter:</p>
-            <div className="flex-1 gap-2 md:flex md:flex-row">
+            <div className="flex flex-1 flex-row gap-2">
               <SubscribeTextBox placeholder="Email Address" />
-              <button className="mt-3 rounded-none border border-gray-300 px-4 py-1 md:mt-0">
+              <button className="rounded-none border border-gray-300 px-4 py-1 md:mt-0">
                 SUBSCRIBE
               </button>
             </div>

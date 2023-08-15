@@ -5,10 +5,11 @@ import axiosClient from "@/axiosClient";
 import { useNavigate } from "react-router-dom";
 import OrderSuccess from "./components/OrderSuccess";
 import { Delivery } from "@/model/Slot";
-// import { Registration } from "@/model/Registration";
 import { Address } from "@/model/Address";
 import { Order } from "@/model/Order";
 import { User } from "@/model/User";
+import Loading from "@/shared/Loading";
+import { UK_PHONE_NUMBER_PATTERN } from "@/shared/constants";
 
 type Props = {};
 
@@ -21,12 +22,12 @@ const CustomerInfo = ({}: Props) => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [doorNumber, setDoorNumber] = useState("");
   const [customerNotes, setCustomerNotes] = useState("");
+  const [buttonDisabled, setButtonDisable] = useState<boolean>(false);
 
   const [customerId, setCustomerId] = useState("");
   const [customerAddressId, setCustomerAddressId] = useState("");
 
   const [deliveryData, setDeliveryData] = useState<Delivery>();
-  // const [customerData, setRegistrationData] = useState<Registration>();
   const [selectedAddress, setAddressData] = useState<Address>();
   const [progress, setProgress] = useState<number>(66.3);
   const [step, setStep] = useState<number>(1);
@@ -47,11 +48,6 @@ const CustomerInfo = ({}: Props) => {
       setAddressData(JSON.parse(selectedAddress));
     }
 
-    // const registrationData = localStorage.getItem("customer_register");
-    // if (registrationData) {
-    //   setRegistrationData(JSON.parse(registrationData));
-    // }
-
     const userData = localStorage.getItem("USER_DATA");
     if (userData) {
       setUserData(JSON.parse(userData));
@@ -71,6 +67,9 @@ const CustomerInfo = ({}: Props) => {
       if (password !== confirmPassword) {
         alert("Confirm password does not match");
         return false;
+      } else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
+        alert("Please provide valid UK mobile number");
+        return false;
       }
       setProgress(33.3);
 
@@ -82,14 +81,12 @@ const CustomerInfo = ({}: Props) => {
         address: selectedAddress,
       };
 
-      console.log(JSON.stringify(payload));
-
       localStorage.setItem("customer_register", JSON.stringify(payload));
 
+      setButtonDisable(true);
       axiosClient
         .post("/register", payload)
         .then(({ data }) => {
-          console.log(data);
           if (data.status == "1") {
             setCustomerId(data.customer_id);
             setCustomerAddressId(data.address_id);
@@ -97,6 +94,7 @@ const CustomerInfo = ({}: Props) => {
           // if (step < 2) {
           setStep(step + 1);
           // }
+          setButtonDisable(false);
         })
         .catch((err) => {
           const response = err.response;
@@ -113,8 +111,8 @@ const CustomerInfo = ({}: Props) => {
             } else {
               alert("Something went wrong, please try again!");
             }
-            console.log(response.data.errors);
           }
+          setButtonDisable(false);
         });
     } else if (step == 2) {
       setProgress(66.66);
@@ -146,11 +144,10 @@ const CustomerInfo = ({}: Props) => {
       axiosClient
         .post("/placeorder", payload)
         .then(({ data }) => {
-          console.log(data);
-
-          if (step < 3) {
-            setStep(step + 1);
+          if (data.url) {
+            window.location.href = data.url;
           }
+          setButtonDisable(false);
         })
         .catch((err) => {
           const response = err.response;
@@ -160,8 +157,8 @@ const CustomerInfo = ({}: Props) => {
             } else {
               alert("Something went wrong, please try again!");
             }
-            console.log(response.data.errors);
           }
+          setButtonDisable(false);
         });
     } else {
       setProgress(99.99);
@@ -231,12 +228,11 @@ const CustomerInfo = ({}: Props) => {
                     <input
                       type="decimal"
                       required
-                      maxLength={11}
                       autoComplete="off"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       placeholder="Enter Mobile Number"
-                      className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
+                      className={`w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none`}
                     />
                   </div>
                   <div className="mb-4">
@@ -314,6 +310,7 @@ const CustomerInfo = ({}: Props) => {
               )} */}
                 {step < 3 && (
                   <button
+                    disabled={buttonDisabled}
                     type="submit"
                     className="float-right rounded-none bg-secondary-500 px-8 py-1"
                   >
@@ -325,6 +322,7 @@ const CustomerInfo = ({}: Props) => {
           </div>
         </div>
       </div>
+      {buttonDisabled && <Loading />}
     </section>
   );
 };

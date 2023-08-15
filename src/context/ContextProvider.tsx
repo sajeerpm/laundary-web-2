@@ -25,7 +25,6 @@ export const ContextProvider = ({ children }: Props) => {
   );
 
   const updateToken = (newToken: string | null) => {
-    console.log("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
     setToken(newToken);
     if (newToken) {
       localStorage.setItem("ACCESS_TOKEN", newToken);

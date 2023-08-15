@@ -26,12 +26,9 @@ const Home = () => {
       password: passwordRef.current?.value,
     };
 
-    // console.log(payload);
-
     axiosClient
       .post("/login", payload)
       .then(({ data }) => {
-        console.log(data);
         setUser(data.user);
         setToken(data.token);
         localStorage.setItem("ACCESS_TOKEN", data.token);
@@ -41,11 +38,8 @@ const Home = () => {
       .catch((err) => {
         const response = err.response;
         if (response && response.status === 422) {
-          console.log(response.data.errors);
         }
       });
-
-    console.log(payload);
   };
 
   return (

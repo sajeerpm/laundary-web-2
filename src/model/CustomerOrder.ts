@@ -6,7 +6,10 @@ export interface CustomerOrder {
   customer_name: string;
   shipping_address: string;
   customer_phone: string;
-  total: string;
+  total: number;
+  tax: number;
+  discount: number;
+  amount_due: number;
   items: Items[];
 }
 

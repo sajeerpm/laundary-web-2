@@ -22,14 +22,13 @@ import Account from "./pages/user/Account";
 import PrivateRoutes from "./components/PrivateRoutes";
 import useMediaQuery from "./hooks/useMediaQuery";
 import AccountMobile from "./pages/user/AccountMobile";
+import OrderComplete from "./pages/order/OrderComplete";
 
 function App() {
   const location = useLocation();
   const path = location.pathname;
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
-
-  console.log(path);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,6 +89,7 @@ function App() {
         <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
+        <Route element={<OrderComplete />} path="/order/complete" />
       </Routes>
       {!(path === "/customer" || path === "/account") && <Footer />}
       {path != "/customer" && <FloatingButton path={path} />}

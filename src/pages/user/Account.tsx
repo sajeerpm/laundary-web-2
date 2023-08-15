@@ -3,7 +3,8 @@ import { CustomerAddress } from "@/model/CustomerAddress";
 import { CustomerOrder } from "@/model/CustomerOrder";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -17,17 +18,19 @@ interface Customer {
 }
 
 const Account = ({}: Props) => {
-  const [isShowPasswordSection, setShowPasswordSection] =
-    useState<boolean>(false);
+  const navigate = useNavigate();
+  const [name, setName] = useState<string | undefined>("");
+  const [email, setEmail] = useState<string | undefined>("");
+  const [phone, setPhone] = useState<string | undefined>("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [activeTab, setActiveTab] = useState<number>(1);
   const [customerData, setCustomerData] = useState<Customer>();
   const [orderIndex, setOrderIndex] = useState<number>(-1);
 
   const token = localStorage.getItem("ACCESS_TOKEN");
-
-  const handleTogglePasswordSection = () => {
-    setShowPasswordSection((prevState) => !prevState);
-  };
 
   const handleActiveTab = (tabIndex: number) => {
     setActiveTab(tabIndex);
@@ -42,6 +45,9 @@ const Account = ({}: Props) => {
           },
         });
         setCustomerData(response.data.customer);
+        setName(response.data.customer.name);
+        setEmail(response.data.customer.email);
+        setPhone(response.data.customer.phone_number);
       } catch (error) {
         console.error(error);
       }
@@ -67,6 +73,94 @@ const Account = ({}: Props) => {
     }
   };
 
+  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const payload = {
+      name: name,
+      email: email,
+      phone_number: phone,
+      current_password: currentPassword,
+    };
+
+    axiosClient
+      .post("/updateprofile", payload)
+      .then(({ data }) => {
+        if (data.status) {
+        }
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          console.log(response.data.errors);
+        }
+        return true;
+      });
+  };
+
+  const handleChangePasswordOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validatePassword(newPassword)) {
+      alert(
+        "Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character (@$!%*?&)"
+      );
+      return;
+    } else if (!validateConfirmPassword(newPassword, confirmPassword)) {
+      alert("Password mismatch, please confirm password before submit");
+      return;
+    }
+
+    const payload = {
+      current_password: currentPassword,
+      new_password: newPassword,
+      new_password_confirmation: confirmPassword,
+    };
+
+    axiosClient
+      .post("/changepassword", payload)
+      .then(async ({ data }) => {
+        if (data.message) {
+          try {
+            await axiosClient.post("/logout", {
+              headers: {
+                Authorization: "Bearer " + token,
+              },
+            });
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        localStorage.removeItem("ACCESS_TOKEN");
+        navigate("/login");
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          console.log(response.data.errors);
+        }
+        return true;
+      });
+  };
+
+  const validatePassword = (password: string | undefined) => {
+    const PASSWORD_REGEX =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (password === undefined) return;
+
+    alert(password);
+
+    return PASSWORD_REGEX.test(password);
+  };
+
+  const validateConfirmPassword = (
+    password: string | undefined,
+    confirmPassword: string | undefined
+  ) => {
+    if (password === undefined || confirmPassword === undefined) return;
+
+    return password === confirmPassword;
+  };
+
   return (
     <section>
       <div className="mx-auto mt-20 min-h-[100vh] w-full md:flex md:w-3/5">
@@ -87,6 +181,14 @@ const Account = ({}: Props) => {
                 onClick={() => handleActiveTab(2)}
               >
                 Profile
+              </span>
+            </li>
+            <li className="mb-2">
+              <span
+                className="cursor-pointer hover:underline"
+                onClick={() => handleActiveTab(5)}
+              >
+                Change Password
               </span>
             </li>
             <li className="mb-2">
@@ -159,9 +261,9 @@ const Account = ({}: Props) => {
               </div>
               <p className="pt-4 font-montserrat text-lg">Address Book:</p>
               <hr className="py-2" />
-              <div className="grid grid-flow-col">
+              <div className="grid grid-cols-5">
                 {customerData?.addresses.map((address) => (
-                  <div className="">
+                  <div className="my-4 border-b-2">
                     {address.full_address.split("\n").map((line) => (
                       <div className="">
                         <p>{line}</p>
@@ -174,70 +276,90 @@ const Account = ({}: Props) => {
             </div>
           )}
           {activeTab == 2 && (
-            <div className="flex flex-col">
-              <HText textAlign="text-left uppercase">
-                Edit Account Information
-              </HText>
-              <p className="py-4 text-lg">Account Information:</p>
+            <form onSubmit={handleOnSubmit}>
+              <div className="flex flex-col">
+                <HText textAlign="text-left uppercase">
+                  Edit Account Information
+                </HText>
+                <p className="py-4 text-lg">Account Information:</p>
 
-              <label>Name *</label>
-              <input
-                className="border-1 my-2 w-80 border px-4 py-2"
-                type="text"
-                value={customerData?.name}
-              />
-
-              <label>Email *</label>
-              <input
-                className="border-1 my-2 w-80 border px-4 py-2"
-                type="text"
-                readOnly
-                value={customerData?.email}
-              />
-
-              <label>Mobile Number *</label>
-              <input
-                className="border-1 my-2 w-80 border px-4 py-2"
-                type="text"
-                value={customerData?.phone_number}
-              />
-
-              <div className="my-8 flex">
+                <label>Name *</label>
                 <input
-                  name="change_password"
-                  type="checkbox"
-                  onClick={handleTogglePasswordSection}
+                  className="border-1 my-2 w-80 border px-4 py-2"
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
-                <label className="p-2" id="change_password">
-                  Change password
-                </label>
+
+                <label>Email *</label>
+                <input
+                  className="border-1 my-2 w-80 border px-4 py-2"
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <label>Mobile Number *</label>
+                <input
+                  className="border-1 my-2 w-80 border px-4 py-2"
+                  type="text"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+
+                <label>Current Password *</label>
+                <input
+                  className="border-1 my-2 w-80 border px-4 py-2"
+                  type="password"
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+
+                <button className="border-1 float-right my-4 w-[100px] border bg-green-500 px-4 py-2">
+                  Save
+                </button>
               </div>
-              {isShowPasswordSection && (
+            </form>
+          )}
+          {activeTab == 5 && (
+            <form onSubmit={handleChangePasswordOnSubmit}>
+              <div className="flex flex-col">
+                <HText textAlign="text-left uppercase">Change Password</HText>
                 <div className="flex flex-col">
+                  <label>Email *</label>
+                  <input
+                    className="border-1 my-2 w-80 border px-4 py-2"
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+
                   <label>Current Password *</label>
                   <input
                     className="border-1 my-2 w-80 border px-4 py-2"
                     type="password"
+                    onChange={(e) => setCurrentPassword(e.target.value)}
                   />
 
                   <label>New Password *</label>
                   <input
                     className="border-1 my-2 w-80 border px-4 py-2"
                     type="password"
+                    onChange={(e) => setNewPassword(e.target.value)}
                   />
 
                   <label>Confirm Password *</label>
                   <input
                     className="border-1 my-2 w-80 border px-4 py-2"
                     type="password"
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
-              )}
 
-              <button className="border-1 float-right my-4 w-[100px] border bg-green-500 px-4 py-2">
-                Save
-              </button>
-            </div>
+                <button className="border-1 float-right my-4 w-[100px] border bg-green-500 px-4 py-2">
+                  Save
+                </button>
+              </div>
+            </form>
           )}
           {activeTab == 3 && (
             <div>
@@ -355,21 +477,32 @@ const Account = ({}: Props) => {
                   <td className="text-right" colSpan={3}>
                     Discount
                   </td>
-                  <td className="text-right">0.00</td>
+                  <td className="text-right">
+                    {"£" +
+                      Number(customerData?.orders[orderIndex].discount).toFixed(
+                        2
+                      )}
+                  </td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td className="text-right" colSpan={3}>
                     Tax
                   </td>
-                  <td className="text-right">0.00</td>
-                </tr>
+                  <td className="text-right">
+                    {"£" +
+                      Number(customerData?.orders[orderIndex].tax).toFixed(2)}
+                  </td>
+                </tr> */}
                 <tr>
                   <td className="text-right" colSpan={3}>
                     Total
                   </td>
                   <td className="text-right">
                     {"£" +
-                      Number(customerData?.orders[orderIndex].total).toFixed(2)}
+                      (
+                        Number(customerData?.orders[orderIndex].total) -
+                        Number(customerData?.orders[orderIndex].discount)
+                      ).toFixed(2)}
                   </td>
                 </tr>
               </table>

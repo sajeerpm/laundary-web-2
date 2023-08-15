@@ -13,7 +13,7 @@ const TermsAndConditions = ({}: Props) => {
       <div className="w-full py-8">
         <HText textAlign="text-center uppercase">Terms and Conditions</HText>
       </div>
-      <div className="mx-auto flex w-4/6 flex-col">
+      <div className="mx-auto flex w-11/12 flex-col md:w-4/6">
         <p>
           When you visit mastrdrycleaner.co.uk you are subject to our website
           terms and conditions. We recommend you read these and also our privacy

@@ -13,7 +13,7 @@ const PrivacyPolicy = ({}: Props) => {
       <div className="w-full py-8">
         <HText textAlign="text-center uppercase">Privacy Policy</HText>
       </div>
-      <div className="mx-auto flex w-4/6 flex-col">
+      <div className="mx-auto flex w-11/12 flex-col md:w-4/6">
         <p className="mb-8">
           Masterclean drycleaners Limited (we) are committed to protecting and
           respecting your privacy.

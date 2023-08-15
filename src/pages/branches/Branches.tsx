@@ -55,8 +55,6 @@ const Branches: React.FC = () => {
     setSelectedStore(store);
   };
   const handleStoreChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("GHJJGHJGHJGHJ");
-
     setSelectedStore(stores[parseInt(event.target.value) - 1]);
   };
 

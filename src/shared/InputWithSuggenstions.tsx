@@ -28,7 +28,6 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
 
     if (searchTerm.length >= 2) {
       const suggestions = await getAddressSuggestions(searchTerm);
-      console.log(suggestions);
       setAddressSuggestions(suggestions ? suggestions : []);
     } else {
       setAddressSuggestions([]);
@@ -40,7 +39,6 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
     setInputValue(suggestion.Text);
     // setAddressSuggestions([]);
     const suggestions = await getAddressSuggestions(JSON.stringify(suggestion));
-    console.log(suggestions);
     setAddressSuggestions(suggestions ? suggestions : []);
 
     if (suggestions.length > 0) {
