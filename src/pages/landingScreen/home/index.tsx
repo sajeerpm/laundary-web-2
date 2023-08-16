@@ -56,7 +56,8 @@ const Home = ({}: Props) => {
         navigate("/customer");
       }
     } else {
-      setExpressDelivery(true);
+      // setExpressDelivery(true);
+      window.location.href = "tel:+442073285621";
     }
   };
 
@@ -69,7 +70,8 @@ const Home = ({}: Props) => {
   const handleDeliverySlotChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedSlot = JSON.parse(event.target.value);
     if (selectedSlot.slot == "express") {
-      setExpressDelivery(true);
+      // setExpressDelivery(true);
+      window.location.href = "tel:+442073285621";
     }
     setDeliverySlot(selectedSlot);
   };
@@ -142,7 +144,7 @@ const Home = ({}: Props) => {
                           display: "express",
                         })}
                       >
-                        Same day delivery
+                        Call Us for Same day delivery
                       </option>
                     )}
                     {delivery.map((slot) => (
@@ -182,7 +184,7 @@ const Home = ({}: Props) => {
       )} */}
       {express && (
         <AlertPopup
-          message="Please call us at T (020) 7328 5621 for same day service."
+          message="Please call us at <a>T (020) 7328 5621</a> for same day service."
           onClose={() => {
             setExpressDelivery(false);
           }}

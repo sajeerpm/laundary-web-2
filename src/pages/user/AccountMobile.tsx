@@ -6,8 +6,10 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
   UserIcon,
+  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 type Props = {};
 
 interface Customer {
@@ -20,6 +22,7 @@ interface Customer {
 }
 
 const AccountMobile = ({}: Props) => {
+  const navigate = useNavigate();
   const [customerData, setCustomerData] = useState<Customer>();
   const [activeTab, setActiveTab] = useState<number>(1);
   const [selectedOrder, setSelectedOrder] = useState<CustomerOrder>();
@@ -47,6 +50,20 @@ const AccountMobile = ({}: Props) => {
   const handleSelectedOrderIndex = (orderIndex: number) => {
     setActiveTab(3);
     setSelectedOrder(customerData?.orders[orderIndex]);
+  };
+
+  const handleLogOut = async () => {
+    try {
+      await axiosClient.post("/logout", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    localStorage.removeItem("ACCESS_TOKEN");
+    navigate("/login");
   };
 
   return (
@@ -116,6 +133,16 @@ const AccountMobile = ({}: Props) => {
               <ChevronRightIcon className="w-6" />
             </div>
             <hr />
+            <div
+              className="flex cursor-pointer items-center justify-between px-6 py-4"
+              onClick={handleLogOut}
+            >
+              <ArrowLeftOnRectangleIcon className="w-6" />
+              <div className="w-[60%]">
+                <p className="font-bold">Logout</p>
+              </div>
+              <ChevronRightIcon className="w-6" />
+            </div>
           </div>
         )}
         {activeTab === 2 && (
@@ -137,8 +164,8 @@ const AccountMobile = ({}: Props) => {
                   </div>
                   <hr />
                   <div className="flow-col mt-2 flex justify-between">
-                    <p>Total amount: 300</p>
-                    <p>Payment: Online Payment</p>
+                    <p>Total: £{order.total}</p>
+                    <p>Due: £{order.amount_due}</p>
                   </div>
 
                   {/* <div className="flow-col mt-2 flex justify-between">
@@ -162,7 +189,9 @@ const AccountMobile = ({}: Props) => {
                     </p>
                     <p>{selectedOrder?.order_date}</p>
                   </div>
-                  <span className="text-right">{selectedOrder?.status}</span>
+                  <span className="text-right font-bold capitalize">
+                    {selectedOrder?.status}
+                  </span>
                 </div>
                 {selectedOrder?.items.map((item) => (
                   <div className="mt-2 flex flex-col justify-between">

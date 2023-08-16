@@ -3,6 +3,16 @@ import { CustomerAddress } from "@/model/CustomerAddress";
 import { CustomerOrder } from "@/model/CustomerOrder";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
+import {
+  validateConfirmPassword,
+  validatePassword,
+} from "@/shared/Validations";
+import {
+  PASSWORD_CONFIRM_MG,
+  PASSWORD_VALIDATION_MSG,
+  UK_PHONE_NUMBER_PATTERN,
+  UK_PHONE_VALIDATION_MSG,
+} from "@/shared/constants";
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,9 +29,9 @@ interface Customer {
 
 const Account = ({}: Props) => {
   const navigate = useNavigate();
-  const [name, setName] = useState<string | undefined>("");
-  const [email, setEmail] = useState<string | undefined>("");
-  const [phone, setPhone] = useState<string | undefined>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -75,6 +85,10 @@ const Account = ({}: Props) => {
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!UK_PHONE_NUMBER_PATTERN.test(phone)) {
+      alert(UK_PHONE_VALIDATION_MSG);
+      return false;
+    }
     const payload = {
       name: name,
       email: email,
@@ -100,12 +114,10 @@ const Account = ({}: Props) => {
   const handleChangePasswordOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validatePassword(newPassword)) {
-      alert(
-        "Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character (@$!%*?&)"
-      );
+      alert(PASSWORD_VALIDATION_MSG);
       return;
     } else if (!validateConfirmPassword(newPassword, confirmPassword)) {
-      alert("Password mismatch, please confirm password before submit");
+      alert(PASSWORD_CONFIRM_MG);
       return;
     }
 
@@ -141,24 +153,18 @@ const Account = ({}: Props) => {
       });
   };
 
-  const validatePassword = (password: string | undefined) => {
-    const PASSWORD_REGEX =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (password === undefined) return;
-
-    alert(password);
-
-    return PASSWORD_REGEX.test(password);
-  };
-
-  const validateConfirmPassword = (
-    password: string | undefined,
-    confirmPassword: string | undefined
-  ) => {
-    if (password === undefined || confirmPassword === undefined) return;
-
-    return password === confirmPassword;
+  const handleLogOut = async () => {
+    try {
+      await axiosClient.post("/logout", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    localStorage.removeItem("ACCESS_TOKEN");
+    navigate("/login");
   };
 
   return (
@@ -200,7 +206,12 @@ const Account = ({}: Props) => {
               </span>
             </li>
             <li className="mb-2">
-              <span className="cursor-pointer hover:underline">Logout</span>
+              <span
+                onClick={handleLogOut}
+                className="cursor-pointer hover:underline"
+              >
+                Logout
+              </span>
             </li>
           </ul>
         </div>
@@ -411,9 +422,7 @@ const Account = ({}: Props) => {
               </HText>
               <div className="flex flex-row justify-between">
                 <div>
-                  <h3 className="py-2 text-lg font-bold uppercase">
-                    Shipping Address
-                  </h3>
+                  <h3 className="py-2 text-lg font-bold uppercase">Address</h3>
                   <hr className="py-2" />
                   <p>{customerData?.orders[orderIndex].customer_name}</p>
                   {customerData?.orders[orderIndex].shipping_address
@@ -434,14 +443,21 @@ const Account = ({}: Props) => {
                   <p>
                     Order Date: {customerData?.orders[orderIndex].order_date}
                   </p>
+                  <p>
+                    Status:{" "}
+                    {customerData?.orders[orderIndex].status.toUpperCase()}
+                  </p>
                 </div>
 
                 <div>
                   <h3 className="py-2 text-lg font-bold uppercase">
-                    Payment Method
+                    Payment Details
                   </h3>
                   <hr className="py-2" />
-                  <p>Online Payment</p>
+                  <p>Method: Online Payment</p>
+                  <p className="font-bold text-red-500">
+                    Due Amount: £{customerData?.orders[orderIndex].amount_due}
+                  </p>
                 </div>
               </div>
               <table className="mt-8 w-full">
@@ -457,27 +473,26 @@ const Account = ({}: Props) => {
                   <tr>
                     <td className="py-2">{item.item_name}</td>
                     <td className="py-2">{item.quantity}</td>
-                    <td className="py-2">{item.price}</td>
+                    <td className="py-2">£{item.price}</td>
                     <td className="text-right">
-                      {(Number(item.price) * item.quantity).toFixed(2)}
+                      £{(Number(item.price) * item.quantity).toFixed(2)}
                     </td>
                   </tr>
                 ))}
 
                 <tr className="border-t-2">
-                  <td className="text-right" colSpan={3}>
+                  <td className="text-right font-bold" colSpan={3}>
                     Subtotal
                   </td>
-                  <td className="text-right">
+                  <td className="text-right font-bold">
                     {"£" +
                       Number(customerData?.orders[orderIndex].total).toFixed(2)}
                   </td>
                 </tr>
                 <tr>
-                  <td className="text-right" colSpan={3}>
-                    Discount
-                  </td>
-                  <td className="text-right">
+                  <td colSpan={2}></td>
+                  <td className="border-b-2 text-right font-bold">Discount</td>
+                  <td className="border-b-2 text-right font-bold ">
                     {"£" +
                       Number(customerData?.orders[orderIndex].discount).toFixed(
                         2
@@ -493,11 +508,10 @@ const Account = ({}: Props) => {
                       Number(customerData?.orders[orderIndex].tax).toFixed(2)}
                   </td>
                 </tr> */}
-                <tr>
-                  <td className="text-right" colSpan={3}>
-                    Total
-                  </td>
-                  <td className="text-right">
+                <tr className="">
+                  <td colSpan={2}></td>
+                  <td className="text-right font-bold">Total</td>
+                  <td className="text-right font-bold">
                     {"£" +
                       (
                         Number(customerData?.orders[orderIndex].total) -

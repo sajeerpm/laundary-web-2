@@ -24,7 +24,9 @@ const PricingDetailed = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosClient.get("/service/" + id);
+        const response = await axiosClient.get(
+          "/service/" + id?.replace(".html", "")
+        );
         setData(response.data);
         setLoading(false);
       } catch (error) {

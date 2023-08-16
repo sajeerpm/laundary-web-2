@@ -9,7 +9,16 @@ import { Address } from "@/model/Address";
 import { Order } from "@/model/Order";
 import { User } from "@/model/User";
 import Loading from "@/shared/Loading";
-import { UK_PHONE_NUMBER_PATTERN } from "@/shared/constants";
+import {
+  PASSWORD_CONFIRM_MG,
+  PASSWORD_VALIDATION_MSG,
+  UK_PHONE_NUMBER_PATTERN,
+  UK_PHONE_VALIDATION_MSG,
+} from "@/shared/constants";
+import {
+  validateConfirmPassword,
+  validatePassword,
+} from "@/shared/Validations";
 
 type Props = {};
 
@@ -64,11 +73,14 @@ const CustomerInfo = ({}: Props) => {
   const handleNext = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step == 1) {
-      if (password !== confirmPassword) {
-        alert("Confirm password does not match");
+      if (!validatePassword(password)) {
+        alert(PASSWORD_VALIDATION_MSG);
+        return;
+      } else if (!validateConfirmPassword(password, confirmPassword)) {
+        alert(PASSWORD_CONFIRM_MG);
         return false;
       } else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
-        alert("Please provide valid UK mobile number");
+        alert(UK_PHONE_VALIDATION_MSG);
         return false;
       }
       setProgress(33.3);
@@ -156,6 +168,7 @@ const CustomerInfo = ({}: Props) => {
               alert("Please check mandatory fields.");
             } else {
               alert("Something went wrong, please try again!");
+              navigate("/");
             }
           }
           setButtonDisable(false);
