@@ -242,12 +242,12 @@ const Account = ({}: Props) => {
                     <td className="p-2">{order.status}</td>
                     <td className="p-2">
                       <span
-                        className="cursor-pointer px-2 italic"
+                        className="cursor-pointer px-2 italic underline"
                         onClick={() => handleViewOrder(index)}
                       >
                         view order
                       </span>
-                      {order.status != "cancelled" && "|"}
+                      {/* {order.status != "cancelled" && "|"}
                       {order.status != "cancelled" && (
                         <span
                           className="cursor-pointer px-2 italic"
@@ -255,7 +255,7 @@ const Account = ({}: Props) => {
                         >
                           cancel order
                         </span>
-                      )}
+                      )} */}
                     </td>
                   </tr>
                 ))}
@@ -396,11 +396,11 @@ const Account = ({}: Props) => {
                     <td className="p-2">
                       <span
                         onClick={() => handleViewOrder(index)}
-                        className="cursor-pointer px-2 italic"
+                        className="cursor-pointer px-2 italic underline"
                       >
                         view order
                       </span>
-                      {order.status != "cancelled" && "|"}
+                      {/* {order.status != "cancelled" && "|"}
                       {order.status != "cancelled" && (
                         <span
                           className="cursor-pointer px-2 italic"
@@ -408,7 +408,7 @@ const Account = ({}: Props) => {
                         >
                           cancel order
                         </span>
-                      )}
+                      )} */}
                     </td>
                   </tr>
                 ))}
@@ -456,7 +456,10 @@ const Account = ({}: Props) => {
                   <hr className="py-2" />
                   <p>Method: Online Payment</p>
                   <p className="font-bold text-red-500">
-                    Due Amount: £{customerData?.orders[orderIndex].amount_due}
+                    Due Amount: £
+                    {Number(customerData?.orders[orderIndex].amount_due) > 0
+                      ? customerData?.orders[orderIndex].amount_due
+                      : "0.00"}
                   </p>
                 </div>
               </div>
@@ -465,8 +468,8 @@ const Account = ({}: Props) => {
                   <th className="py-2 text-left text-sm uppercase">
                     Item Name
                   </th>
-                  <th className="py-2 text-left text-sm uppercase">Price</th>
                   <th className="py-2 text-left text-sm uppercase">Quantity</th>
+                  <th className="py-2 text-left text-sm uppercase">Price</th>
                   <th className="py-2 text-left text-sm uppercase">Total</th>
                 </tr>
                 {customerData?.orders[orderIndex].items.map((item) => (

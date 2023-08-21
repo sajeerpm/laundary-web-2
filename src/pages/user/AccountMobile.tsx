@@ -165,7 +165,10 @@ const AccountMobile = ({}: Props) => {
                   <hr />
                   <div className="flow-col mt-2 flex justify-between">
                     <p>Total: £{order.total}</p>
-                    <p>Due: £{order.amount_due}</p>
+                    <p>
+                      Due: £
+                      {Number(order.amount_due) > 0 ? order.amount_due : "0.00"}
+                    </p>
                   </div>
 
                   {/* <div className="flow-col mt-2 flex justify-between">
@@ -243,7 +246,10 @@ const AccountMobile = ({}: Props) => {
               <div className="flow-col mt-2 flex justify-between">
                 <p>Amount Due</p>
                 <p className="text-lg font-bold">
-                  {"£" + selectedOrder?.amount_due}
+                  £
+                  {Number(selectedOrder?.amount_due) > 0
+                    ? selectedOrder?.amount_due
+                    : "0.00"}
                 </p>
               </div>
             </div>

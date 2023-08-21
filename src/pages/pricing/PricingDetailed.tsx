@@ -3,7 +3,6 @@ import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
 import { useParams } from "react-router-dom";
 import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
-import LoadingImage from "@/assets/images/loading.gif";
 import axiosClient from "@/axiosClient";
 import Loading from "@/shared/Loading";
 
@@ -56,8 +55,8 @@ const PricingDetailed = () => {
                 <p className="w-full uppercase">{categories?.name ?? ""}</p>
               </HText>
               <SHText textAlign="text-center text-black">
-                <p className="w-full">COLLECTED AND DELIVERED</p>
-                <p className="w-full">TO YOUR DOOR</p>
+                <p className="w-full text-[18px]">COLLECTED AND DELIVERED</p>
+                <p className="w-full text-[18px]">TO YOUR DOOR</p>
               </SHText>
             </div>
             {/* <div className="flex w-full justify-center py-16">

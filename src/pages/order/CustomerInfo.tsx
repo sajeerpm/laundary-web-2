@@ -241,6 +241,7 @@ const CustomerInfo = ({}: Props) => {
                     <input
                       type="decimal"
                       required
+                      maxLength={11}
                       autoComplete="off"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
@@ -275,6 +276,9 @@ const CustomerInfo = ({}: Props) => {
                       placeholder="Enter a password"
                       className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
                     />
+                    <p className="text-xs text-gray-400">
+                      {PASSWORD_VALIDATION_MSG}
+                    </p>
                   </div>
                   <div className="mb-4">
                     <label className="block text-gray-600">
