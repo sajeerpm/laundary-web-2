@@ -4,13 +4,15 @@ import { ChangeEvent, useEffect, useState } from "react";
 import axiosClient from "@/axiosClient";
 import { useNavigate } from "react-router-dom";
 import AlertPopup from "@/shared/AlertPopup";
-import HomePageGraphic from "@/assets/slider1.webp";
+import HomePageGraphic from "@/assets/firstpage1.png";
+import HomePageGraphicSmall from "@/assets/firstpage1-small.png";
 import { Slot } from "@/model/Slot";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 type Props = {};
 
 const Home = ({}: Props) => {
-  // const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
+  const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [slots, setData] = useState<Slot[]>([]);
   const [delivery, setDeliveryData] = useState<Slot[]>([]);
   const [express, setExpressDelivery] = useState<boolean>(false);
@@ -81,7 +83,9 @@ const Home = ({}: Props) => {
       id="home"
       className="h-[100vh] gap-16 bg-[#fffaf0] py-20 md:pb-0"
       style={{
-        backgroundImage: `url(${HomePageGraphic})`,
+        backgroundImage: `url(${
+          isAboveMediumScreens ? HomePageGraphic : HomePageGraphicSmall
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -107,12 +111,20 @@ const Home = ({}: Props) => {
             <p className="text-center text-2xl text-blue-600">
               25+ years Experience in
             </p>
-            <HText textAlign="text-center text-black">
-              DRY CLEANING & LAUNDARY SERVICES
+            <HText
+              textAlign={`text-center font-extralight ${
+                isAboveMediumScreens ? "text-black" : "text-white"
+              }`}
+            >
+              DRY CLEANING & LAUNDRY SERVICES
             </HText>
-            <p className="text-center font-extralight">
-              Free collection and Delivery
-            </p>
+            <div className="flex items-center justify-center">
+              <p
+                className={`w-fit rounded-md bg-red-400 px-2 py-1 text-center font-extralight text-white`}
+              >
+                Free Collection and Delivery
+              </p>
+            </div>
             <div className="mt-8 md:mt-16">
               <InputWithSuggestions placeholder="Your Location Or Postcode" />
               <div className="textbox-container mt-3 flex h-[48px] bg-white">

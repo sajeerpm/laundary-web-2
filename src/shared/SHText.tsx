@@ -8,7 +8,7 @@ type Props = {
 const SHText = ({ children, textAlign }: Props) => {
   return (
     <h2
-      className={`${textAlign} line w-full font-montserrat text-[24px] font-extralight uppercase`}
+      className={`${textAlign} line w-full font-dmsans text-[24px] font-extralight uppercase`}
     >
       {children}
     </h2>

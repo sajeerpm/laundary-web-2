@@ -48,6 +48,9 @@ const PricingDetailed = () => {
                 categories?.bannerimage ?? PricingDetailsBackgroundImage
               })`,
               backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+              backgroundRepeat: "no-repeat",
             }}
           >
             <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">

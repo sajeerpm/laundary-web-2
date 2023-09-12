@@ -1,6 +1,7 @@
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
 import AreaBackgroundImage from "@/assets/images/unsplash-4.jpg";
+import { Link } from "react-router-dom";
 
 interface Areas {
   id: number;
@@ -363,7 +364,9 @@ const Corperates: React.FC = () => {
                 </div>
                 <ul className="text-black">
                   {tile.areas.map((area, index) => (
-                    <li key={index}>{area}</li>
+                    <li key={index}>
+                      <Link to={`/`}>{area}</Link>
+                    </li>
                   ))}
                 </ul>
               </div>

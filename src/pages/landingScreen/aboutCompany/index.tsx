@@ -34,12 +34,12 @@ const AboutCompany = ({}: Props) => {
             </HText>
           </div>
           <TextMedium textAlign="text-center">
-            Dry Cleaners In London are an important part of modern life. Because
-            in a city like London, residents are always on the go and busy.
-            People are more fashion conscious and like to wear a variety of
-            clothes. We always believe that quality Dry cleaners in London
-            should be accessible to everyone. That’s why we offer competitive
-            pricing options without compromising the standard of our services.
+            In a bustling metropolis like London, accessible and efficient dry
+            cleaners are a vital part of modern life. Londoners, known for their
+            fashion-consciousness and busy lifestyles, often require the
+            services of dry cleaners to care for their diverse wardrobe. We are
+            committed to offering competitive pricing without compromising the
+            quality of our dry cleaning services.
           </TextMedium>
         </motion.div>
         <div className={`${lineHeadCap}`}></div>
@@ -55,28 +55,24 @@ const AboutCompany = ({}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <TextMedium textAlign="text-center uppercase">
-            Find the most affordable and efficient dry cleaners in London.
-          </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
           <TextMedium textAlign="text-center">
-            Dry cleaning in london has become mainstream in modern society due
-            to its efficiency and effectiveness in cleaning delicate and
-            expensive clothes. Dry cleaning in London is an essential service
-            for professional individuals who want to take care of delicate
-            fabrics. However, the cost of dry cleaning can be beyond the reach
-            of some. And there can be great variation in efficiency between
-            providers.
+            Dry cleaning has gained widespread popularity in London due to its
+            ability to effectively clean delicate and expensive clothing. For
+            professionals and individuals who cherish their delicate fabrics,
+            dry cleaning is an essential service. However, the cost of dry
+            cleaning can vary significantly, making it crucial to find an
+            affordable yet reliable provider.
           </TextMedium>
           <div className={`${lineParagraphCap}`}></div>
           <TextMedium textAlign="text-center">
-            Finding a reliable, affordable and efficient dry cleaner is critical
-            to keeping your favorite clothes in top condition. With multiple dry
-            cleaning companies flooding the industry, many consumers find it
-            increasingly difficult to find an affordable and efficient dry
-            cleaning service. We will provide you with an overview of the
-            different services available, pricing and customer reviews so that
-            you can make an informed decision when selecting your dry cleaner.
+            In today's saturated dry cleaning market, locating a trustworthy,
+            cost-effective, and efficient dry cleaner is essential to preserving
+            your favorite garments. With numerous dry cleaning companies vying
+            for attention, consumers may find it challenging to make the right
+            choice. We aim to simplify this process by providing you with an
+            overview of available services, pricing options, and customer
+            reviews, empowering you to make an informed decision when selecting
+            your dry cleaner.
           </TextMedium>
           <div className={`${lineHeadCap}`}></div>
         </motion.div>

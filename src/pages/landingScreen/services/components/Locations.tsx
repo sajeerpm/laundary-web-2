@@ -1,571 +1,1113 @@
-import useMediaQuery from "@/hooks/useMediaQuery";
-import { Link } from "react-router-dom";
+// import useMediaQuery from "@/hooks/useMediaQuery";
+import { SelectedPage } from "@/shared/types";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 type Props = {};
 
 const Locations = ({}: Props) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width:1084px)");
+  // const isAboveMediumScreens = useMediaQuery("(min-width:1084px)");
   return (
     <>
-      {isAboveMediumScreens && (
-        <div className="flex-1 pt-6 md:w-1/2">
-          <p className="text-md uppercase">Selected Locations</p>
-          <hr className="my-2 h-[2px] bg-gray-400" />
-          <div className="w-full justify-between gap-8 md:flex">
-            <div className="flex flex-col md:w-1/4">
-              <Link className="hover:underline" to={`#`}>
-                Abbey road
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Acton (part)
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Aldgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Aldgate High Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Amwell
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Angel
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Archway
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Arnos Grove
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Baker street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Barnet
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Barnsbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Barbican
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Barons court
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Battersea
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Beech Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Belgravia
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Belsize Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Billingsgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Bishopsgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Bishopsgate to the north
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Bloomsbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Brent
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Brent Cross
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Brent Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Bridgewater Square
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Brompton
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Brondesbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Cannon Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Canonbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Camden Town
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Chalk Farm
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Chancery Lane
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Cheapside
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Chelsea
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Childs Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Chinatown
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Chiswick
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Church End
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                City of Westminster
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Clapham
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Clerkenwell
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Cockfosters
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Cornhill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Covent Garden
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Cricklewood
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Crouch End
-              </Link>
-            </div>
-            <div className="flex flex-col md:w-1/4">
-              <Link className="hover:underline" to={`#`}>
-                Dalston (part)
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Earls Court
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                East Acton
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                East Finchley
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Edgware
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Edmonton
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Edmonton to the West
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Embankment
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Euston
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Farringdon
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Farringdon Road in the north
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fenchurch Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fetter Lane
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Finchley Central
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Finsbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Finsbury Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fleet Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fleet Street in the south
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fortune Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Frognal
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Fulham
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Golders Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Gospel Oak
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Grange Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Gunnersbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hammersmith
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hampstead
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hampstead Garden Suburb
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Harlesden
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Harley Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Harringay
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Harringay in the West
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Harrow
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hatton Garden
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hendon
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hendon Central
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Highbury
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Highgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Holborn
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Holborn in the west
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Holland Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Holloway
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hornsey
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Hyde Park
-              </Link>
-            </div>
-            <div className="flex flex-col md:w-1/4">
-              <Link className="hover:underline" to={`#`}>
-                Imperial Wharf
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Islington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kensington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kensal Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kensington Olympia
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kentish Town
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kilburn
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kings Cross
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kingsbury Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Kingsland
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Knightsbridge
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Lambeth
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Lisson Grove
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Little Venice
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                London Wall
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Lancaster Gate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Maida Vale
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Manor House
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Marylebone
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Mayfair
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Mill Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Moorgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Museum of London
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Muswell Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Marble Arch
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Neasden (part)
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                New Southgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Newington Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                North Finchley
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                North Kensington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Northfields (north and west)
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Northumberland Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Notting Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Oakleigh Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Oakwood
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Old Broad Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Old Oak Common
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Old Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Oxford Circus
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Paddington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Park Lane
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Park Royal
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Parsons Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Pentonville
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Pimlico
-              </Link>
-            </div>
-            <div className="flex flex-col md:w-1/4">
-              <Link className="hover:underline" to={`#`}>
-                Primrose Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Queen Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Queens Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Regent Street
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Regents park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Shepherds Bush
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Shoreditch
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Smithfield
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                South Islington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                South Kensington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Southgate
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Southwark
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Spitalfields
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                St James
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                St Lukes
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                St Pauls
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Stoke Newington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Stonebridge
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Streatham Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Stroud Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Swiss Cottage
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Temple Fortune
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Totteridge
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Tower Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Tufnell Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Upper Holloway
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Vauxhall
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Victoria Park
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Victoria
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Walbrook
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Walham Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Wandsworth
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                West Brompton
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                West Ealing
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                West Hampstead
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                West Kensington
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Westbourne Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Westminster
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Whetstone
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                White City
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Whitechapel
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Whitehall
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Willesden
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Willesden Green
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Winchmore Hill
-              </Link>
-              <Link className="hover:underline" to={`#`}>
-                Wood Green
-              </Link>
-            </div>
+      <div className="flex-1 pt-6 md:w-1/2">
+        <p className="text-md uppercase">Selected Locations</p>
+        <hr className="my-2 h-[2px] bg-gray-400" />
+        <div className="w-full justify-between gap-8 md:flex">
+          <div className="flex flex-col md:w-1/4">
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Abbey road
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Acton (part)
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Aldgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Aldgate High Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Amwell
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Angel
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Archway
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Arnos Grove
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Baker street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Barnet
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Barnsbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Barbican
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Barons court
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Battersea
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Beech Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Belgravia
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Belsize Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Billingsgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Bishopsgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Bishopsgate to the north
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Bloomsbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Brent
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Brent Cross
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Brent Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Bridgewater Square
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Brompton
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Brondesbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Cannon Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Canonbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Camden Town
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Chalk Farm
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Chancery Lane
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Cheapside
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Chelsea
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Childs Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Chinatown
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Chiswick
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Church End
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              City of Westminster
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Clapham
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Clerkenwell
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Cockfosters
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Cornhill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Covent Garden
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Cricklewood
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Crouch End
+            </AnchorLink>
+          </div>
+          <div className="flex flex-col md:w-1/4">
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Dalston (part)
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Earls Court
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              East Acton
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              East Finchley
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Edgware
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Edmonton
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Edmonton to the West
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Embankment
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Euston
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Farringdon
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Farringdon Road in the north
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fenchurch Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fetter Lane
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Finchley Central
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Finsbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Finsbury Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fleet Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fleet Street in the south
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fortune Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Frognal
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Fulham
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Golders Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Gospel Oak
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Grange Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Gunnersbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hammersmith
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hampstead
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hampstead Garden Suburb
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Harlesden
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Harley Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Harringay
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Harringay in the West
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Harrow
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hatton Garden
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hendon
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hendon Central
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Highbury
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Highgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Holborn
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Holborn in the west
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Holland Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Holloway
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hornsey
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Hyde Park
+            </AnchorLink>
+          </div>
+          <div className="flex flex-col md:w-1/4">
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Imperial Wharf
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Islington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kensington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kensal Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kensington Olympia
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kentish Town
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kilburn
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kings Cross
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kingsbury Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Kingsland
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Knightsbridge
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Lambeth
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Lisson Grove
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Little Venice
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              London Wall
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Lancaster Gate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Maida Vale
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Manor House
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Marylebone
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Mayfair
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Mill Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Moorgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Museum of London
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Muswell Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Marble Arch
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Neasden (part)
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              New Southgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Newington Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              North Finchley
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              North Kensington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Northfields (north and west)
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Northumberland Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Notting Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Oakleigh Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Oakwood
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Old Broad Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Old Oak Common
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Old Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Oxford Circus
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Paddington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Park Lane
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Park Royal
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Parsons Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Pentonville
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Pimlico
+            </AnchorLink>
+          </div>
+          <div className="flex flex-col md:w-1/4">
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Primrose Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Queen Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Queens Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Regent Street
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Regents park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Shepherds Bush
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Shoreditch
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Smithfield
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              South Islington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              South Kensington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Southgate
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Southwark
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Spitalfields
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              St James
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              St Lukes
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              St Pauls
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Stoke Newington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Stonebridge
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Streatham Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Stroud Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Swiss Cottage
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Temple Fortune
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Totteridge
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Tower Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Tufnell Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Upper Holloway
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Vauxhall
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Victoria Park
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Victoria
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Walbrook
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Walham Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Wandsworth
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              West Brompton
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              West Ealing
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              West Hampstead
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              West Kensington
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Westbourne Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Westminster
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Whetstone
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              White City
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Whitechapel
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Whitehall
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Willesden
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Willesden Green
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Winchmore Hill
+            </AnchorLink>
+            <AnchorLink
+              className="hover:underline"
+              href={`#${SelectedPage.Home}`}
+            >
+              Wood Green
+            </AnchorLink>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -71,17 +71,17 @@ const Account = ({}: Props) => {
     setActiveTab(4);
   };
 
-  const handleCancelOrder = async (id: number) => {
-    const response = await axiosClient.get("/order/cancel/" + id, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+  // const handleCancelOrder = async (id: number) => {
+  //   const response = await axiosClient.get("/order/cancel/" + id, {
+  //     headers: {
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   });
 
-    if (response) {
-      window.location.reload();
-    }
-  };
+  //   if (response) {
+  //     window.location.reload();
+  //   }
+  // };
 
   const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

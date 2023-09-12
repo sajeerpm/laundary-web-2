@@ -66,7 +66,7 @@ const Pricing = () => {
             <HText textAlign="text-center">
               <p className="w-full uppercase text-black">Our Prices</p>
             </HText>
-            <SHText textAlign="text-center">
+            <SHText textAlign="text-center text-xl">
               <p className="w-full text-black">
                 Price may vary according to the garments
               </p>
@@ -85,7 +85,7 @@ const Pricing = () => {
               <div
                 className={`${gridButtonHight} flex cursor-pointer flex-col items-center justify-center rounded-none border border-black px-4 py-1 text-center text-xs uppercase md:py-4 md:tracking-[1.8px] ${
                   activeTab === category.id
-                    ? "text bg-black text-white"
+                    ? "text bg-secondary-500 text-black"
                     : "bg-white text-black"
                 }`}
                 onClick={() => handleTabClick(category.id, category.name)}
