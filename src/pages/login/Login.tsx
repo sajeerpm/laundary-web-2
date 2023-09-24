@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import HText from "@/shared/HText";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, FormEvent, useEffect } from "react";
+import { useRef, FormEvent, useEffect, useState } from "react";
 import { useStateContext } from "@/context/ContextProvider";
 import axiosClient from "@/axiosClient";
 
@@ -9,6 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState("");
 
   const { setUser, setToken } = useStateContext();
 
@@ -38,6 +39,7 @@ const Home = () => {
       .catch((err) => {
         const response = err.response;
         if (response && response.status === 422) {
+          setError(response.data.message);
         }
       });
   };
@@ -51,7 +53,10 @@ const Home = () => {
         <div className="z-10 md:basis-5/12">
           <HText textAlign="text-center">LOG IN</HText>
           <form onSubmit={onSubmit}>
-            <div className="mt-16">
+            <div className="">
+              <div className="py-4 text-center text-red-500" id="error">
+                {error}
+              </div>
               {/* <p>Email Address:</p>
                             <TextBoxNormal
                                 type="text"

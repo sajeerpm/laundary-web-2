@@ -38,7 +38,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="mt-20 min-h-[100vh]">
+    <section className="min-h-[100vh] bg-[#EAE9E7] pt-20">
       <div>
         <div className="w-full py-8">
           <HText textAlign="text-center">SERVICES</HText>
@@ -47,7 +47,7 @@ const Services = () => {
           {categories.map((product) => (
             <div
               key={product.id}
-              className="flex flex-col items-center justify-center bg-white p-2 md:p-8"
+              className="flex flex-col items-center justify-center p-2 md:p-8"
             >
               <img src={product.image} alt={product.name} />
               <SText textAlign="text-center">{product.name}</SText>

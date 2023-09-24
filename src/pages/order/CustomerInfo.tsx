@@ -329,7 +329,7 @@ const CustomerInfo = ({}: Props) => {
                   <button
                     disabled={buttonDisabled}
                     type="submit"
-                    className="float-right rounded-none bg-secondary-500 px-8 py-1"
+                    className="float-right rounded-none bg-secondary-500 px-8 py-1 text-white"
                   >
                     {step == 2 ? "Place Order" : "Next"}
                   </button>

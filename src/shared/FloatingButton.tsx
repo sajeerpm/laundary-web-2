@@ -2,26 +2,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import useMediaQuery from "@/hooks/useMediaQuery";
+// import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface FloatingButtonProps {
   path: string;
 }
 
 const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  // const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   return (
-    <div id="floating-button">
+    <div id="floating-button" className="flex items-center justify-center">
       <div
-        className={`fixed flex flex-col gap-5 md:right-10 md:top-24 ${
-          isAboveMediumScreens
-            ? "right-5 top-20 items-center justify-center"
-            : "right-5 top-20 items-end"
-        }`}
+        className={`fixed bottom-0 flex items-center gap-5 py-2 md:right-[10px] md:top-[15%] md:flex-col md:items-end md:py-0`}
       >
         {path != "/" && (
           <Link to={`/`}>
-            <button className="rounded-full bg-secondary-500 px-3 py-2 text-gray-700 shadow-2xl md:px-6 md:py-3">
+            <button className="rounded-full bg-secondary-500 px-3 py-2 text-white shadow-2xl md:px-6 md:py-3">
               Order Now
             </button>
           </Link>

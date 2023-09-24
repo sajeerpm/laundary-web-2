@@ -49,17 +49,27 @@ const Account = ({}: Props) => {
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
-        const response = await axiosClient.get("/orders", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setCustomerData(response.data.customer);
-        setName(response.data.customer.name);
-        setEmail(response.data.customer.email);
-        setPhone(response.data.customer.phone_number);
+        axiosClient
+          .get("/orders", {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          })
+          .then(({ data }) => {
+            setCustomerData(data.customer);
+            setName(data.customer.name);
+            setEmail(data.customer.email);
+            setPhone(data.customer.phone_number);
+          })
+          .catch(async (err) => {
+            const error = err.response;
+            if (error && error.status >= 400) {
+              localStorage.removeItem("ACCESS_TOKEN");
+              navigate("/login");
+            }
+          });
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     };
 
@@ -272,9 +282,9 @@ const Account = ({}: Props) => {
               </div>
               <p className="pt-4 font-montserrat text-lg">Address Book:</p>
               <hr className="py-2" />
-              <div className="grid grid-cols-5">
+              <div className="grid grid-cols-5 gap-6">
                 {customerData?.addresses.map((address) => (
-                  <div className="my-4 border-b-2">
+                  <div className="border-b-2">
                     {address.full_address.split("\n").map((line) => (
                       <div className="">
                         <p>{line}</p>

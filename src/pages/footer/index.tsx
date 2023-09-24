@@ -56,7 +56,7 @@ const Footer = () => {
             NW8 0DU, UK
           </p>
 
-          <p className="text-left">
+          <p className="pt-4 text-left md:pt-0">
             <strong>Contact Details</strong>
             <br />
             Main: 020 7328 5621

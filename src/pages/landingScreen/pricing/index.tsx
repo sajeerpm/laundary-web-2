@@ -67,7 +67,7 @@ const Pricing1 = ({}: Props) => {
         </div>
         <div className="flex w-full justify-center">
           <Link to={`/${SelectedPage.Pricing}`}>
-            <button className="rounded-full bg-primary-300 px-12 py-3 text-gray-700">
+            <button className="rounded-full bg-secondary-500 px-12 py-3 text-gray-700 text-white">
               FULL PRICE LIST
             </button>
           </Link>

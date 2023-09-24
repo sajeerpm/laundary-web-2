@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DryCleaningBackground from "@/assets/images/dry-cleaning.jpg";
+import DryCleaningBackground from "@/assets/prices.webp";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
@@ -64,10 +64,10 @@ const Pricing = () => {
         >
           <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">
             <HText textAlign="text-center">
-              <p className="w-full uppercase text-black">Our Prices</p>
+              <p className="w-full uppercase text-white">Our Prices</p>
             </HText>
             <SHText textAlign="text-center text-xl">
-              <p className="w-full text-black">
+              <p className="w-full text-white">
                 Price may vary according to the garments
               </p>
             </SHText>
@@ -85,7 +85,7 @@ const Pricing = () => {
               <div
                 className={`${gridButtonHight} flex cursor-pointer flex-col items-center justify-center rounded-none border border-black px-4 py-1 text-center text-xs uppercase md:py-4 md:tracking-[1.8px] ${
                   activeTab === category.id
-                    ? "text bg-secondary-500 text-black"
+                    ? "text bg-secondary-500 text-white"
                     : "bg-white text-black"
                 }`}
                 onClick={() => handleTabClick(category.id, category.name)}

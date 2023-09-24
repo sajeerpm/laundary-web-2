@@ -1,6 +1,8 @@
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
-import FAQBackgroundImage from "@/assets/images/unsplash-4.jpg";
+import FAQBackgroundImage from "@/assets/bg-faq.jpeg";
+import FAQMobileBackgroundImage from "@/assets/faq-mobile.svg";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface FAQItem {
   id: number;
@@ -9,6 +11,7 @@ interface FAQItem {
 }
 
 const FAQ: React.FC = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [faqItems] = useState<FAQItem[]>([
     {
       id: 1,
@@ -61,7 +64,9 @@ const FAQ: React.FC = () => {
     <section
       className="items-center justify-center md:flex"
       style={{
-        backgroundImage: `url(${FAQBackgroundImage})`,
+        backgroundImage: `url(${
+          isAboveMediumScreens ? FAQBackgroundImage : FAQMobileBackgroundImage
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -75,7 +80,7 @@ const FAQ: React.FC = () => {
             {faqItems.map((item) => (
               <div
                 key={item.id}
-                className="mb-3 overflow-hidden rounded-lg bg-white shadow-lg"
+                className="mb-3 overflow-hidden rounded-lg border border-black bg-white shadow-lg"
                 onClick={() => toggleItem(item.id)}
               >
                 <div className="flex cursor-pointer items-center justify-between px-6 py-4">

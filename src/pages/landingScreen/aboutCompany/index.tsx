@@ -106,7 +106,7 @@ const AboutCompany = ({}: Props) => {
       </div>
       <div className="flex justify-center md:w-full">
         <AnchorLink
-          className="rounded-full bg-secondary-500 px-14 py-2 text-center text-black md:px-14"
+          className="rounded-full bg-primary-500 px-14 py-2 text-center text-white md:px-14"
           onClick={() => {}}
           href={`#${SelectedPage.Home}`}
         >

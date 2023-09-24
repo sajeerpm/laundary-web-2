@@ -335,7 +335,7 @@ const Corperates: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="mt-20 min-h-[100vh] w-full pb-8">
+      <div className="mt-[4.5rem] min-h-[100vh] w-full pb-8">
         <div className="mx-auto w-5/6">
           <div className="w-full py-8">
             <HText textAlign="text-center">SERVICE AREAS</HText>
@@ -354,7 +354,7 @@ const Corperates: React.FC = () => {
             {items.map((tile) => (
               <div
                 key={tile.id}
-                className="flex flex-col items-center overflow-hidden rounded-lg bg-white/30 p-8 shadow-lg backdrop-blur-xl"
+                className="flex flex-col items-center overflow-hidden rounded-lg bg-white/80 p-8 shadow-lg backdrop-blur-xl"
               >
                 <div className="p-4">
                   <h2 className="mb-2 text-xl font-bold text-black">
@@ -362,7 +362,7 @@ const Corperates: React.FC = () => {
                   </h2>
                   <p className="text-gray-700">{}</p>
                 </div>
-                <ul className="text-black">
+                <ul className="text-gray-700">
                   {tile.areas.map((area, index) => (
                     <li key={index}>
                       <Link to={`/`}>{area}</Link>

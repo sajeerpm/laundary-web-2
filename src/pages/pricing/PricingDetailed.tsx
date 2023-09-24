@@ -2,20 +2,23 @@ import { useEffect, useState } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
 import { useParams } from "react-router-dom";
-import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
+// import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
 import axiosClient from "@/axiosClient";
 import Loading from "@/shared/Loading";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface Service {
   id: number;
   name: string;
   image: string;
   bannerimage: string;
+  bannermobileimage: string;
   description: string;
   details: string;
 }
 
 const PricingDetailed = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1600px)");
   const { id } = useParams();
   const [categories, setData] = useState<Service>();
   const [loading, setLoading] = useState(true);
@@ -38,28 +41,28 @@ const PricingDetailed = () => {
   }, []);
 
   return (
-    <section id="home" className="mt-[76px] flex flex-col bg-[#edecef] md:pb-0">
-      <div>
-        <div className="items-center justify-center md:flex">
-          <div
-            className="top-0 flex h-[80vh] w-full flex-col items-center justify-center"
-            style={{
-              backgroundImage: `url(${
-                categories?.bannerimage ?? PricingDetailsBackgroundImage
-              })`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundAttachment: "fixed",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div className="flex w-full flex-col items-center overflow-hidden rounded-none bg-white/30 p-3 backdrop-blur-sm">
+    <section id="home" className="flex flex-col bg-[#edecef] md:pb-0">
+      <div className="mt-24 md:mt-32">
+        <div className="mx-auto w-5/6 items-center justify-center md:flex">
+          <div className="flex w-full flex-col">
+            {/* {categories && (
+              <img
+                className="h-[50vh] w-full md:h-full"
+                src={
+                  isAboveMediumScreens
+                    ? categories?.bannerimage
+                    : categories?.bannerimage.split(".jpg")[0] + "_mobile.jpg"
+                }
+              />
+            )} */}
+            <div className="mb-6 flex w-full flex-col overflow-hidden rounded-none">
               <HText textAlign="text-center text-black">
                 <p className="w-full uppercase">{categories?.name ?? ""}</p>
               </HText>
-              <SHText textAlign="text-center text-black">
-                <p className="w-full text-[18px]">COLLECTED AND DELIVERED</p>
-                <p className="w-full text-[18px]">TO YOUR DOOR</p>
+              <SHText textAlign="text-center text-yellow-500">
+                <p className="w-full text-[14px]">
+                  COLLECTED AND DELIVERED TO YOUR DOOR
+                </p>
               </SHText>
             </div>
             {/* <div className="flex w-full justify-center py-16">
@@ -70,13 +73,20 @@ const PricingDetailed = () => {
               Price List
             </Link>
           </div> */}
+            {categories?.bannerimage && (
+              <img
+                className="w-full rounded-[1rem]"
+                src={
+                  isAboveMediumScreens
+                    ? categories?.bannerimage
+                    : categories?.bannermobileimage
+                }
+              />
+            )}
           </div>
         </div>
         <div className="mx-auto flex w-5/6 flex-col items-center">
-          <div className="pt-8">
-            <SHText textAlign="text center">{categories?.name ?? ""}</SHText>
-          </div>
-          <div className="w-full py-12">
+          <div className="w-full py-4">
             <div
               dangerouslySetInnerHTML={{
                 __html: categories?.details ?? "",

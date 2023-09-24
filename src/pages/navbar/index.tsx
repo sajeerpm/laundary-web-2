@@ -23,7 +23,9 @@ const Navbar = ({ isTopOfPage }: Props) => {
   const [isOpenAvatarPopup, setIsDropdownOpen] = useState<boolean>(false);
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const navbarBackground = isTopOfPage ? "" : "bg-white drop-shadow";
+  const navbarBackground = isTopOfPage
+    ? "bg-white md:bg-transparent"
+    : "bg-white md:bg-transparent drop-shadow";
   const [selectedPage, setSelectedPage] = useState(SelectedPage.Home);
   const [userData, setUserData] = useState<User | undefined>();
   const token = localStorage.getItem("ACCESS_TOKEN");
@@ -81,19 +83,25 @@ const Navbar = ({ isTopOfPage }: Props) => {
   return (
     <nav>
       <div
-        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-3`}
+        className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full md:py-6`}
       >
-        <div className={`${flexBetween} mx-auto w-5/6`}>
+        <div
+          className={`${flexBetween} mx-auto w-full rounded-full px-2 py-3 md:w-11/12 md:bg-white md:px-6`}
+        >
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            <img className="h-[42px] md:h-[52px]" alt="logo" src={Logo} />
+            <img className="h-[32px] md:h-[42px]" alt="logo" src={Logo} />
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween}`}>
-                <div className={`${flexBetween} gap-8 text-sm`}>
+                <div className={`${flexBetween} gap-5 text-sm`}>
                   <Link
-                    className={`rounded-full bg-secondary-500 px-8 py-2 uppercase text-gray-700 shadow-md hover:shadow-lg`}
+                    className={`uppercase ${
+                      selectedPage === SelectedPage.Home
+                        ? "border-b-[1px] border-b-red-900"
+                        : ""
+                    }`}
                     to="/"
                     onClick={() => handleOnClick(SelectedPage.Home)}
                   >
@@ -178,8 +186,9 @@ const Navbar = ({ isTopOfPage }: Props) => {
                       LOGIN
                     </Link>
                   )}
+                  <span>|</span>
                   <a
-                    className="uppercase hover:text-blue-700"
+                    className="uppercase hover:text-primary-500"
                     href="tel:+442073285621"
                   >
                     T (020) 7328 5621
@@ -220,10 +229,10 @@ const Navbar = ({ isTopOfPage }: Props) => {
               </div>
             ) : (
               <button
-                className="rounded-full bg-secondary-500 p-2"
+                className="rounded-full p-2 md:bg-secondary-500"
                 onClick={() => setIsMenuToggled(!isMenuToggled)}
               >
-                <Bars3Icon className="h-6 w-6 text-white" />
+                <Bars3Icon className="h-[32px] w-[32px] text-black md:text-white" />
               </button>
             )}
           </div>
@@ -232,7 +241,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
 
       {/* MOBILE MENU MODAL */}
       {!isAboveMediumScreens && isMenuToggled && (
-        <div className="fixed bottom-0 right-0 z-40 h-full w-full overflow-y-auto bg-black py-8 font-montserrat font-extralight drop-shadow-xl">
+        <div className="fixed bottom-0 right-0 z-40 h-full w-full overflow-y-auto bg-white py-8 font-montserrat font-extralight drop-shadow-xl">
           {/* CLOSE ICON */}
           <div className="flex justify-end px-8">
             <button onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -243,14 +252,14 @@ const Navbar = ({ isTopOfPage }: Props) => {
           {/* MENU ITEMS */}
           <div className="flex flex-col items-center justify-center gap-6 text-lg text-white">
             <Link
-              className={`w-60 rounded-full bg-secondary-500 px-8 py-2 text-center uppercase text-gray-700 shadow-md hover:shadow-lg`}
+              className={`w-60 rounded-full bg-secondary-500 px-8 py-2 text-center uppercase text-white shadow-md hover:shadow-lg`}
               to="/"
               onClick={() => handleOnClick(SelectedPage.Home)}
             >
               Orders
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Pricing
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -261,7 +270,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               PRICING
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Services
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -272,7 +281,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               SERVICES
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Areas
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -283,7 +292,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               Areas
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Faqs
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -294,7 +303,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               FAQS
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Corperates
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -305,7 +314,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               Corperates
             </Link>
             <Link
-              className={`text-center uppercase ${
+              className={`text-center uppercase text-black ${
                 selectedPage === SelectedPage.Branches
                   ? "border-b-[1px] border-b-red-900"
                   : ""
@@ -317,7 +326,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
             </Link>
             {token == null && (
               <Link
-                className={`text-center uppercase ${
+                className={`text-center uppercase text-black ${
                   selectedPage === SelectedPage.Login
                     ? "border-b-[1px] border-b-red-900"
                     : ""
@@ -328,12 +337,12 @@ const Navbar = ({ isTopOfPage }: Props) => {
                 LOGIN
               </Link>
             )}
-            <Link className="text-center uppercase" to="/login">
+            <Link className="text-center uppercase text-black" to="/login">
               T (020) 6010 3949
             </Link>
             {token != null && (
               <Link
-                className="text-center uppercase"
+                className="text-center uppercase text-black"
                 to="/account"
                 onClick={() => handleOnClick(SelectedPage.Account)}
               >
@@ -342,7 +351,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
             )}
             {token != null && (
               <span
-                className={`cursor-pointer text-center uppercase`}
+                className={`cursor-pointer text-center uppercase text-black`}
                 onClick={() => handleLogOut()}
               >
                 LOGOUT

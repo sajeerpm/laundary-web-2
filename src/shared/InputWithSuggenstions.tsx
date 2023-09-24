@@ -1,4 +1,4 @@
-import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+// import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import React, { useEffect, useRef, useState } from "react";
 import { getAddressSuggestions } from "@/hooks/LoqateService";
 
@@ -70,14 +70,14 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
   return (
     <div className="relative">
       <div className="textbox-container mt-3 h-[48px] bg-white">
-        <ArrowLongRightIcon className="h-6 w-6 text-black" />
+        {/* <ArrowLongRightIcon className="h-6 w-6 text-black" /> */}
         <input
           required
           placeholder={placeholder}
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          className="textbox-input w-full border text-center focus:outline-none"
+          className="textbox-input w-full border px-4 text-[14px] focus:outline-none md:text-[16px]"
           ref={inputRef}
         />
       </div>

@@ -64,11 +64,11 @@ const Branches: React.FC = () => {
   }, []);
 
   return (
-    <section className="mt-20">
+    <section className="bg-[#EAE9E7] py-8 pt-20">
       <div className="w-full py-8">
         <HText textAlign="text-center">SERVICE AREAS</HText>
       </div>
-      <div className="mx-auto w-5/6 md:flex md:h-[100vh]">
+      <div className="mx-auto w-5/6 md:flex md:h-[70vh]">
         <div className="bg-gray-400 p-2 md:w-1/4">
           {isAboveMediumScreens ? (
             <ul className="space-y-2 ">
@@ -111,7 +111,7 @@ const Branches: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="h-[50vh] w-full bg-gray-300 md:h-[100vh]">
+        <div className="h-[50vh] w-full bg-gray-300 md:h-[70vh]">
           {selectedStore && (
             <iframe
               src={selectedStore.mapUrl}

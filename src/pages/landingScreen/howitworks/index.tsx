@@ -54,7 +54,7 @@ const HowItWorks = ({}: Props) => {
         </div>
         <div className="flex w-full justify-center">
           <AnchorLink
-            className=" rounded-full bg-secondary-500 px-10 py-2 text-center"
+            className="rounded-full bg-secondary-500 px-10 py-2 text-center text-white"
             onClick={() => {}}
             href={`#${SelectedPage.Home}`}
           >
