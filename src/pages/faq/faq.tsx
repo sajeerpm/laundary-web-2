@@ -72,10 +72,10 @@ const FAQ: React.FC = () => {
       }}
     >
       <div className="mx-auto mt-20 w-5/6">
-        <div className="w-full py-20">
+        <div className="w-full pb-10 pt-10 md:pt-20">
           <HText textAlign="text-center">FREQUENTLY ASKED QUESTIONS</HText>
         </div>
-        <div className="h-[100vh] py-8 md:px-4">
+        <div className="h-[100vh]">
           <div className="mx-auto max-w-5xl">
             {faqItems.map((item) => (
               <div

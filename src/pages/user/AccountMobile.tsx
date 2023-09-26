@@ -31,12 +31,22 @@ const AccountMobile = ({}: Props) => {
   useEffect(() => {
     const fetchCustomerData = async () => {
       try {
-        const response = await axiosClient.get("/orders", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setCustomerData(response.data.customer);
+        axiosClient
+          .get("/orders", {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          })
+          .then(({ data }) => {
+            setCustomerData(data.customer);
+          })
+          .catch(async (err) => {
+            const error = err.response;
+            if (error && error.status >= 400) {
+              localStorage.removeItem("ACCESS_TOKEN");
+              navigate("/login");
+            }
+          });
       } catch (error) {
         console.error(error);
       }

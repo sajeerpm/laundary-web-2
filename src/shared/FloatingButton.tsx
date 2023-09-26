@@ -13,7 +13,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
   return (
     <div id="floating-button" className="flex items-center justify-center">
       <div
-        className={`fixed bottom-0 flex items-center gap-5 py-2 md:right-[10px] md:top-[15%] md:flex-col md:items-end md:py-0`}
+        className={`fixed right-[8px] top-[40%] flex flex-col items-end gap-5 py-0`}
       >
         {path != "/" && (
           <Link to={`/`}>

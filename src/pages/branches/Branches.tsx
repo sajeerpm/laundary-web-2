@@ -69,7 +69,7 @@ const Branches: React.FC = () => {
         <HText textAlign="text-center">SERVICE AREAS</HText>
       </div>
       <div className="mx-auto w-5/6 md:flex md:h-[70vh]">
-        <div className="bg-gray-400 p-2 md:w-1/4">
+        <div className="overflow-x-auto bg-gray-400 p-2 md:w-1/4">
           {isAboveMediumScreens ? (
             <ul className="space-y-2 ">
               {stores.map((store) => (
