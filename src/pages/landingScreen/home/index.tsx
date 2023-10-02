@@ -140,7 +140,7 @@ const Home = ({}: Props) => {
               <div className="textbox-container mt-3 flex h-[48px] bg-white">
                 <div className="w-full border-r-2 bg-white pr-3">
                   <select
-                    className="w-full bg-white px-4 text-[14px] md:text-[16px]"
+                    className="w-full bg-white px-2 text-[14px] md:px-4 md:text-[16px]"
                     onChange={handlePickupSlotChange}
                     required
                   >
@@ -154,7 +154,7 @@ const Home = ({}: Props) => {
                 </div>
                 <div className="w-full bg-white">
                   <select
-                    className="w-full bg-white px-4 text-[14px] md:text-[16px]"
+                    className="w-full bg-white px-2 text-[14px] md:px-4 md:text-[16px]"
                     onChange={handleDeliverySlotChange}
                     required
                   >

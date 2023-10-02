@@ -1,7 +1,7 @@
 import SHText from "@/shared/SHText";
 import { SelectedPage } from "@/shared/types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
-import Service from "@/assets/clothes-folded.png";
+import Service from "@/assets/wash-fold-service.png";
 import ScheduleOrder from "@/assets/schedule-order.png";
 import PickupVan from "@/assets/pickup-van.png";
 

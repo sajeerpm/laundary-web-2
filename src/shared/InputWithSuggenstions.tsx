@@ -77,7 +77,7 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          className="textbox-input w-full border px-4 text-[14px] focus:outline-none md:text-[16px]"
+          className="textbox-input w-full border px-2 text-[14px] focus:outline-none md:px-4 md:text-[16px]"
           ref={inputRef}
         />
       </div>

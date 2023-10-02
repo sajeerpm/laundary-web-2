@@ -156,8 +156,16 @@ const CustomerInfo = ({}: Props) => {
       axiosClient
         .post("/placeorder", payload)
         .then(({ data }) => {
-          if (data.url) {
-            window.location.href = data.url;
+          if (data.status) {
+            // window.location.href = data.url;
+            navigate(
+              "/order/payment/" +
+                data.order.order_id +
+                "/" +
+                data.order.amount +
+                "/" +
+                data.order.product
+            );
           }
           setButtonDisable(false);
         })
@@ -315,7 +323,7 @@ const CustomerInfo = ({}: Props) => {
                 />
               )}
               {/* Delivery Information Section */}
-              {step == 3 && <OrderSuccess />}
+              {step == 3 && <OrderSuccess order={null} />}
               <div className="mb-4">
                 {/* {step > 0 && (
                 <button
@@ -326,13 +334,15 @@ const CustomerInfo = ({}: Props) => {
                 </button>
               )} */}
                 {step < 3 && (
-                  <button
-                    disabled={buttonDisabled}
-                    type="submit"
-                    className="float-right rounded-none bg-secondary-500 px-8 py-1 text-white"
-                  >
-                    {step == 2 ? "Place Order" : "Next"}
-                  </button>
+                  <div>
+                    <button
+                      disabled={buttonDisabled}
+                      type="submit"
+                      className="float-right rounded-none bg-secondary-500 px-8 py-1 text-white"
+                    >
+                      {step == 2 ? "Place Order" : "Next"}
+                    </button>
+                  </div>
                 )}
               </div>
             </form>

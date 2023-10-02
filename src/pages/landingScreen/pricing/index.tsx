@@ -1,11 +1,11 @@
 import SHText from "@/shared/SHText";
 import { SelectedPage } from "@/shared/types";
 import { Link } from "react-router-dom";
-import AsianTraditionalDryCleaning from "@/assets/traditional-wear.png";
+import AsianTraditionalDryCleaning from "@/assets/asian-traditional-dry-cleaning.png";
 import InvisibleMending from "@/assets/invisible-mending.png";
-import RunningService from "@/assets/running.png";
-import AlterationAndRepair from "@/assets/ribbon-cutting.png";
-import CurtainService from "@/assets/curtain.png";
+import RunningService from "@/assets/trainer-cleaning.png";
+import AlterationAndRepair from "@/assets/alteration-repair.png";
+import CurtainService from "@/assets/curtain-cleaning.png";
 
 type Props = {};
 

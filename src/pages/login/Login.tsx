@@ -38,7 +38,7 @@ const Home = () => {
       })
       .catch((err) => {
         const response = err.response;
-        if (response && response.status === 422) {
+        if (response && response.status !== 200) {
           setError(response.data.message);
         }
       });

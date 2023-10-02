@@ -23,6 +23,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import useMediaQuery from "./hooks/useMediaQuery";
 import AccountMobile from "./pages/user/AccountMobile";
 import OrderComplete from "./pages/order/OrderComplete";
+import Payment from "./pages/order/Payment";
 
 function App() {
   const location = useLocation();
@@ -89,7 +90,12 @@ function App() {
         <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
-        <Route element={<OrderComplete />} path="/order/complete" />
+        <Route element={<OrderComplete />} path="/order/complete/:id" />
+        <Route element={<OrderComplete />} path="/order/cancel/:id" />
+        <Route
+          element={<Payment />}
+          path="/order/payment/:id/:amount/:product"
+        />
       </Routes>
       {!(path === "/customer" || path === "/account") && <Footer />}
       {path != "/customer" && <FloatingButton path={path} />}
