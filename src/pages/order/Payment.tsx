@@ -1,10 +1,13 @@
 import axiosClient from "@/axiosClient";
 import PayPalButton from "@/hooks/PayPalButton";
+import AlertPopup from "@/shared/AlertPopup";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 type Props = {};
 
 const Payment = ({}: Props) => {
+  const [showAlert, setShowAlert] = useState(false);
   const { id } = useParams();
   const { amount } = useParams();
   const { product } = useParams();
@@ -21,11 +24,23 @@ const Payment = ({}: Props) => {
     }
   };
 
+  useEffect(() => {
+    handleShowAlert();
+  }, []);
+
   //   const handlePaypalPayment = (
   //     id: string,
   //     amount: string,
   //     product: string
   //   ) => {};
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   return (
     <section
@@ -57,6 +72,13 @@ const Payment = ({}: Props) => {
           </div>
         </div>
       </div>
+      {showAlert && (
+        <AlertPopup
+          message="Please pay and bag your items, your collection will be booked. We will count the items and inform you.
+        That will save your time please."
+          onClose={handleCloseAlert}
+        />
+      )}
     </section>
   );
 };

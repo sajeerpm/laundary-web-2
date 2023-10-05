@@ -84,7 +84,7 @@ function App() {
         <Route element={<Branches />} path="/branches" />
         <Route element={<FAQ />} path="/faqs" />
         <Route element={<Corporates />} path="/corperates" />
-        <Route element={<PricingDetailed />} path="/pricing/:id" />
+        <Route element={<PricingDetailed />} path="/:id/" />
         <Route element={<TermsAndConditions />} path="/terms" />
         <Route element={<PrivacyPolicy />} path="/privacy" />
         <Route element={<AboutUs />} path="/aboutus" />

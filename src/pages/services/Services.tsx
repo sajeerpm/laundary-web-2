@@ -10,6 +10,7 @@ interface Service {
   id: number;
   name: string;
   image: string;
+  category_code: string;
   description: string;
 }
 
@@ -52,13 +53,9 @@ const Services = () => {
               <img src={product.image} alt={product.name} />
               <SText textAlign="text-center">{product.name}</SText>
               <p className="text-center align-top">{product.description}</p>
-              <Link
-                to={`/pricing/${
-                  product.name.toLowerCase().replace(/\s/g, "") + ".html"
-                }`}
-              >
+              <Link to={`/${product.category_code}/`}>
                 <button
-                  key={product.name}
+                  key={product.category_code}
                   className="my-8 rounded-none border border-black px-12 py-2"
                 >
                   INFO

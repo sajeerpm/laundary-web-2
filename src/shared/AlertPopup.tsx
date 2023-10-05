@@ -12,7 +12,7 @@ const AlertModal: React.FC<AlertModalProps> = ({ message, onClose }) => {
         <div className="mb-2 text-lg font-bold">Alert</div>
         <div className="mb-4">{message}</div>
         <button
-          className="float-right rounded-full bg-secondary-500 px-12 py-2 text-black"
+          className="float-right rounded-full bg-secondary-500 px-12 py-2 text-white"
           onClick={onClose}
         >
           Ok

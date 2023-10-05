@@ -17,8 +17,7 @@ const OrderSuccess = ({ order }: Props) => {
           Your Order is confirmed!
         </h2>
         <p className="py-2 text-center">
-          We will be sending you an email confirmation to
-          example@masterdrycleaner.co.uk shortly
+          We will be sending you an email confirmation to your email shortly
         </p>
         {order && (
           <div className="my-8 border p-4 text-gray-600">
