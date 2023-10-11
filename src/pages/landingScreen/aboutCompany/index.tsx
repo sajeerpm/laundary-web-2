@@ -14,7 +14,7 @@ const AboutCompany = ({}: Props) => {
     <section id="about-company" className="w-full bg-black py-16 text-white">
       <div className="mx-auto flex w-5/6 flex-col items-center justify-center">
         <div>
-          <img src={Logo} />
+          <img src={Logo} alt="Dry Cleaning London" />
         </div>
         <motion.div
           initial="hidden"
@@ -108,7 +108,7 @@ const AboutCompany = ({}: Props) => {
         <AnchorLink
           className="rounded-full bg-primary-500 px-14 py-2 text-center text-white md:px-14"
           onClick={() => {}}
-          href={`#${SelectedPage.Home}`}
+          href={`#${SelectedPage.Order}`}
         >
           BOOK AN ORDER
         </AnchorLink>

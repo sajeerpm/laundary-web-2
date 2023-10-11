@@ -1,14 +1,15 @@
 export enum SelectedPage {
-  Home = "home",
-  Pricing = "pricing",
-  Services = "services",
-  HowItWorks = "howitworks",
-  Areas = "areas",
-  Faqs = "faqs",
-  Corperates = "corperates",
-  Login = "login",
-  Branches = "branches",
-  Account = "account",
+  Home = "/",
+  Pricing = "/pricing",
+  Services = "/services",
+  HowItWorks = "/howitworks",
+  Areas = "/areas",
+  Faqs = "/faqs",
+  Corperates = "/corperates",
+  Login = "/login",
+  Branches = "/branches",
+  Account = "/account",
+  Order = "order",
 }
 
 export interface BenefitType {

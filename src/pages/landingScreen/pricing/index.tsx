@@ -23,7 +23,11 @@ const Pricing1 = ({}: Props) => {
           <div className="w-full">
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5">
               <li className="flex flex-col items-center justify-center pb-6">
-                <img className="w-[84px]" src={AsianTraditionalDryCleaning} />
+                <img
+                  className="w-[84px]"
+                  src={AsianTraditionalDryCleaning}
+                  alt="Dry Cleaning London"
+                />
                 <div className="">
                   <p className="py-2 text-center uppercase">
                     Asian and Traditional clothes
@@ -31,7 +35,11 @@ const Pricing1 = ({}: Props) => {
                 </div>
               </li>
               <li className="flex flex-col items-center justify-center pb-6">
-                <img className="w-[84px]" src={RunningService} />
+                <img
+                  className="w-[84px]"
+                  src={RunningService}
+                  alt="Dry Cleaning London"
+                />
                 <div className="">
                   <p className="py-2 text-center uppercase">
                     Trainers cleaning
@@ -39,7 +47,11 @@ const Pricing1 = ({}: Props) => {
                 </div>
               </li>
               <li className="flex flex-col items-center justify-center pb-6">
-                <img className="w-[84px]" src={AlterationAndRepair} />
+                <img
+                  className="w-[84px]"
+                  src={AlterationAndRepair}
+                  alt="Dry Cleaning London"
+                />
                 <div className="">
                   <p className="py-2 text-center uppercase">
                     Tailoring and Alteration
@@ -47,7 +59,11 @@ const Pricing1 = ({}: Props) => {
                 </div>
               </li>
               <li className="flex flex-col items-center justify-center pb-6">
-                <img className="w-[84px]" src={CurtainService} />
+                <img
+                  className="w-[84px]"
+                  src={CurtainService}
+                  alt="Dry Cleaning London"
+                />
                 <div className="">
                   <p className="py-2 text-center uppercase">
                     Curtains cleaning
@@ -55,7 +71,11 @@ const Pricing1 = ({}: Props) => {
                 </div>
               </li>
               <li className="flex flex-col items-center justify-center pb-6">
-                <img className="w-[84px]" src={InvisibleMending} />
+                <img
+                  className="w-[84px]"
+                  src={InvisibleMending}
+                  alt="Dry Cleaning London"
+                />
                 <div className="">
                   <p className="py-2 text-center uppercase">
                     Invisible mending
@@ -66,7 +86,7 @@ const Pricing1 = ({}: Props) => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <Link to={`/${SelectedPage.Pricing}`}>
+          <Link to={`${SelectedPage.Pricing}`}>
             <button className="rounded-full bg-secondary-500 px-12 py-3 text-gray-700 text-white">
               FULL PRICE LIST
             </button>

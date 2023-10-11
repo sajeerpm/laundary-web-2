@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
 import axiosClient from "@/axiosClient";
 import Loading from "@/shared/Loading";
@@ -18,7 +18,6 @@ interface Service {
 }
 
 const PricingDetailed = () => {
-  const navigate = useNavigate();
   const isAboveMediumScreens = useMediaQuery("(min-width: 1600px)");
   const { id } = useParams();
   const [categories, setData] = useState<Service>();
@@ -33,7 +32,7 @@ const PricingDetailed = () => {
       } catch (error) {
         console.error(error);
         setLoading(false);
-        navigate("/areas");
+        window.location.href = "/";
       }
     };
 

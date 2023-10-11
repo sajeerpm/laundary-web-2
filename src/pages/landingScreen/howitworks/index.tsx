@@ -19,7 +19,7 @@ const HowItWorks = ({}: Props) => {
         </div>
         <div className="justify-between py-16 md:flex">
           <div className="flex flex-col items-center">
-            <img src={ScheduleOrder} />
+            <img src={ScheduleOrder} alt="Dry Cleaning London" />
             <div className="my-6 w-3/6 text-center">
               <p className="text-[18px]">1.</p>
               <p className="text-[18px]">
@@ -29,7 +29,7 @@ const HowItWorks = ({}: Props) => {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <img src={PickupVan} />
+            <img src={PickupVan} alt="Dry Cleaning London" />
             <div className="my-6 w-3/6 text-center">
               <p className="text-[18px]">2.</p>
               <p className="text-[18px]">
@@ -41,7 +41,7 @@ const HowItWorks = ({}: Props) => {
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <img src={Service} />
+            <img src={Service} alt="Dry Cleaning London" />
             <div className="my-6 w-3/6 text-center">
               <p className="text-[18px]">3.</p>
               <p className="text-[18px]">
@@ -56,7 +56,7 @@ const HowItWorks = ({}: Props) => {
           <AnchorLink
             className="rounded-full bg-secondary-500 px-10 py-2 text-center text-white"
             onClick={() => {}}
-            href={`#${SelectedPage.Home}`}
+            href={`#${SelectedPage.Order}`}
           >
             ORDER NOW
           </AnchorLink>

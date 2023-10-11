@@ -27,6 +27,13 @@ const AccountMobile = ({}: Props) => {
   const [activeTab, setActiveTab] = useState<number>(1);
   const [selectedOrder, setSelectedOrder] = useState<CustomerOrder>();
   const token = localStorage.getItem("ACCESS_TOKEN");
+  // const statusMap = {
+  //   "pending payment": "bg-red-500 text-white",
+  //   pending: "bg-green-500 text-white",
+  //   collected: "bg-yellow-500 text-black",
+  //   invoiced: "bg-red-500 text-white",
+  //   "pending payment": "bg-red-500 text-white",
+  // };
 
   useEffect(() => {
     const fetchCustomerData = async () => {
@@ -74,6 +81,10 @@ const AccountMobile = ({}: Props) => {
     }
     localStorage.removeItem("ACCESS_TOKEN");
     navigate("/login");
+  };
+
+  const handlePayNow = (id: Number, amount: Number, product: string) => {
+    navigate("/order/payment/" + id + "/" + amount + "/" + product);
   };
 
   return (
@@ -202,7 +213,7 @@ const AccountMobile = ({}: Props) => {
                     </p>
                     <p>{selectedOrder?.order_date}</p>
                   </div>
-                  <span className="text-right font-bold capitalize">
+                  <span className="rounded-full bg-green-500 px-4 capitalize text-white">
                     {selectedOrder?.status}
                   </span>
                 </div>
@@ -250,7 +261,11 @@ const AccountMobile = ({}: Props) => {
               <div className="flow-col mt-2 flex justify-between">
                 <p>Online Payment</p>
                 <p className="text-lg font-bold">
-                  {"£" + Number(selectedOrder?.total).toFixed(2)}
+                  {"£" +
+                    (
+                      Number(selectedOrder?.total) -
+                      Number(selectedOrder?.amount_due)
+                    ).toFixed(2)}
                 </p>
               </div>
               <div className="flow-col mt-2 flex justify-between">
@@ -263,6 +278,26 @@ const AccountMobile = ({}: Props) => {
                 </p>
               </div>
             </div>
+            {Number(selectedOrder?.amount_due) > 0 &&
+              selectedOrder?.status == "pending payment" && (
+                <div className="flex w-full flex-row justify-evenly gap-1">
+                  <button
+                    onClick={() =>
+                      handlePayNow(
+                        selectedOrder?.id ?? 0,
+                        selectedOrder?.amount_due ?? 0,
+                        "Skip Basket"
+                      )
+                    }
+                    className="w-full bg-green-500 px-6 py-4 text-white shadow-md"
+                  >
+                    Pay Now
+                  </button>
+                  <button className="w-full bg-red-500 px-6 py-4 text-white shadow-md">
+                    Cancel Order
+                  </button>
+                </div>
+              )}
           </>
         )}
 

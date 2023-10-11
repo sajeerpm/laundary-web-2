@@ -9,7 +9,11 @@ const OrderSuccess = ({ order }: Props) => {
   return (
     <div className="flex items-center justify-center bg-white">
       <div className="flex flex-col items-center justify-center space-x-2">
-        <img src={SuccessTick} className="h-32 w-32" />
+        <img
+          src={SuccessTick}
+          alt="Dry Cleaning London"
+          className="h-32 w-32"
+        />
         <h3 className="my-3 text-center text-lg uppercase md:text-2xl">
           thank you
         </h3>

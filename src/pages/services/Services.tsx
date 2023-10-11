@@ -50,7 +50,7 @@ const Services = () => {
               key={product.id}
               className="flex flex-col items-center justify-center p-2 md:p-8"
             >
-              <img src={product.image} alt={product.name} />
+              <img src={product.image} alt="Dry Cleaning London" />
               <SText textAlign="text-center">{product.name}</SText>
               <p className="text-center align-top">{product.description}</p>
               <Link to={`/${product.category_code}/`}>

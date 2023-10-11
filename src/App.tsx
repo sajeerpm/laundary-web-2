@@ -24,6 +24,8 @@ import useMediaQuery from "./hooks/useMediaQuery";
 import AccountMobile from "./pages/user/AccountMobile";
 import OrderComplete from "./pages/order/OrderComplete";
 import Payment from "./pages/order/Payment";
+import { initGA } from "./analytics/analytics";
+import Maintenance from "./pages/pageNotFound/Maintenance";
 
 function App() {
   const location = useLocation();
@@ -32,6 +34,7 @@ function App() {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
 
   useEffect(() => {
+    initGA();
     const handleScroll = () => {
       if (window.scrollY === 0) {
         setIsTopOfPage(true);
@@ -47,26 +50,23 @@ function App() {
       <Helmet>
         <meta
           name="description"
-          content="Get professional laundry and dry cleaning services in London at MasterDryCleaners Sevice Ltd. We are the go-to destination for meticulous garment care, offering eco-friendly and same-day services. Our experienced team specializes in wedding dress cleaning, curtain cleaning, leather cleaning, suit cleaning, and more. With convenient pickup and delivery options, we make the process hassle-free. Trust us to remove stubborn stains and restore your garments to their original brilliance. Discover competitive dry cleaning prices and exceptional customer service. Experience the best laundry and dry cleaning in London with MasterDryCleaners Sevice Ltd."
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
         />
-        <meta
-          name="keywords"
-          content="London dry cleaners, Dry cleaning services London, Professional dry cleaners London, Dry cleaning London, Same-day dry cleaners London, Eco-friendly dry cleaners London, Wedding dress dry cleaners London, Curtain dry cleaning London, Leather jacket cleaners London, Dry cleaners near me (if you want to target local searches), Curtain cleaners London, Suit dry cleaners London, Shirt ironing service London, Stain removal London, Dry cleaning prices London, Dry cleaning pickup and delivery London, London garment cleaning, Best dry cleaners in London"
-        />
+        <meta name="keywords" content="dry cleaners in London" />
         <meta
           property="og:title"
-          content="London Dry Cleaners | MasterDryCleaners Sevice Ltd"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
         ></meta>
         <meta
           property="og:description"
-          content="Get professional laundry and dry cleaning services in London at MasterDryCleaners Sevice Ltd."
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
         ></meta>
         <meta
           property="og:url"
           content="https://masterdrycleaner.co.uk/"
         ></meta>
       </Helmet>
-      {path != "/customer" && <Navbar isTopOfPage={isTopOfPage} />}
+      {path != "/" && <Navbar isTopOfPage={isTopOfPage} />}
       <Routes>
         <Route element={<PrivateRoutes />}>
           {/* <Route element={<HomeScreen />} path="/" /> */}
@@ -76,7 +76,8 @@ function App() {
             path="/account"
           />
         </Route>
-        <Route element={<HomeScreen />} path="/" />
+        <Route element={<Maintenance />} path="/" />
+        <Route element={<HomeScreen />} path="/home" />
         <Route element={<Login />} path="/login" />
         <Route element={<Services />} path="/services" />
         <Route element={<Pricing />} path="/pricing" />

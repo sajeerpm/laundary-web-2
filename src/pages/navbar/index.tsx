@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import Logo from "@/assets/Logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,6 +16,8 @@ type Props = {
 };
 
 const Navbar = ({ isTopOfPage }: Props) => {
+  const location = useLocation();
+  const path = location.pathname;
   const navigate = useNavigate();
   const popupRef = useRef<HTMLDivElement | null>(null);
   const avatarRef = useRef<HTMLDivElement | null>(null);
@@ -26,7 +28,9 @@ const Navbar = ({ isTopOfPage }: Props) => {
   const navbarBackground = isTopOfPage
     ? "bg-white md:bg-transparent"
     : "bg-white md:bg-transparent drop-shadow";
-  const [selectedPage, setSelectedPage] = useState(SelectedPage.Home);
+  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
+    SelectedPage.Home
+  );
   const [userData, setUserData] = useState<User | undefined>();
   const token = localStorage.getItem("ACCESS_TOKEN");
   const user = localStorage.getItem("USER_DATA");
@@ -70,6 +74,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
   };
 
   useEffect(() => {
+    setPageName(path);
     if (user) {
       setUserData(JSON.parse(user));
     }
@@ -79,6 +84,39 @@ const Navbar = ({ isTopOfPage }: Props) => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  function setPageName(pageString: string) {
+    switch (pageString) {
+      case SelectedPage.Home:
+        setSelectedPage(SelectedPage.Home);
+        break;
+      case SelectedPage.Pricing:
+        setSelectedPage(SelectedPage.Pricing);
+        break;
+      case SelectedPage.Services:
+        setSelectedPage(SelectedPage.Services);
+        break;
+      case SelectedPage.Areas:
+        setSelectedPage(SelectedPage.Areas);
+        break;
+      case SelectedPage.Faqs:
+        setSelectedPage(SelectedPage.Faqs);
+        break;
+      case SelectedPage.Corperates:
+        setSelectedPage(SelectedPage.Corperates);
+        break;
+      case SelectedPage.Branches:
+        setSelectedPage(SelectedPage.Branches);
+        break;
+      case SelectedPage.Account:
+        setSelectedPage(SelectedPage.Account);
+        break;
+
+      default:
+        setSelectedPage(SelectedPage.Services);
+        break;
+    }
+  }
 
   return (
     <nav>
@@ -90,7 +128,13 @@ const Navbar = ({ isTopOfPage }: Props) => {
         >
           <div className={`${flexBetween} w-full gap-16`}>
             {/* LEFT SIDE */}
-            <img className="h-[32px] md:h-[42px]" alt="logo" src={Logo} />
+            <Link to={"/"}>
+              <img
+                className="h-[32px] md:h-[42px]"
+                alt="Dry Cleaning London"
+                src={Logo}
+              />
+            </Link>
 
             {/* RIGHT SIDE */}
             {isAboveMediumScreens ? (
@@ -338,7 +382,7 @@ const Navbar = ({ isTopOfPage }: Props) => {
               </Link>
             )}
             <Link className="text-center uppercase text-black" to="/login">
-              T (020) 6010 3949
+              T (020) 7328 5621
             </Link>
             {token != null && (
               <Link
