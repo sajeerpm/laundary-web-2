@@ -79,10 +79,10 @@ const CustomerInfo = ({}: Props) => {
       } else if (!validateConfirmPassword(password, confirmPassword)) {
         alert(PASSWORD_CONFIRM_MG);
         return false;
-      } else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
+      } /*else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
         alert(UK_PHONE_VALIDATION_MSG);
         return false;
-      }
+      }*/
       setProgress(33.3);
 
       var payload = {
@@ -249,7 +249,7 @@ const CustomerInfo = ({}: Props) => {
                     <input
                       type="decimal"
                       required
-                      maxLength={11}
+                      maxLength={20}
                       autoComplete="off"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}

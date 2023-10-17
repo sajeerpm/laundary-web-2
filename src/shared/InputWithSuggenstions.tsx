@@ -23,6 +23,7 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
   const handleInputChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    localStorage.removeItem("selected_location");
     const searchTerm = event.target.value;
     setInputValue(searchTerm);
 
@@ -55,6 +56,7 @@ const InputWithSuggestions = ({ placeholder }: Props) => {
       suggestionsRef.current &&
       !suggestionsRef.current.contains(event.target as Node)
     ) {
+      setInputValue("");
       setShowSuggestions(false);
     }
   };

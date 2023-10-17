@@ -25,7 +25,8 @@ import AccountMobile from "./pages/user/AccountMobile";
 import OrderComplete from "./pages/order/OrderComplete";
 import Payment from "./pages/order/Payment";
 import { initGA } from "./analytics/analytics";
-import Maintenance from "./pages/pageNotFound/Maintenance";
+import PaymentComplete from "./pages/order/PaymentComplete";
+// import Maintenance from "./pages/pageNotFound/Maintenance";
 
 function App() {
   const location = useLocation();
@@ -52,7 +53,10 @@ function App() {
           name="description"
           content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
         />
-        <meta name="keywords" content="dry cleaners in London" />
+        <meta
+          name="keywords"
+          content="London dry cleaners, Dry cleaning services L ondon, Professional dry cleaners London, Dry cleaning London, Same-day dry cleaners London, Eco-friendly dry cleaners London, Wedding dress dry cleane rs London, Curtain dry cleaning London, Leather jacket cleaners London, Dry cleaners near me (if you want to target local searches), Curtain cleaners L ondon, Suit dry cleaners London, Shirt ironing service London,Stain remova1 London, Dry cleaning prices London, Dry cleaning pickup and delivery Lond on, London garment cleaning, Best dry cleaners in London"
+        />
         <meta
           property="og:title"
           content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
@@ -66,7 +70,7 @@ function App() {
           content="https://masterdrycleaner.co.uk/"
         ></meta>
       </Helmet>
-      {path != "/" && <Navbar isTopOfPage={isTopOfPage} />}
+      {path != "/customer" && <Navbar isTopOfPage={isTopOfPage} />}
       <Routes>
         <Route element={<PrivateRoutes />}>
           {/* <Route element={<HomeScreen />} path="/" /> */}
@@ -76,8 +80,8 @@ function App() {
             path="/account"
           />
         </Route>
-        <Route element={<Maintenance />} path="/" />
-        <Route element={<HomeScreen />} path="/home" />
+        {/* <Route element={<Maintenance />} path="/" /> */}
+        <Route element={<HomeScreen />} path="/" />
         <Route element={<Login />} path="/login" />
         <Route element={<Services />} path="/services" />
         <Route element={<Pricing />} path="/pricing" />
@@ -93,6 +97,8 @@ function App() {
         <Route element={<PageNotFound />} path="*" />
         <Route element={<OrderComplete />} path="/order/complete/:id" />
         <Route element={<OrderComplete />} path="/order/cancel/:id" />
+        <Route element={<PaymentComplete />} path="/payment/complete/:id" />
+        <Route element={<PaymentComplete />} path="/payment/cancel/:id" />
         <Route
           element={<Payment />}
           path="/order/payment/:id/:amount/:product"
