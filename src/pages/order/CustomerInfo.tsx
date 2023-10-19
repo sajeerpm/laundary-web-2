@@ -12,8 +12,6 @@ import Loading from "@/shared/Loading";
 import {
   PASSWORD_CONFIRM_MG,
   PASSWORD_VALIDATION_MSG,
-  UK_PHONE_NUMBER_PATTERN,
-  UK_PHONE_VALIDATION_MSG,
 } from "@/shared/constants";
 import {
   validateConfirmPassword,
@@ -158,14 +156,7 @@ const CustomerInfo = ({}: Props) => {
         .then(({ data }) => {
           if (data.status) {
             // window.location.href = data.url;
-            navigate(
-              "/order/payment/" +
-                data.order.order_id +
-                "/" +
-                data.order.amount +
-                "/" +
-                data.order.product
-            );
+            navigate("/order/payment/" + data.order.order_id);
           }
           setButtonDisable(false);
         })

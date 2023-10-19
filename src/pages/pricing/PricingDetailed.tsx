@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axiosClient from "@/axiosClient";
 import Loading from "@/shared/Loading";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { Helmet } from "react-helmet";
 
 interface Service {
   id: number;
@@ -15,6 +16,8 @@ interface Service {
   bannermobileimage: string;
   description: string;
   details: string;
+  page_meta: string;
+  page_title: string;
 }
 
 const PricingDetailed = () => {
@@ -42,19 +45,13 @@ const PricingDetailed = () => {
 
   return (
     <section id="home" className="flex flex-col bg-[#edecef] md:pb-0">
+      <Helmet>
+        <title>{categories?.page_title ?? ""}</title>
+        <meta name="description" content={`${categories?.page_meta ?? ""}`} />
+      </Helmet>
       <div className="mt-24 md:mt-32">
         <div className="mx-auto w-5/6 items-center justify-center md:flex">
           <div className="flex w-full flex-col">
-            {/* {categories && (
-              <img
-                className="h-[50vh] w-full md:h-full"
-                src={
-                  isAboveMediumScreens
-                    ? categories?.bannerimage
-                    : categories?.bannerimage.split(".jpg")[0] + "_mobile.jpg"
-                }
-              />
-            )} */}
             <div className="mb-6 flex w-full flex-col overflow-hidden rounded-none">
               <HText textAlign="text-center text-black">
                 <p className="w-full uppercase">{categories?.name ?? ""}</p>
@@ -65,14 +62,6 @@ const PricingDetailed = () => {
                 </p>
               </SHText>
             </div>
-            {/* <div className="flex w-full justify-center py-16">
-            <Link
-              className="rounded-none bg-black px-12 py-2 text-center uppercase text-white"
-              to={`/${SelectedPage.Pricing}`}
-            >
-              Price List
-            </Link>
-          </div> */}
             {categories?.bannerimage && (
               <img
                 className="w-full rounded-[1rem]"

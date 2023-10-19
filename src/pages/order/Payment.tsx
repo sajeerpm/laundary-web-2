@@ -1,84 +1,74 @@
-import axiosClient from "@/axiosClient";
 import PayPalButton from "@/hooks/PayPalButton";
-import AlertPopup from "@/shared/AlertPopup";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PaymentForm from "./components/PaymentForm";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 type Props = {};
 
 const Payment = ({}: Props) => {
-  const [showAlert, setShowAlert] = useState(false);
   const { id } = useParams();
-  const { amount } = useParams();
-  const { product } = useParams();
 
-  const handleStripPayment = async () => {
-    try {
-      const response = await axiosClient.post("/checkout", { id: id });
-      console.log(response);
-      if (response.data.url) {
-        window.location.href = response.data.url;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE_KEY}`);
 
-  useEffect(() => {
-    handleShowAlert();
-  }, []);
-
-  //   const handlePaypalPayment = (
-  //     id: string,
-  //     amount: string,
-  //     product: string
-  //   ) => {};
-
-  const handleShowAlert = () => {
-    setShowAlert(true);
-  };
-
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
+  useEffect(() => {}, []);
 
   return (
     <section
       id="home"
-      className="flex min-h-[100vh] flex-col items-center justify-center bg-white md:pb-0"
+      className="mt-20 flex min-h-[100vh] flex-col items-center bg-white md:mt-0 md:justify-center md:pb-0"
     >
-      <div className="m-6 mx-auto flex w-10/12 flex-col items-center md:w-3/5">
-        <div className="w-full items-center justify-center gap-8 md:flex md:flex-row">
+      <div className="m-2 flex w-full flex-col md:w-3/5 md:border">
+        <div className=" p-4 md:flex md:flex-row">
           {/* Customer Information Section */}
-          <div className="flex h-full flex-col justify-center rounded-md border bg-white px-4 py-6 md:w-2/3 md:px-20">
-            <p>
-              <strong>Order Id:</strong> {id}
+          <div className="w-full md:w-3/6 md:border-r-2 md:px-6">
+            <p className="py-2">
+              <strong>DEBIT/CREDIT CARD PAYMENT:</strong>
+            </p>
+            <p className="pb-5">
+              Book your collection with{" "}
+              <strong className="underline">£0.00</strong> payment.
+              <br />
+              We will collect your items and make an invoice according to your
+              items.
+              <br />
+              We will send you an email with payment link{" "}
+              <strong>Before we Deliver your order.</strong>
+            </p>
+            <p className="py-2">
+              <strong>PAYPAL PAYMENT:</strong>
             </p>
             <p>
-              <strong>Amount:</strong> {amount} GBP
+              Book your collection with only{" "}
+              <strong className="underline">£0.35p</strong> for Paypal
+              verification.
+              <br />
+              We will collect your items and make an invoice according to your
+              items.
+              <br />
+              We will send you an email with payment link{" "}
+              <strong>Before we Deliver your order.</strong>
             </p>
-            <p>
-              <strong>Product:</strong> {product}
-            </p>
-            <p className="h-[50px]"></p>
-            <button
-              className="rounded-full bg-black px-6 py-3 text-white"
-              onClick={handleStripPayment}
-            >
-              Pay with Stripe
-            </button>
+          </div>
+          <div className="justify-cente flex h-full w-full border-collapse flex-col md:px-6">
+            <p className="h-[10px]"></p>
+            <Elements stripe={stripePromise}>
+              <PaymentForm order_id={id!} />
+            </Elements>
             <p className="flex h-[50px] items-center justify-center">OR</p>
-            <PayPalButton amount={amount!} id={id!} item={product!} />
+            <PayPalButton id={id!} />
           </div>
         </div>
       </div>
-      {showAlert && (
-        <AlertPopup
-          message="Please pay and bag your items, your collection will be booked. We will count the items and inform you.
-        That will save your time please."
-          onClose={handleCloseAlert}
-        />
-      )}
+
+      <p className="w-full px-2 py-4 text-red-400 md:w-3/5 md:border">
+        <strong>
+          Master Clean Dry Cleaners are not taking any payment (Credit/Debit
+          card) until we have collected your items and confirmed the price by
+          email.
+        </strong>
+      </p>
     </section>
   );
 };

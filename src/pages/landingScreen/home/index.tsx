@@ -134,6 +134,8 @@ const Home = ({}: Props) => {
             </HText>
             <p className={`w-fit py-1 text-[18px] font-[500] md:text-[20px]`}>
               Free Collection and Delivery
+              <br />
+              (Minimum Order £30)
             </p>
             <div className="mt-4 md:mt-8">
               <InputWithSuggestions placeholder="Your Location Or Postcode" />

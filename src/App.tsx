@@ -99,13 +99,12 @@ function App() {
         <Route element={<OrderComplete />} path="/order/cancel/:id" />
         <Route element={<PaymentComplete />} path="/payment/complete/:id" />
         <Route element={<PaymentComplete />} path="/payment/cancel/:id" />
-        <Route
-          element={<Payment />}
-          path="/order/payment/:id/:amount/:product"
-        />
+        <Route element={<Payment />} path="/order/payment/:id" />
       </Routes>
       {!(path === "/customer" || path === "/account") && <Footer />}
-      {path != "/customer" && <FloatingButton path={path} />}
+      {path != "/customer" && !path.includes("/order/payment") && (
+        <FloatingButton path={path} />
+      )}
     </>
   );
 }

@@ -4,23 +4,18 @@ import { useNavigate } from "react-router-dom";
 import axiosClient from "@/axiosClient";
 
 type Props = {
-  amount: string;
-  item: string;
   id: string;
 };
 
-const PayPalButton = ({ item, amount, id }: Props) => {
+const PayPalButton = ({ id }: Props) => {
   const navigate = useNavigate();
   const product = {
-    description: item,
-    price: amount,
+    description: "Skip basket",
+    price: "0.35",
   };
-  // const [paidFor, setPaidFor] = useState(false);
   const [error, setError] = useState<any>("");
 
   const handleApprove = async (orderId: string) => {
-    // setPaidFor(true);
-
     try {
       const response = await axiosClient.post("/paypal-success", {
         id: id,
@@ -36,10 +31,6 @@ const PayPalButton = ({ item, amount, id }: Props) => {
       console.log(error);
     }
   };
-
-  // if (paidFor) {
-  //   alert("Thank you for your purchase!");
-  // }
 
   if (error) {
     alert(error);
