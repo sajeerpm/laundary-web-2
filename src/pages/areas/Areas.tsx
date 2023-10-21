@@ -365,7 +365,7 @@ const Corperates: React.FC = () => {
                 <ul className="text-gray-700">
                   {tile.areas.map((area, index) => (
                     <li key={index}>
-                      <Link to={`/`}>{area}</Link>
+                      <Link to={`/` + area}>{area}</Link>
                     </li>
                   ))}
                 </ul>

@@ -102,9 +102,9 @@ function App() {
         <Route element={<Payment />} path="/order/payment/:id" />
       </Routes>
       {!(path === "/customer" || path === "/account") && <Footer />}
-      {path != "/customer" && !path.includes("/order/payment") && (
-        <FloatingButton path={path} />
-      )}
+      {path != "/customer" &&
+        !path.includes("/order/payment") &&
+        path != "/login" && <FloatingButton path={path} />}
     </>
   );
 }
