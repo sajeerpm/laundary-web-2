@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import FAQBackgroundImage from "@/assets/bg-faq.jpeg";
 import FAQMobileBackgroundImage from "@/assets/faq-mobile.svg";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { Helmet } from "react-helmet";
 
 interface FAQItem {
   id: number;
@@ -71,6 +72,21 @@ const FAQ: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="mx-auto mt-20 w-5/6">
         <div className="w-full pb-10 pt-10 md:pt-20">
           <HText textAlign="text-center">FREQUENTLY ASKED QUESTIONS</HText>

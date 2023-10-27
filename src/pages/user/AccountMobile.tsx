@@ -9,6 +9,7 @@ import {
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 type Props = {};
 
@@ -89,6 +90,21 @@ const AccountMobile = ({}: Props) => {
 
   return (
     <section className="bg-gray-200">
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="mx-auto mt-20 flex min-h-[100vh] w-full flex-col gap-2">
         <div className="flex flex-col items-center justify-between bg-white p-6 shadow-md">
           <div className="w-full">

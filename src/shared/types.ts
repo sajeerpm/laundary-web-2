@@ -7,6 +7,7 @@ export enum SelectedPage {
   Faqs = "/faqs",
   Corperates = "/corperates",
   Login = "/login",
+  Signup = "/signup",
   Branches = "/branches",
   Account = "/account",
   Order = "order",

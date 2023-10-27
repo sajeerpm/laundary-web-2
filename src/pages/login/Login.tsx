@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef, FormEvent, useEffect, useState } from "react";
 import { useStateContext } from "@/context/ContextProvider";
 import axiosClient from "@/axiosClient";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Home = () => {
     axiosClient
       .post(endpoint, payload)
       .then(({ data }) => {
-        if (data.req_code == "ACC_LOGIN") {
+        if (data.reqCode == "ACC_LOGIN") {
           setUser(data.user);
           setToken(data.token);
           localStorage.setItem("ACCESS_TOKEN", data.token);
@@ -83,6 +84,21 @@ const Home = () => {
       id="home"
       className="flex h-[100vh] flex-1 gap-16 bg-[#000] py-10 md:pb-0"
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <motion.div className="mx-auto w-5/6 justify-center pt-32 md:flex md:w-4/5">
         <div className="z-10 text-white md:basis-5/12">
           <HText textAlign="text-center">LOG IN</HText>
@@ -91,7 +107,7 @@ const Home = () => {
               <div className="py-4 text-center text-red-500" id="error">
                 {error}
               </div>
-              <p>Email Address:</p>
+              <p className="py-1 text-lg">Email Address:</p>
               <div className="textbox-container h-[39px] w-full rounded-none bg-white">
                 <input
                   type="text"
@@ -108,22 +124,31 @@ const Home = () => {
                       type="password"
                       ref={passwordRef}
                       placeholder=""
-                      className="textbox-input w-full border focus:outline-none"
+                      className="textbox-input w-full border text-black focus:outline-none"
                     />
                   </div>
                 </>
               )}
             </div>
 
-            <div className="mt-3 flex items-center gap-8">
+            <div className="mt-3 flex w-full justify-end gap-8">
               <button
                 type="submit"
-                className="rounded-none border bg-black px-10 py-2 text-center hover:bg-secondary-400"
+                className="w-full rounded-none border bg-black px-16 py-2 text-center hover:bg-orange-200 hover:text-black md:w-auto"
               >
                 {isEmailValid ? "LOG IN" : "Next"}
               </button>
             </div>
           </form>
+
+          <div className="w-full py-8">
+            <p className="text-center text-lg">
+              Not a member?{" "}
+              <Link className="text-primary-500 underline" to={"/signup"}>
+                Signup now
+              </Link>
+            </p>
+          </div>
 
           {isEmailValid && (
             <div className="mt-6 w-full text-center">

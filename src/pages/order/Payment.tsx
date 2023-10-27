@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import PaymentForm from "./components/PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { Helmet } from "react-helmet";
 
 type Props = {};
 
@@ -19,6 +20,21 @@ const Payment = ({}: Props) => {
       id="home"
       className="mt-20 flex min-h-[100vh] flex-col items-center bg-white md:mt-0 md:justify-center md:pb-0"
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="m-2 flex w-full flex-col md:w-3/5 md:border">
         <div className=" p-4 md:flex md:flex-row">
           {/* Customer Information Section */}

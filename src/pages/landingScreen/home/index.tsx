@@ -7,6 +7,8 @@ import AlertPopup from "@/shared/AlertPopup";
 // import HomePageGraphic from "@/assets/firstpage1.png";
 import HomePageGraphicSmall from "@/assets/Mobile.jpg";
 import HomePageGraphic from "@/assets/web.png";
+import socialMediaFB from "@/assets/socialmedia/facebook.png";
+import socialMediaInsta from "@/assets/socialmedia/instagram.png";
 import { Slot } from "@/model/Slot";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
@@ -191,6 +193,20 @@ const Home = ({}: Props) => {
               </button>
             </div>
           </form>
+          <div className="flex justify-center gap-4 py-8">
+            <a
+              target="_new"
+              href="https://www.facebook.com/mastercleandrycleanersuk"
+            >
+              <img src={socialMediaFB} alt="" />
+            </a>
+            <a
+              target="_new"
+              href="https://www.instagram.com/mastercleandrycleaner"
+            >
+              <img src={socialMediaInsta} alt="" />
+            </a>
+          </div>
         </div>
       </div>
 

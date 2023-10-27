@@ -196,7 +196,9 @@ const Locations = ({}: Props) => {
         <div className="w-full justify-between gap-8 md:flex">
           <div className="grid w-full grid-flow-row grid-cols-1 md:grid-cols-4">
             {areaMap.map((area) => (
-              <Link to={"/" + area}>{area}</Link>
+              <Link to={"/" + area.toLowerCase().replace(/ /g, "-")}>
+                {area}
+              </Link>
             ))}
           </div>
         </div>

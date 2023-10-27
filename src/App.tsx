@@ -26,6 +26,7 @@ import OrderComplete from "./pages/order/OrderComplete";
 import Payment from "./pages/order/Payment";
 import { initGA } from "./analytics/analytics";
 import PaymentComplete from "./pages/order/PaymentComplete";
+import Signup from "./pages/signup/Signup";
 // import Maintenance from "./pages/pageNotFound/Maintenance";
 
 function App() {
@@ -83,8 +84,9 @@ function App() {
         {/* <Route element={<Maintenance />} path="/" /> */}
         <Route element={<HomeScreen />} path="/" />
         <Route element={<Login />} path="/login" />
+        <Route element={<Signup />} path="/signup" />
         <Route element={<Services />} path="/services" />
-        <Route element={<Pricing />} path="/pricing" />
+        <Route element={<Pricing />} path="/pricing/:code?" />
         <Route element={<Areas />} path="/areas" />
         <Route element={<Branches />} path="/branches" />
         <Route element={<FAQ />} path="/faqs" />
@@ -95,6 +97,7 @@ function App() {
         <Route element={<AboutUs />} path="/aboutus" />
         <Route element={<CustomerInfo />} path="/customer" />
         <Route element={<PageNotFound />} path="*" />
+        <Route element={<PageNotFound />} path="/not-found" />
         <Route element={<OrderComplete />} path="/order/complete/:id" />
         <Route element={<OrderComplete />} path="/order/cancel/:id" />
         <Route element={<PaymentComplete />} path="/payment/complete/:id" />
@@ -104,7 +107,8 @@ function App() {
       {!(path === "/customer" || path === "/account") && <Footer />}
       {path != "/customer" &&
         !path.includes("/order/payment") &&
-        path != "/login" && <FloatingButton path={path} />}
+        path != "/login" &&
+        path != "/signup" && <FloatingButton path={path} />}
     </>
   );
 }

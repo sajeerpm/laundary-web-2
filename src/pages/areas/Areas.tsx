@@ -2,6 +2,7 @@ import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
 import AreaBackgroundImage from "@/assets/images/unsplash-4.jpg";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 interface Areas {
   id: number;
@@ -335,6 +336,21 @@ const Corperates: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="mt-[4.5rem] min-h-[100vh] w-full pb-8">
         <div className="mx-auto w-5/6">
           <div className="w-full py-8">
@@ -365,7 +381,9 @@ const Corperates: React.FC = () => {
                 <ul className="text-gray-700">
                   {tile.areas.map((area, index) => (
                     <li key={index}>
-                      <Link to={`/` + area}>{area}</Link>
+                      <Link to={`/` + area.toLowerCase().replace(/ /g, "-")}>
+                        {area}
+                      </Link>
                     </li>
                   ))}
                 </ul>

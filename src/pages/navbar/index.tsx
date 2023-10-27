@@ -230,6 +230,19 @@ const Navbar = ({ isTopOfPage }: Props) => {
                       LOGIN
                     </Link>
                   )}
+                  {token == null && (
+                    <Link
+                      className={`uppercase ${
+                        selectedPage === SelectedPage.Signup
+                          ? "border-b-[1px] border-b-red-900"
+                          : ""
+                      }`}
+                      to="/signup"
+                      onClick={() => handleOnClick(SelectedPage.Signup)}
+                    >
+                      Signup
+                    </Link>
+                  )}
                   <span>|</span>
                   <a
                     className="uppercase hover:text-primary-500"
@@ -379,6 +392,19 @@ const Navbar = ({ isTopOfPage }: Props) => {
                 onClick={() => handleOnClick(SelectedPage.Login)}
               >
                 LOGIN
+              </Link>
+            )}
+            {token == null && (
+              <Link
+                className={`text-center uppercase text-black ${
+                  selectedPage === SelectedPage.Signup
+                    ? "border-b-[1px] border-b-red-900"
+                    : ""
+                }`}
+                to="/signup"
+                onClick={() => handleOnClick(SelectedPage.Signup)}
+              >
+                SIGNUP
               </Link>
             )}
             <Link className="text-center uppercase text-black" to="/login">

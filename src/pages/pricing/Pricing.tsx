@@ -5,6 +5,8 @@ import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
 import axiosClient from "@/axiosClient";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 interface Price {
   id: number;
@@ -18,10 +20,12 @@ interface Service {
   name: string;
   description: string;
   services: Price[];
+  category_code: string;
 }
 
 const Pricing = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const { code } = useParams();
+  const [activeTab, setActiveTab] = useState("");
   const [activeTabName, setActiveTabName] = useState("");
   const [categories, setData] = useState<Service[]>([]);
   const isAboveMediumScreens = useMediaQuery("(min-width: 1600px)");
@@ -31,8 +35,10 @@ const Pricing = () => {
     const fetchData = async () => {
       try {
         const response = await axiosClient.get("/pricelist");
-        if (response.data) {
-          setActiveTab(response.data[0].id);
+        if (code) {
+          setDefaultCategory(response.data);
+        } else {
+          setActiveTab(response.data[0].category_code);
           setActiveTabName(response.data[0].name);
         }
         setData(response.data);
@@ -46,13 +52,37 @@ const Pricing = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleTabClick = (tabNumber: number, tabName: string) => {
+  function setDefaultCategory(categories: Service[]) {
+    categories.map((category) => {
+      if (code == category.category_code) {
+        setActiveTab(category.category_code);
+        setActiveTabName(category.name);
+      }
+    });
+  }
+
+  const handleTabClick = (tabNumber: string, tabName: string) => {
     setActiveTab(tabNumber);
     setActiveTabName(tabName);
   };
 
   return (
     <section id="home" className="flex flex-col bg-[#edecef] md:pb-8">
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="items-center justify-center md:flex">
         <div
           className="top-0 flex h-[60vh] w-full flex-col items-center justify-center"
@@ -79,16 +109,18 @@ const Pricing = () => {
           {categories.map((category) => (
             <AnchorLink
               className="content-center"
-              key={category.id}
+              key={category.category_code}
               href="#price-list"
             >
               <div
-                className={`${gridButtonHight} flex cursor-pointer flex-col items-center justify-center rounded-none border border-black px-4 py-1 text-center text-xs uppercase md:py-4 md:tracking-[1.8px] ${
-                  activeTab === category.id
+                className={`${gridButtonHight} flex h-[66px] cursor-pointer flex-col items-center justify-center rounded-none border border-black px-4 py-1 text-center text-xs uppercase md:py-4 md:tracking-[1.8px] ${
+                  activeTab === category.category_code
                     ? "text bg-secondary-500 text-white"
                     : "bg-white text-black"
                 }`}
-                onClick={() => handleTabClick(category.id, category.name)}
+                onClick={() =>
+                  handleTabClick(category.category_code, category.name)
+                }
               >
                 {category.name}
               </div>
@@ -102,7 +134,7 @@ const Pricing = () => {
           </p>
           {categories.map(
             (category) =>
-              activeTab === category.id && (
+              activeTab === category.category_code && (
                 <div
                   key={category.id}
                   className="mx-auto max-w-[650px] text-center text-xl"
@@ -116,7 +148,7 @@ const Pricing = () => {
         <div className="mx-auto md:w-5/6">
           {categories.map(
             (category) =>
-              activeTab === category.id && (
+              activeTab === category.category_code && (
                 <div key={category.id} className="grid gap-8 md:grid-cols-2">
                   {category.services.map((price) => (
                     <div key={price.id} className="flex w-full flex-col">

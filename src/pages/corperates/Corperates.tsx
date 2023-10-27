@@ -19,6 +19,7 @@ import Novotel from "@/assets/clients/novotel.png";
 import BackgroundImage from "@/assets/coroperates.webp";
 import BackgroundMobileImage from "@/assets/coroperates-mobile.jpg";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { Helmet } from "react-helmet";
 
 interface Tile {
   id: number;
@@ -138,6 +139,21 @@ const Corperates: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="mx-auto mt-[4.5rem] w-5/6">
         <div className="w-full py-8">
           <HText textAlign="text-center">

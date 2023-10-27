@@ -1,6 +1,7 @@
 import HText from "@/shared/HText";
 import SHText from "@/shared/SHText";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 type Props = {};
 
@@ -10,6 +11,21 @@ const AboutUs = ({}: Props) => {
   }, []);
   return (
     <div className="mt-20">
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="w-full py-8">
         <HText textAlign="text-center uppercase">About Us</HText>
       </div>

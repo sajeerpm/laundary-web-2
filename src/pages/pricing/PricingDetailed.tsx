@@ -123,11 +123,189 @@ const PricingDetailed = () => {
     footer_2:
       "At Master Dry Cleaner, we take enormous pride in our work, whether we are collaborating with large corporate customers or with our individual laundry customers. Master Dry Cleaner is a unique laundry in Bloomsbury that can fit all your requirements with an unbelievable high quality of service where there is current and updated modern technology used in our processes. Being located in the heart of London, it is easy to reach all areas on a daily basis as well as at any moment. Take a look through our website and find out more regarding the selection of laundry services we offer. We look forward to serving you.",
   };
-
-  const nextStep = () => {
-    setCurrentStep((currentStep + 1) % 4);
-    console.log("Step " + currentStep);
-  };
+  const areaMap = [
+    "Abbey road",
+    "Acton (part)",
+    "Aldgate",
+    "Aldgate High Street",
+    "Amwell",
+    "Angel",
+    "Archway",
+    "Arnos Grove",
+    "Baker street",
+    "Barnet",
+    "Barnsbury",
+    "Barbican",
+    "Barons court",
+    "Battersea",
+    "Beech Street",
+    "Belgravia",
+    "Belsize Park",
+    "Billingsgate",
+    "Bishopsgate",
+    "Bishopsgate to the north",
+    "Bloomsbury",
+    "Brent",
+    "Brent Cross",
+    "Brent Park",
+    "Bridgewater Square",
+    "Brompton",
+    "Brondesbury",
+    "Cannon Street",
+    "Canonbury",
+    "Camden Town",
+    "Chalk Farm",
+    "Chancery Lane",
+    "Cheapside",
+    "Chelsea",
+    "Childs Hill",
+    "Chinatown",
+    "Chiswick",
+    "Church End",
+    "City of Westminster",
+    "Clapham",
+    "Clerkenwell",
+    "Cockfosters",
+    "Cornhill",
+    "Covent Garden",
+    "Cricklewood",
+    "Crouch End",
+    "Dalston (part)",
+    "Earls Court",
+    "East Acton",
+    "East Finchley",
+    "Edgware",
+    "Edmonton",
+    "Edmonton to the West",
+    "Embankment",
+    "Euston",
+    "Farringdon",
+    "Farringdon Road in the north",
+    "Fenchurch Street",
+    "Fetter Lane",
+    "Finchley Central",
+    "Finsbury",
+    "Finsbury Park",
+    "Fleet Street",
+    "Fleet Street in the south",
+    "Fortune Green",
+    "Frognal",
+    "Fulham",
+    "Golders Green",
+    "Gospel Oak",
+    "Grange Park",
+    "Gunnersbury",
+    "Hammersmith",
+    "Hampstead",
+    "Hampstead Garden Suburb",
+    "Harlesden",
+    "Harley Street",
+    "Harringay",
+    "Harringay in the West",
+    "Harrow",
+    "Hatton Garden",
+    "Hendon",
+    "Hendon Central",
+    "Highbury",
+    "Highgate",
+    "Holborn",
+    "Holborn in the west",
+    "Holland Park",
+    "Holloway",
+    "Hornsey",
+    "Hyde Park",
+    "Imperial Wharf",
+    "Islington",
+    "Kensington",
+    "Kensal Green",
+    "Kensington Olympia",
+    "Kentish Town",
+    "Kilburn",
+    "Kings Cross",
+    "Kingsbury Green",
+    "Kingsland",
+    "Knightsbridge",
+    "Lambeth",
+    "Lisson Grove",
+    "Little Venice",
+    "London Wall",
+    "Lancaster Gate",
+    "Maida Vale",
+    "Manor House",
+    "Marylebone",
+    "Mayfair",
+    "Mill Hill",
+    "Moorgate",
+    "Museum of London",
+    "Muswell Hill",
+    "Marble Arch",
+    "Neasden (part)",
+    "New Southgate",
+    "Newington Green",
+    "North Finchley",
+    "North Kensington",
+    "Northfields (north and west)",
+    "Northumberland Park",
+    "Notting Hill",
+    "Oakleigh Park",
+    "Oakwood",
+    "Old Broad Street",
+    "Old Oak Common",
+    "Old Street",
+    "Oxford Circus",
+    "Paddington",
+    "Park Lane",
+    "Park Royal",
+    "Parsons Green",
+    "Pentonville",
+    "Pimlico",
+    "Primrose Hill",
+    "Queen Street",
+    "Queens park",
+    "Regent Street",
+    "Regents park",
+    "Shepherds Bush",
+    "Shoreditch",
+    "Smithfield",
+    "South Islington",
+    "South Kensington",
+    "Southgate",
+    "Southwark",
+    "Spitalfields",
+    "St James",
+    "St Lukes",
+    "St Pauls",
+    "Stoke Newington",
+    "Stonebridge",
+    "Streatham Hill",
+    "Stroud Green",
+    "Swiss Cottage",
+    "Temple Fortune",
+    "Totteridge",
+    "Tower Hill",
+    "Tufnell Park",
+    "Upper Holloway",
+    "Vauxhall",
+    "Victoria Park",
+    "Victoria",
+    "Walbrook",
+    "Walham Green",
+    "Wandsworth",
+    "West Brompton",
+    "West Ealing",
+    "West Hampstead",
+    "West Kensington",
+    "Westbourne Green",
+    "Westminster",
+    "Whetstone",
+    "White City",
+    "Whitechapel",
+    "Whitehall",
+    "Willesden",
+    "Willesden Green",
+    "Winchmore Hill",
+    "Wood Green",
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -137,9 +315,18 @@ const PricingDetailed = () => {
         setLoading(false);
       } catch (error) {
         console.error(error);
+        if (!isLocationCheck(id)) {
+          window.location.href = "/not-found";
+          return;
+        }
         setLoading(false);
-        // window.location.href = "/";
       }
+    };
+
+    const isLocationCheck = (id: any) => {
+      return areaMap.find(
+        (value) => value.toLowerCase().replace(/ /g, "-") === id
+      );
     };
 
     fetchData();
@@ -147,6 +334,7 @@ const PricingDetailed = () => {
   }, []);
 
   useEffect(() => {
+    if (categories && !loading) return;
     const intervalId = setInterval(() => {
       setCurrentStep((currentStep + 1) % 4);
       console.log("step: " + currentStep);
@@ -169,7 +357,7 @@ const PricingDetailed = () => {
             <div className="mb-6 flex w-full flex-col overflow-hidden rounded-none">
               <HText textAlign="text-center text-black">
                 <p className="w-full uppercase">
-                  {categories?.name ? categories?.name : id?.replace("-", " ")}
+                  {categories?.name ? categories?.name : id?.replace(/-/g, " ")}
                 </p>
               </HText>
               {categories && (
@@ -194,19 +382,20 @@ const PricingDetailed = () => {
         </div>
         <div className="mx-auto flex w-5/6 flex-col items-center">
           <div className="w-full py-4">
-            {categories ? (
+            {categories && (
               <div
                 dangerouslySetInnerHTML={{
                   __html: categories?.details ?? "",
                 }}
               />
-            ) : (
+            )}
+            {!categories && !loading && (
               <div className="flex flex-col justify-items-start">
                 <div>
                   <h1 className="w-full pb-8 text-center text-[29px] font-bold text-[#000]">
                     {id &&
                       id[0].toUpperCase() +
-                        id?.slice(1).replace("-", " ") +
+                        id?.slice(1).replace(/-/g, " ") +
                         " " +
                         initialAreas.heading}
                   </h1>

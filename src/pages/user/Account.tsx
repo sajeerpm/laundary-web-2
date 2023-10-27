@@ -14,6 +14,7 @@ import {
   UK_PHONE_VALIDATION_MSG,
 } from "@/shared/constants";
 import { FormEvent, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
@@ -179,6 +180,21 @@ const Account = ({}: Props) => {
 
   return (
     <section>
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="mx-auto mt-20 min-h-[100vh] w-full md:flex md:w-3/5">
         <div className="bg-white p-4 md:w-1/4">
           <SHText textAlign={"left text-black"}>My Account</SHText>

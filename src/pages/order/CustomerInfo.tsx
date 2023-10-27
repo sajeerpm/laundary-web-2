@@ -17,6 +17,7 @@ import {
   validateConfirmPassword,
   validatePassword,
 } from "@/shared/Validations";
+import { Helmet } from "react-helmet";
 
 type Props = {};
 
@@ -193,6 +194,21 @@ const CustomerInfo = ({}: Props) => {
       id="home"
       className="flex min-h-[100vh] flex-col bg-[#edecef] md:pb-0"
     >
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="flex h-[36px] items-center justify-center bg-white p-10 shadow-sm">
         <div className="w-10/12 rounded-full bg-gray-400 md:w-1/4">
           <div

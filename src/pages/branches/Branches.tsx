@@ -1,6 +1,7 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 interface Store {
   id: number;
@@ -65,6 +66,21 @@ const Branches: React.FC = () => {
 
   return (
     <section className="bg-[#EAE9E7] py-8 pt-20">
+      <Helmet>
+        <title>Top Dry Cleaners in London | Master Dry Clean</title>
+        <meta
+          name="description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        />
+        <meta
+          property="og:title"
+          content="Meta title: Top Dry Cleaners in London | Master Dry Clean"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Discover the best dry cleaners in London at Master Dry Clean. We provide top-quality service to ensure your garments are cleaned and cared for with precision."
+        ></meta>
+      </Helmet>
       <div className="w-full py-8">
         <HText textAlign="text-center">SERVICE AREAS</HText>
       </div>
