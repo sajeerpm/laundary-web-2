@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { SelectedPage } from "./types";
 // import useMediaQuery from "@/hooks/useMediaQuery";
 
 interface FloatingButtonProps {
@@ -32,6 +34,22 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
             <FontAwesomeIcon icon={faWhatsapp} size="xl" />
           </button>
         </a>
+        {path != "/" && (
+          <Link to={`/`}>
+            <button className="text-md rounded-full bg-[#FFD700] px-3 py-2 font-bold text-red-600 shadow-2xl md:px-6 md:py-3">
+              15% OFF
+            </button>
+          </Link>
+        )}
+        {path == "/" && (
+          <AnchorLink
+            className="text-md rounded-full bg-[#FFD700] px-3 py-2 font-bold text-red-600 shadow-2xl md:px-6 md:py-3"
+            onClick={() => {}}
+            href={`#${SelectedPage.Order}`}
+          >
+            15% OFF
+          </AnchorLink>
+        )}
       </div>
     </div>
   );

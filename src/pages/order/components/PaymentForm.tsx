@@ -12,11 +12,14 @@ const PaymentForm = ({ order_id }: Props) => {
   const stripe = useStripe();
   const elements = useElements();
   const [stripe_error, setStripeError] = useState<string>("");
+  const [processing, setProcessing] = useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setProcessing(true);
 
     if (!stripe || !elements) {
+      setProcessing(false);
       setStripeError(
         "Sorry! Something went wrong, please contact customer care."
       );
@@ -29,6 +32,7 @@ const PaymentForm = ({ order_id }: Props) => {
     });
 
     if (error) {
+      setProcessing(false);
       setStripeError(error.message!);
       console.error(error);
     } else {
@@ -44,6 +48,7 @@ const PaymentForm = ({ order_id }: Props) => {
         })
         .catch((error) => {
           // navigate("/order/cancel/" + order_id);
+          setProcessing(false);
           setStripeError(error.message);
         });
     }
@@ -70,10 +75,11 @@ const PaymentForm = ({ order_id }: Props) => {
         </div>
         <div className="text-red-500">{stripe_error}</div>
         <button
+          disabled={processing}
           className="float-right mt-5 h-[50px] w-full rounded-full bg-black px-4 py-2 text-xl font-bold italic text-white"
           type="submit"
         >
-          Pay
+          {processing ? "Processing..." : "Pay"}
         </button>
       </div>
     </form>

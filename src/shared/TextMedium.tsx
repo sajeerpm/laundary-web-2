@@ -8,7 +8,7 @@ type Props = {
 const TextMedium = ({ children, textAlign }: Props) => {
   return (
     <div>
-      <p className={`${textAlign} text-xl`}>{children}</p>
+      <p className={`${textAlign} text-lg md:text-xl`}>{children}</p>
     </div>
   );
 };

@@ -74,6 +74,14 @@ const Payment = ({}: Props) => {
             </Elements>
             <p className="flex h-[50px] items-center justify-center">OR</p>
             <PayPalButton id={id!} />
+
+            <strong className="text-center text-red-500">
+              We do not store any Credit or Debit card data including card
+              numbers, cvc and billing addresses. We send all Credit and Debit
+              card information securely to PayPal and stripe for processing.
+              <br /> Please see PayPal and stripe terms of service for more
+              information about their payment system and security .
+            </strong>
           </div>
         </div>
       </div>

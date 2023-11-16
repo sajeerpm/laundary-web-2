@@ -2,6 +2,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
 
 interface Store {
   id: number;
@@ -11,6 +12,7 @@ interface Store {
 }
 
 const Branches: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const stores: Store[] = [
     {
@@ -61,7 +63,11 @@ const Branches: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setSelectedStore(stores[0]);
+    if (id) {
+      setSelectedStore(stores[parseInt(id)]);
+    } else {
+      setSelectedStore(stores[0]);
+    }
   }, []);
 
   return (

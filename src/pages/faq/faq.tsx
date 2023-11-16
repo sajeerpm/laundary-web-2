@@ -1,6 +1,6 @@
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
-import FAQBackgroundImage from "@/assets/bg-faq.jpeg";
+import FAQBackgroundImage from "@/assets/bg-faq.webp";
 import FAQMobileBackgroundImage from "@/assets/faq-mobile.svg";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { Helmet } from "react-helmet";

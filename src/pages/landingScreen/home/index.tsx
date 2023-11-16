@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import AlertPopup from "@/shared/AlertPopup";
 // import HomePageGraphic from "@/assets/firstpage1.png";
 import HomePageGraphicSmall from "@/assets/Mobile.jpg";
-import HomePageGraphic from "@/assets/web.png";
+import HomePageGraphic from "@/assets/web.webp";
 import socialMediaFB from "@/assets/socialmedia/facebook.png";
 import socialMediaInsta from "@/assets/socialmedia/instagram.png";
 import { Slot } from "@/model/Slot";

@@ -89,8 +89,8 @@ const PrivacyPolicy = ({}: Props) => {
         <p className="mb-8">
           We do not store any Credit or Debit card data including card numbers,
           cvc and billing addresses. We send all Credit and Debit card
-          information securely to online.worldpay.com for processing.
-          <br /> Please see online.worldpay.com terms of service for more
+          information securely to PayPal and stripe for processing.
+          <br /> Please see PayPal and stripe terms of service for more
           information about their payment system and security .
         </p>
 

@@ -6,6 +6,7 @@ import Home from "./home";
 import { useEffect } from "react";
 import Services from "./services";
 import { Helmet } from "react-helmet";
+import PopUp from "@/shared/OfferPopUp";
 
 function HomeScreen() {
   useEffect(() => {
@@ -32,6 +33,7 @@ function HomeScreen() {
       <Pricing />
       <AboutCompany />
       <Services />
+      <PopUp />
     </div>
   );
 }

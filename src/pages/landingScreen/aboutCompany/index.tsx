@@ -1,15 +1,20 @@
 import Logo from "@/assets/Logo.png";
+import { MainAreas } from "@/data/areas";
 import HText from "@/shared/HText";
+import SHText from "@/shared/SHText";
 import TextMedium from "@/shared/TextMedium";
 import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import AnchorLink from "react-anchor-link-smooth-scroll";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
 const AboutCompany = ({}: Props) => {
   const lineHeadCap = "pb-12";
   const lineParagraphCap = "pb-6";
+  const lineParagraphCapSmall = "pb-3";
+  const mainAreas = MainAreas;
   return (
     <section id="about-company" className="w-full bg-black py-16 text-white">
       <div className="mx-auto flex w-5/6 flex-col items-center justify-center">
@@ -42,7 +47,7 @@ const AboutCompany = ({}: Props) => {
             quality of our dry cleaning services.
           </TextMedium>
         </motion.div>
-        <div className={`${lineHeadCap}`}></div>
+        <div className={`${lineParagraphCap}`}></div>
 
         {/* EXPERT DRY CLEANERS */}
         <motion.div
@@ -74,11 +79,11 @@ const AboutCompany = ({}: Props) => {
             reviews, empowering you to make an informed decision when selecting
             your dry cleaner.
           </TextMedium>
-          <div className={`${lineHeadCap}`}></div>
+          <div className={`${lineParagraphCap}`}></div>
         </motion.div>
 
-        {/* MASTERCLEAN LOCATIONS */}
-        {/* <motion.div
+        {/* EXPERT DRY CLEANERS */}
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
@@ -88,21 +93,82 @@ const AboutCompany = ({}: Props) => {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <TextMedium textAlign="text-center">MASTERCLEAN LOCATIONS</TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-          <TextMedium textAlign="text-center">Brighton Dry Cleaners</TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
           <TextMedium textAlign="text-center">
-            Edinburgh Dry Cleaners
+            No matter where you are in London we cover all the areas in London,
+            you can search us in Google with these words:
           </TextMedium>
           <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">London Dry Cleaners</TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">New York Dry Cleaners</TextMedium>
-          <div className={`${lineParagraphCap}`}></div>
-          <TextMedium textAlign="text-center">Oxford Dry Cleaners</TextMedium>
-          <div className={`${lineHeadCap}`}></div>
-        </motion.div> */}
+        </motion.div>
+
+        {mainAreas.map((area) => (
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0 },
+            }}
+          >
+            <TextMedium textAlign="text-center">{area}</TextMedium>
+            <div className={`${lineParagraphCapSmall}`}></div>
+          </motion.div>
+        ))}
+        <div className={`${lineHeadCap}`}></div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0 },
+          }}
+        >
+          <SHText textAlign="text-center">
+            <p className="text-center uppercase">MASTERDRYCLEAN LOCATIONS</p>
+          </SHText>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/4`}>
+            <TextMedium textAlign="text-center">
+              Maida Vale dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/2`}>
+            <TextMedium textAlign="text-center">
+              Baker Street dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/3`}>
+            <TextMedium textAlign="text-center">
+              Swiss Cottage dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/3`}>
+            <TextMedium textAlign="text-center">
+              St John's Wood dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/1`}>
+            <TextMedium textAlign="text-center">
+              Barons court dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+          <Link to={`/branches/0`}>
+            <TextMedium textAlign="text-center">
+              Belsize Park dry cleaners
+            </TextMedium>
+          </Link>
+          <div className={`${lineParagraphCapSmall}`}></div>
+        </motion.div>
+        <div className={`${lineParagraphCap}`}></div>
       </div>
       <div className="flex justify-center md:w-full">
         <AnchorLink

@@ -2,310 +2,30 @@ import { useEffect, useState } from "react";
 import SHText from "@/shared/SHText";
 import HText from "@/shared/HText";
 import { useParams } from "react-router-dom";
-// import PricingDetailsBackgroundImage from "@/assets/images/20230719_171140_0000.png";
 import axiosClient from "@/axiosClient";
 import Loading from "@/shared/Loading";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { Helmet } from "react-helmet";
 import Clients from "../landingScreen/clients";
-import AreaBackgroundImage from "@/assets/location-image.jpg";
+import AreaBackgroundImage from "@/assets/location-image.webp";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 
-import BagUp from "@/assets/howtowork/bagup.png";
-import PickUp from "@/assets/howtowork/pickup.png";
-import Clean from "@/assets/howtowork/clean.png";
-import Deliver from "@/assets/howtowork/deliver.png";
-
-interface Service {
-  id: number;
-  name: string;
-  image: string;
-  bannerimage: string;
-  bannermobileimage: string;
-  description: string;
-  details: string;
-  page_meta: string;
-  page_title: string;
-}
+import BagUp from "@/assets/howtowork/bagup.webp";
+import PickUp from "@/assets/howtowork/pickup.webp";
+import Clean from "@/assets/howtowork/clean.webp";
+import Deliver from "@/assets/howtowork/deliver.webp";
+import { AreaPageDetails } from "@/data/areas";
+import { Service } from "@/model/Services";
+import { Area } from "@/model/Area";
 
 const PricingDetailed = () => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1600px)");
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [categories, setData] = useState<Service>();
   const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const initialAreas = {
-    heading:
-      "Laundry, Dry Cleaning, Invisible Mending, Shoe Repairs, Trainer Cleaning, Hand Bag Repairs, Designer Jacket, Dress Alterations.",
-    content_1: {
-      sub_title: "Your Local Master Dry Cleaner - Established in 1997",
-      title: "We are Passionate About Laundry",
-      content:
-        "We are professionals in laundry and dry cleaning business, which means we always stay up to date with the latest technologies, cleaning methods, and solutions for dealing with stains or delicate fabrics. Plus, we maintain the highest standards of business integrity by following local and national regulations and environmental safety rules. We are passionate about changing the way you think about laundry!",
-      feature_list: [
-        "100% Customer Satisfaction",
-        "Free Collection & Delivery",
-        "Affordable Prices",
-        "Best Quality",
-      ],
-    },
-    how_to_work: {
-      sub_title: "Get Your Clothes Collected & Delivered",
-      title: "How We Work",
-      content:
-        "Our Service is dedicated to making your life easier by providing our FREE laundry collection & delivery service. Give yourself one less thing to worry about and try our amazing service, you will never look back.<br/><br/>We have been in the laundry business for over 25 years and would love to earn your business. Try us today and put our service to the test.",
-    },
-    why_us: {
-      sub_title: "Our Advantages",
-      title: "Why Choose Us",
-      pros: [
-        {
-          title: "Persionalised Experience",
-          image: "",
-          content:
-            "We take the utmost care of your clothes, seperating based on the cloth type and treating indivdual items with care.",
-        },
-        {
-          title: "Competetive Pricing",
-          image: "",
-          content:
-            "We ensure that our pricing is competetive without compromising the amazing quality of our cleaning services.",
-        },
-        {
-          title: "Order Online",
-          image: "",
-          content:
-            "You can organise free collection & delivery  from your doorstep. All from the convenience of your smartphone, tablet or laptop.",
-        },
-        {
-          title: "Quality",
-          image: "",
-          content:
-            "We use best in class products, to assure that your favorite clothes are impeccably cleaned.",
-        },
-        {
-          title: "Free Collection & Delivery",
-          image: "",
-          content:
-            "With as little as 3 hours notice, we can come to your doorstep to collect your laundry.",
-        },
-        {
-          title: "Instant Order Update",
-          image: "",
-          content:
-            "Regular updates of your order, to help you keep a track of your laundry and plan accordingly.",
-        },
-      ],
-    },
-
-    benefits_list: [
-      {
-        title: "Save Time & Money",
-        image: "",
-        content:
-          "No more wasted time driving to the laundry, we pickup and deliver for free!",
-      },
-      {
-        title: " Pay Online in Seconds",
-        image: "",
-        content:
-          "Manage your Laundry account and billing online from your smartphone or computer.",
-      },
-      {
-        title: " Eco-Friendly",
-        image: "",
-        content:
-          "We always use safe, clean, eco friendly products, so you, and the Earth, can look good. ",
-      },
-    ],
-    footer_1:
-      "Master Dry Cleaner provides full laundry service in Bloomsbury. We offer Free collection and delivery, commercial laundry service, hand over laundry service and also in-store washing. Master Dry Cleaner offers laundry picks up, and delivery service spans across London City covering North West, South West, as well as West. At Master Dry Cleaner, we pride ourselves on providing an excellent solution at a competetive rate. We do the necessary job of obtaining your laundry and dry cleaning. We complete our service as fast and headache-free as possible. You’ve found us now, so more searching for “laundry near me“.",
-    footer_2:
-      "At Master Dry Cleaner, we take enormous pride in our work, whether we are collaborating with large corporate customers or with our individual laundry customers. Master Dry Cleaner is a unique laundry in Bloomsbury that can fit all your requirements with an unbelievable high quality of service where there is current and updated modern technology used in our processes. Being located in the heart of London, it is easy to reach all areas on a daily basis as well as at any moment. Take a look through our website and find out more regarding the selection of laundry services we offer. We look forward to serving you.",
-  };
-  const areaMap = [
-    "Abbey road",
-    "Acton (part)",
-    "Aldgate",
-    "Aldgate High Street",
-    "Amwell",
-    "Angel",
-    "Archway",
-    "Arnos Grove",
-    "Baker street",
-    "Barnet",
-    "Barnsbury",
-    "Barbican",
-    "Barons court",
-    "Battersea",
-    "Beech Street",
-    "Belgravia",
-    "Belsize Park",
-    "Billingsgate",
-    "Bishopsgate",
-    "Bishopsgate to the north",
-    "Bloomsbury",
-    "Brent",
-    "Brent Cross",
-    "Brent Park",
-    "Bridgewater Square",
-    "Brompton",
-    "Brondesbury",
-    "Cannon Street",
-    "Canonbury",
-    "Camden Town",
-    "Chalk Farm",
-    "Chancery Lane",
-    "Cheapside",
-    "Chelsea",
-    "Childs Hill",
-    "Chinatown",
-    "Chiswick",
-    "Church End",
-    "City of Westminster",
-    "Clapham",
-    "Clerkenwell",
-    "Cockfosters",
-    "Cornhill",
-    "Covent Garden",
-    "Cricklewood",
-    "Crouch End",
-    "Dalston (part)",
-    "Earls Court",
-    "East Acton",
-    "East Finchley",
-    "Edgware",
-    "Edmonton",
-    "Edmonton to the West",
-    "Embankment",
-    "Euston",
-    "Farringdon",
-    "Farringdon Road in the north",
-    "Fenchurch Street",
-    "Fetter Lane",
-    "Finchley Central",
-    "Finsbury",
-    "Finsbury Park",
-    "Fleet Street",
-    "Fleet Street in the south",
-    "Fortune Green",
-    "Frognal",
-    "Fulham",
-    "Golders Green",
-    "Gospel Oak",
-    "Grange Park",
-    "Gunnersbury",
-    "Hammersmith",
-    "Hampstead",
-    "Hampstead Garden Suburb",
-    "Harlesden",
-    "Harley Street",
-    "Harringay",
-    "Harringay in the West",
-    "Harrow",
-    "Hatton Garden",
-    "Hendon",
-    "Hendon Central",
-    "Highbury",
-    "Highgate",
-    "Holborn",
-    "Holborn in the west",
-    "Holland Park",
-    "Holloway",
-    "Hornsey",
-    "Hyde Park",
-    "Imperial Wharf",
-    "Islington",
-    "Kensington",
-    "Kensal Green",
-    "Kensington Olympia",
-    "Kentish Town",
-    "Kilburn",
-    "Kings Cross",
-    "Kingsbury Green",
-    "Kingsland",
-    "Knightsbridge",
-    "Lambeth",
-    "Lisson Grove",
-    "Little Venice",
-    "London Wall",
-    "Lancaster Gate",
-    "Maida Vale",
-    "Manor House",
-    "Marylebone",
-    "Mayfair",
-    "Mill Hill",
-    "Moorgate",
-    "Museum of London",
-    "Muswell Hill",
-    "Marble Arch",
-    "Neasden (part)",
-    "New Southgate",
-    "Newington Green",
-    "North Finchley",
-    "North Kensington",
-    "Northfields (north and west)",
-    "Northumberland Park",
-    "Notting Hill",
-    "Oakleigh Park",
-    "Oakwood",
-    "Old Broad Street",
-    "Old Oak Common",
-    "Old Street",
-    "Oxford Circus",
-    "Paddington",
-    "Park Lane",
-    "Park Royal",
-    "Parsons Green",
-    "Pentonville",
-    "Pimlico",
-    "Primrose Hill",
-    "Queen Street",
-    "Queens park",
-    "Regent Street",
-    "Regents park",
-    "Shepherds Bush",
-    "Shoreditch",
-    "Smithfield",
-    "South Islington",
-    "South Kensington",
-    "Southgate",
-    "Southwark",
-    "Spitalfields",
-    "St James",
-    "St Lukes",
-    "St Pauls",
-    "Stoke Newington",
-    "Stonebridge",
-    "Streatham Hill",
-    "Stroud Green",
-    "Swiss Cottage",
-    "Temple Fortune",
-    "Totteridge",
-    "Tower Hill",
-    "Tufnell Park",
-    "Upper Holloway",
-    "Vauxhall",
-    "Victoria Park",
-    "Victoria",
-    "Walbrook",
-    "Walham Green",
-    "Wandsworth",
-    "West Brompton",
-    "West Ealing",
-    "West Hampstead",
-    "West Kensington",
-    "Westbourne Green",
-    "Westminster",
-    "Whetstone",
-    "White City",
-    "Whitechapel",
-    "Whitehall",
-    "Willesden",
-    "Willesden Green",
-    "Winchmore Hill",
-    "Wood Green",
-  ];
+  const [area, setArea] = useState<Area>();
+  const initialAreas = AreaPageDetails;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -315,18 +35,15 @@ const PricingDetailed = () => {
         setLoading(false);
       } catch (error) {
         console.error(error);
-        if (!isLocationCheck(id)) {
+        try {
+          const response = await axiosClient.get("/getarea/" + id);
+          setArea(response.data);
+          setLoading(false);
+        } catch (error) {
           window.location.href = "/not-found";
           return;
         }
-        setLoading(false);
       }
-    };
-
-    const isLocationCheck = (id: any) => {
-      return areaMap.find(
-        (value) => value.toLowerCase().replace(/ /g, "-") === id
-      );
     };
 
     fetchData();
@@ -337,7 +54,6 @@ const PricingDetailed = () => {
     if (categories && !loading) return;
     const intervalId = setInterval(() => {
       setCurrentStep((currentStep + 1) % 4);
-      console.log("step: " + currentStep);
     }, 3000);
 
     return () => {
@@ -348,8 +64,27 @@ const PricingDetailed = () => {
   return (
     <section id="home" className="flex flex-col bg-[#edecef] md:pb-0">
       <Helmet>
-        <title>{categories?.page_title ?? ""}</title>
-        <meta name="description" content={`${categories?.page_meta ?? ""}`} />
+        <title>
+          {categories?.page_title ? categories?.page_title : area?.page_title}
+        </title>
+        <meta
+          name="description"
+          content={`${
+            categories?.page_meta ? categories?.page_meta : area?.page_meta
+          }`}
+        />
+        <meta
+          property="og:title"
+          content={`${
+            categories?.page_title ? categories?.page_title : area?.page_title
+          }`}
+        ></meta>
+        <meta
+          property="og:description"
+          content={`${
+            categories?.page_meta ? categories?.page_meta : area?.page_meta
+          }`}
+        ></meta>
       </Helmet>
       <div className="mt-24 md:mt-32">
         <div className="mx-auto w-5/6 items-center justify-center md:flex">
@@ -393,35 +128,42 @@ const PricingDetailed = () => {
               <div className="flex flex-col justify-items-start">
                 <div>
                   <h1 className="w-full pb-8 text-center text-[29px] font-bold text-[#000]">
-                    {id &&
-                      id[0].toUpperCase() +
-                        id?.slice(1).replace(/-/g, " ") +
-                        " " +
-                        initialAreas.heading}
+                    {area && area.heading
+                      ? area.heading
+                      : area?.name + " " + initialAreas.heading}
                   </h1>
                 </div>
                 <div>
                   <div className="flex w-full flex-col gap-2 md:flex-row">
                     <img className="md:w-1/2" src={AreaBackgroundImage} />
-                    <div className="my-8 flex flex-col md:m-0 md:w-1/2 md:px-8">
-                      <h6 className="font-bold text-blue-500">
-                        {initialAreas.content_1.sub_title}
-                      </h6>
-                      <h4 className="mt-[13px] py-4 text-[28px] font-bold leading-10 text-[#000] md:text-[36px]">
-                        {initialAreas.content_1.title}
-                      </h4>
-                      <p className="text-[16px] leading-7">
-                        {initialAreas.content_1.content}
-                      </p>
-                      <ul className="flex flex-col pt-6">
-                        {initialAreas.content_1.feature_list.map((item) => (
-                          <li className="flex py-2">
-                            <CheckBadgeIcon className="mx-2 w-6 text-green-500" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {area?.about_area ? (
+                      <div
+                        className="my-8 flex flex-col md:m-0 md:w-1/2 md:px-8"
+                        dangerouslySetInnerHTML={{
+                          __html: area?.about_area ?? "",
+                        }}
+                      />
+                    ) : (
+                      <div className="my-8 flex flex-col md:m-0 md:w-1/2 md:px-8">
+                        <h6 className="font-bold text-blue-500">
+                          {initialAreas.content_1.sub_title}
+                        </h6>
+                        <h4 className="mt-[13px] py-4 text-[28px] font-bold leading-10 text-[#000] md:text-[36px]">
+                          {initialAreas.content_1.title}
+                        </h4>
+                        <p className="text-[16px] leading-7">
+                          {initialAreas.content_1.content}
+                        </p>
+                        <ul className="flex flex-col pt-6">
+                          {initialAreas.content_1.feature_list.map((item) => (
+                            <li className="flex py-2">
+                              <CheckBadgeIcon className="mx-2 w-6 text-green-500" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="w-full md:my-8">

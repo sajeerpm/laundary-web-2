@@ -1,313 +1,25 @@
 import HText from "@/shared/HText";
 import React, { useEffect, useState } from "react";
-import AreaBackgroundImage from "@/assets/images/unsplash-4.jpg";
+import AreaBackgroundImage from "@/assets/images/unsplash-4.webp";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { Areas } from "@/data/areas";
+import axiosClient from "@/axiosClient";
+import { Area } from "@/model/Area";
 
 interface Areas {
   id: number;
   title: string;
-  areas: string[];
+  areas: Area[];
 }
 
 const Corperates: React.FC = () => {
-  const initialAreas: Areas[] = [
-    {
-      id: 1,
-      title: "A",
-      areas: [
-        "Abbey road",
-        "Acton (part)",
-        "Aldgate",
-        "Aldgate High Street",
-        "Amwell",
-        "Angel",
-        "Archway",
-        "Arnos Grove",
-      ],
-    },
-    {
-      id: 2,
-      title: "B",
-      areas: [
-        "Baker street",
-        "Barnet",
-        "Barnsbury",
-        "Barbican",
-        "Barons court",
-        "Battersea",
-        "Beech Street",
-        "Belgravia",
-        "Belsize Park",
-        "Billingsgate",
-        "Bishopsgate",
-        "Bishopsgate to the north",
-        "Bloomsbury",
-        "Brent",
-        "Brent Cross",
-        "Brent Park",
-        "Bridgewater Square",
-        "Brompton",
-        "Brondesbury",
-      ],
-    },
-    {
-      id: 3,
-      title: "C",
-      areas: [
-        "Cannon Street",
-        "Canonbury",
-        "Camden Town",
-        "Chalk Farm",
-        "Chancery Lane",
-        "Cheapside",
-        "Chelsea",
-        "Childs Hill",
-        "Chinatown",
-        "Chiswick",
-        "Church End",
-        "City of Westminster",
-        "Clapham",
-        "Clerkenwell",
-        "Cockfosters",
-        "Cornhill",
-        "Covent Garden",
-        "Cricklewood",
-        "Crouch End",
-      ],
-    },
-    {
-      id: 4,
-      title: "D",
-      areas: ["Dalston (part)"],
-    },
-    {
-      id: 5,
-      title: "E",
-      areas: [
-        "Earls Court",
-        "East Acton",
-        "East Finchley",
-        "Edgware",
-        "Edmonton",
-        "Edmonton to the West",
-        "Embankment",
-        "Euston",
-      ],
-    },
-    {
-      id: 6,
-      title: "F",
-      areas: [
-        "Farringdon",
-        "Farringdon Road in the north",
-        "Fenchurch Street",
-        "Fetter Lane",
-        "Finchley Central",
-        "Finsbury",
-        "Finsbury Park",
-        "Fleet Street",
-        "Fleet Street in the south",
-        "Fortune Green",
-        "Frognal",
-        "Fulham",
-      ],
-    },
-    {
-      id: 7,
-      title: "G",
-      areas: ["Golders Green", "Gospel Oak", "Grange Park", "Gunnersbury"],
-    },
-    {
-      id: 8,
-      title: "H",
-      areas: [
-        "Hammersmith",
-        "Hampstead",
-        "Hampstead Garden Suburb",
-        "Harlesden",
-        "Harley Street",
-        "Harringay",
-        "Harringay in the West",
-        "Harrow",
-        "Hatton Garden",
-        "Hendon",
-        "Hendon Central",
-        "Highbury",
-        "Highgate",
-        "Holborn",
-        "Holborn in the west",
-        "Holland Park",
-        "Holloway",
-        "Hornsey",
-        "Hyde Park",
-      ],
-    },
-    {
-      id: 9,
-      title: "I",
-      areas: ["Imperial Wharf", "Islington"],
-    },
-    {
-      id: 10,
-      title: "J",
-      areas: [],
-    },
-    {
-      id: 11,
-      title: "K",
-      areas: [
-        "Kensington",
-        "Kensal Green",
-        "Kensington Olympia",
-        "Kentish Town",
-        "Kilburn",
-        "Kings Cross",
-        "Kingsbury Green",
-        "Kingsland",
-        "Knightsbridge",
-      ],
-    },
-    {
-      id: 12,
-      title: "L",
-      areas: [
-        "Lambeth",
-        "Lisson Grove",
-        "Little Venice",
-        "London Wall",
-        "Lancaster Gate",
-      ],
-    },
-    {
-      id: 13,
-      title: "M",
-      areas: [
-        "Maida Vale",
-        "Manor House",
-        "Marylebone",
-        "Mayfair",
-        "Mill Hill",
-        "Moorgate",
-        "Museum of London",
-        "Muswell Hill",
-        "Marble Arch",
-      ],
-    },
-    {
-      id: 14,
-      title: "N",
-      areas: [
-        "Neasden (part)",
-        "New Southgate",
-        "Newington Green",
-        "North Finchley",
-        "North Kensington",
-        "Northfields (north and west)",
-        "Northumberland Park",
-        "Notting Hill",
-      ],
-    },
-    {
-      id: 15,
-      title: "O",
-      areas: [
-        "Oakleigh Park",
-        "Oakwood",
-        "Old Broad Street",
-        "Old Oak Common",
-        "Old Street",
-        "Oxford Circus",
-      ],
-    },
-    {
-      id: 16,
-      title: "P",
-      areas: [
-        "Paddington",
-        "Park Lane",
-        "Park Royal",
-        "Parsons Green",
-        "Pentonville",
-        "Pimlico",
-        "Primrose Hill",
-      ],
-    },
-    {
-      id: 17,
-      title: "Q",
-      areas: ["Queen Street", "Queens park"],
-    },
-    {
-      id: 18,
-      title: "R",
-      areas: ["Regent Street", "Regents park"],
-    },
-    {
-      id: 19,
-      title: "S",
-      areas: [
-        "Shepherds Bush",
-        "Shoreditch",
-        "Smithfield",
-        "South Islington",
-        "South Kensington",
-        "Southgate",
-        "Southwark",
-        "Spitalfields",
-        "St James",
-        "St Lukes",
-        "St Pauls",
-        "Stoke Newington",
-        "Stonebridge",
-        "Streatham Hill",
-        "Stroud Green",
-        "Swiss Cottage",
-      ],
-    },
-    {
-      id: 20,
-      title: "T",
-      areas: ["Temple Fortune", "Totteridge", "Tower Hill", "Tufnell Park"],
-    },
-    {
-      id: 21,
-      title: "U",
-      areas: ["Upper Holloway"],
-    },
-    {
-      id: 22,
-      title: "V",
-      areas: ["Vauxhall", "Victoria Park", "Victoria"],
-    },
-    {
-      id: 23,
-      title: "W",
-      areas: [
-        "Walbrook",
-        "Walham Green",
-        "Wandsworth",
-        "West Brompton",
-        "West Ealing",
-        "West Hampstead",
-        "West Kensington",
-        "Westbourne Green",
-        "Westminster",
-        "Whetstone",
-        "White City",
-        "Whitechapel",
-        "Whitehall",
-        "Willesden",
-        "Willesden Green",
-        "Winchmore Hill",
-        "Wood Green",
-      ],
-    },
-    // Add more tiles as needed
-  ];
+  const [areas, setData] = useState<Areas[]>([]);
 
-  const [items, setItems] = useState<Areas[]>(initialAreas);
+  const [items, setItems] = useState<Areas[]>(areas);
   const [keyword, setKeyword] = useState("");
+
+  console.log(JSON.stringify(areas));
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
@@ -315,17 +27,36 @@ const Corperates: React.FC = () => {
   };
 
   const filterItems = (keyword: string) => {
-    const filteredItems = initialAreas.filter((item) =>
+    const filteredItems = areas.filter((item) =>
       item.areas.some((area) =>
-        area.toLowerCase().includes(keyword.toLowerCase())
+        area.name.toLowerCase().includes(keyword.toLowerCase())
       )
     );
     setItems(filteredItems);
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosClient.get("/getarea/group");
+        setData(response.data);
+        setItems(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
     window.scrollTo(0, 0);
   }, []);
+
+  // const isLocationCheck = (id: any) => {
+  //   const loc = areaMap.find(
+  //     (value) => value.toLowerCase().replace(/ /g, "-") === id
+  //   );
+  //   return loc ? loc.toLowerCase().replace(/ /g, "-") : "";
+  // };
 
   return (
     <section
@@ -381,9 +112,7 @@ const Corperates: React.FC = () => {
                 <ul className="text-gray-700">
                   {tile.areas.map((area, index) => (
                     <li key={index}>
-                      <Link to={`/` + area.toLowerCase().replace(/ /g, "-")}>
-                        {area}
-                      </Link>
+                      <Link to={`/` + area.area_code}>{area.name}</Link>
                     </li>
                   ))}
                 </ul>
