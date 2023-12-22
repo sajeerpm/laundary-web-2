@@ -40,6 +40,7 @@ const CustomerInfo = ({}: Props) => {
   const [progress, setProgress] = useState<number>(66.3);
   const [step, setStep] = useState<number>(1);
   const [userData, setUserData] = useState<User>();
+  const [isGuestUser, setGuestUser] = useState<boolean>(true);
 
   useEffect(() => {
     if (localStorage.getItem("ACCESS_TOKEN")) {
@@ -69,13 +70,23 @@ const CustomerInfo = ({}: Props) => {
     setCustomerNotes(value);
   };
 
+  const handleCheckout = (value: string) => {
+    setGuestUser(true);
+    if (value != "guest") {
+      setGuestUser(false);
+    }
+  };
+
   const handleNext = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (step == 1) {
-      if (!validatePassword(password)) {
+      if (!isGuestUser && !validatePassword(password)) {
         alert(PASSWORD_VALIDATION_MSG);
         return;
-      } else if (!validateConfirmPassword(password, confirmPassword)) {
+      } else if (
+        !isGuestUser &&
+        !validateConfirmPassword(password, confirmPassword)
+      ) {
         alert(PASSWORD_CONFIRM_MG);
         return false;
       } /*else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
@@ -95,8 +106,14 @@ const CustomerInfo = ({}: Props) => {
       localStorage.setItem("customer_register", JSON.stringify(payload));
 
       setButtonDisable(true);
+
+      var endpoint = "/register";
+      if (isGuestUser) {
+        endpoint = "/guest";
+      }
+
       axiosClient
-        .post("/register", payload)
+        .post(endpoint, payload)
         .then(({ data }) => {
           if (data.status == "1") {
             setCustomerId(data.customer_id);
@@ -225,7 +242,7 @@ const CustomerInfo = ({}: Props) => {
               <div className="w-full">
                 <SHText textAlign="text-center text-black mb-5">
                   <p className="w-full uppercase">
-                    {step == 0 ? "Customer Information" : "Order Summary"}
+                    {step == 1 ? "Customer Details" : "Order Summary"}
                   </p>
                 </SHText>
               </div>
@@ -278,47 +295,40 @@ const CustomerInfo = ({}: Props) => {
                       className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
                     />
                   </div>
-                  <div className="mb-4">
-                    <label className="block text-gray-600">
-                      Password <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="password"
-                      autoComplete="off"
-                      required
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter a password"
-                      className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
-                    />
-                    <p className="text-xs text-gray-400">
-                      {PASSWORD_VALIDATION_MSG}
-                    </p>
-                  </div>
-                  <div className="mb-4">
-                    <label className="block text-gray-600">
-                      Confirm Password <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      autoComplete="off"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      placeholder="Confirm password"
-                      className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
-                    />
-                  </div>
-                  {/* <div className="mb-4">
-                    <label className="block text-gray-600">Notes:</label>
-                    <textarea
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      placeholder="Please provide any other specific details"
-                      className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
-                      rows={4}
-                    />
-                  </div> */}
+                  {!isGuestUser && (
+                    <>
+                      <div className="mb-4">
+                        <label className="block text-gray-600">
+                          Password <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="password"
+                          autoComplete="off"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          placeholder="Enter a password"
+                          className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
+                        />
+                        <p className="text-xs text-gray-400">
+                          {PASSWORD_VALIDATION_MSG}
+                        </p>
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-600">
+                          Confirm Password{" "}
+                          <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="password"
+                          autoComplete="off"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          placeholder="Confirm password"
+                          className="w-full rounded border px-4 py-2 focus:border-secondary-500 focus:outline-none"
+                        />
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
               {step == 2 && (
@@ -331,23 +341,40 @@ const CustomerInfo = ({}: Props) => {
               )}
               {/* Delivery Information Section */}
               {step == 3 && <OrderSuccess order={null} />}
-              <div className="mb-4">
-                {/* {step > 0 && (
-                <button
-                  className="float-left rounded-none bg-gray-600 px-8 py-1 text-white"
-                  onClick={handleBack}
-                >
-                  Back
-                </button>
-              )} */}
-                {step < 3 && (
-                  <div>
+              <div className="mb-4 flex justify-between">
+                {step == 1 && (
+                  <div className="flex flex-1 justify-between">
                     <button
                       disabled={buttonDisabled}
                       type="submit"
-                      className="float-right rounded-none bg-secondary-500 px-8 py-1 text-white"
+                      onClick={() => handleCheckout("guest")}
+                      className="float-right rounded-2xl bg-yellow-500 px-8 py-1 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
-                      {step == 2 ? "Place Order" : "Next"}
+                      Guest Checkout
+                    </button>
+                    <button
+                      disabled={buttonDisabled}
+                      type="button"
+                      onClick={() => {
+                        localStorage.setItem("FROM", "checkout");
+                        navigate("/login");
+                      }}
+                      className="float-right rounded-2xl bg-blue-500 px-8 py-1 text-black hover:shadow-sm hover:shadow-gray-400"
+                    >
+                      Login
+                    </button>
+                  </div>
+                )}
+
+                {step < 3 && (
+                  <div className="flex flex-1 items-end justify-end">
+                    <button
+                      disabled={buttonDisabled}
+                      type={isGuestUser ? "button" : "submit"}
+                      onClick={() => handleCheckout("registered")}
+                      className=" rounded-2xl bg-secondary-500 px-8 py-2 text-white"
+                    >
+                      {step == 2 ? "Place Order" : "Sign Up"}
                     </button>
                   </div>
                 )}

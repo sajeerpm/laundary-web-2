@@ -9,12 +9,18 @@ import HomePageGraphicSmall from "@/assets/Mobile.jpg";
 import HomePageGraphic from "@/assets/web.webp";
 import socialMediaFB from "@/assets/socialmedia/facebook.png";
 import socialMediaInsta from "@/assets/socialmedia/instagram.png";
+import paypal from "@/assets/socialmedia/paypal.png";
+import mastercard from "@/assets/socialmedia/mastercard.png";
+import stripe from "@/assets/socialmedia/stripe.png";
+import visa from "@/assets/socialmedia/visa.png";
 import { Slot } from "@/model/Slot";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-type Props = {};
+type Props = {
+  areaname: string;
+};
 
-const Home = ({}: Props) => {
+const Home = ({ areaname }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [slots, setData] = useState<Slot[]>([]);
   const [delivery, setDeliveryData] = useState<Slot[]>([]);
@@ -22,6 +28,15 @@ const Home = ({}: Props) => {
   const [pickupSlot, setPickupSlot] = useState<Slot>();
   const [deliverySlot, setDeliverySlot] = useState<Slot>();
   const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +99,7 @@ const Home = ({}: Props) => {
   return (
     <section
       id="order"
-      className="mt-[4.5rem] h-[100vh] gap-16 bg-[#EAE9E7] py-20 md:mt-0 md:pb-0"
+      className="mt-[4.5rem] gap-16 bg-[#EAE9E7] py-20 md:mt-0 md:h-[100vh] md:pb-0"
       style={
         !isAboveMediumScreens
           ? {
@@ -112,27 +127,24 @@ const Home = ({}: Props) => {
         </div>
 
         {/* MAIN HEADER */}
-        <div className="z-10 mt-[30vh] md:basis-3/6">
+        <div className="z-10 mt-[20vh] md:mt-[30vh] md:basis-3/6">
           {/* LOGIN INPUTS */}
           <form onSubmit={handlePlaceOrder}>
             <p
-              className={`mb-3 w-fit rounded-full bg-secondary-500 px-3 text-left text-[16px] font-[500] text-white md:text-[20px]`}
+              className={`mb-3 w-fit rounded-lg bg-white px-3 text-left text-[16px] font-[700] text-black shadow-2xl md:text-[18px]`}
             >
+              Family Business
+              <br />
               25+ years Experience in
             </p>
             <HText
-              textAlign={`text-left text-[24px] md:text-[40px] font-[500] ${
+              textAlign={`text-left text-[24px] md:text-[32px] font-[500] ${
                 isAboveMediumScreens ? "text-black" : "text-black"
               }`}
             >
               DRY CLEANING &
-            </HText>
-            <HText
-              textAlign={`text-left text-[24px] md:text-[40px] font-[500] ${
-                isAboveMediumScreens ? "text-black" : "text-black"
-              }`}
-            >
-              LAUNDRY SERVICES
+              <br />
+              LAUNDRY SERVICES {areaname}
             </HText>
             <p className={`w-fit py-1 text-[18px] font-[500] md:text-[20px]`}>
               Free Collection and Delivery
@@ -193,7 +205,27 @@ const Home = ({}: Props) => {
               </button>
             </div>
           </form>
-          <div className="flex justify-center gap-4 py-8">
+          <div className="flex justify-center gap-4 py-4">
+            <img className="h-[32px] w-[42px]" src={mastercard} alt="" />
+            <img className="h-[32px] w-[42px]" src={visa} alt="" />
+            <img className="h-[32px] w-[42px]" src={stripe} alt="" />
+            <img className="h-[32px] w-[42px]" src={paypal} alt="" />
+          </div>
+          <div className="flex justify-center gap-4 py-2">
+            <img
+              className="mr-2 h-8 w-auto cursor-pointer"
+              alt="logo"
+              src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/apple.png"
+              onClick={handleShowAlert}
+            />
+            <img
+              className="h-8 w-auto cursor-pointer"
+              alt="logo"
+              src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/google.png"
+              onClick={handleShowAlert}
+            />
+          </div>
+          <div className="flex justify-center gap-4 py-2">
             <a
               target="_new"
               href="https://www.facebook.com/mastercleandrycleanersuk"
@@ -217,6 +249,9 @@ const Home = ({}: Props) => {
             setExpressDelivery(false);
           }}
         />
+      )}
+      {showAlert && (
+        <AlertPopup message="App Coming Soon!" onClose={handleCloseAlert} />
       )}
     </section>
   );

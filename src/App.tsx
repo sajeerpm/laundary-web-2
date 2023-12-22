@@ -27,6 +27,8 @@ import Payment from "./pages/order/Payment";
 import { initGA } from "./analytics/analytics";
 import PaymentComplete from "./pages/order/PaymentComplete";
 import Signup from "./pages/signup/Signup";
+import Blog from "./pages/blog/Blog";
+import BlogView from "./pages/blog/BlogView";
 // import Maintenance from "./pages/pageNotFound/Maintenance";
 
 function App() {
@@ -103,6 +105,8 @@ function App() {
         <Route element={<PaymentComplete />} path="/payment/complete/:id" />
         <Route element={<PaymentComplete />} path="/payment/cancel/:id" />
         <Route element={<Payment />} path="/order/payment/:id" />
+        <Route element={<Blog />} path="/blogs" />
+        <Route element={<BlogView />} path="/blog/:id" />
       </Routes>
       {!(path === "/customer" || path === "/account") && <Footer />}
       {path != "/customer" &&

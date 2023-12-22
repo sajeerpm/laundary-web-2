@@ -5,6 +5,7 @@ import { useRef, FormEvent, useEffect, useState } from "react";
 import { useStateContext } from "@/context/ContextProvider";
 import axiosClient from "@/axiosClient";
 import { Helmet } from "react-helmet";
+import { RESET_PASSWORD_SUCCESS_MSG } from "@/shared/constants";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Home = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
   const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+  const [inProgress, setInProgress] = useState<boolean>(false);
 
   const { setUser, setToken } = useStateContext();
 
@@ -48,7 +50,15 @@ const Home = () => {
           setToken(data.token);
           localStorage.setItem("ACCESS_TOKEN", data.token);
           localStorage.setItem("USER_DATA", JSON.stringify(data.user));
-          window.location.reload();
+          if (
+            localStorage.getItem("FROM") &&
+            localStorage.getItem("FROM") == "checkout"
+          ) {
+            localStorage.removeItem("FROM");
+            navigate("/customer");
+          } else {
+            window.location.reload();
+          }
         } else if (data.req_code == "VALIDATE_EMAIL") {
           setIsEmailValid(true);
         }
@@ -61,23 +71,27 @@ const Home = () => {
       });
   };
 
-  // const handleResetPassword = () => {
-  //   const payload = {
-  //     email: emailRef.current?.value,
-  //   };
-  //   axiosClient
-  //     .post("/account/reset/password", payload)
-  //     .then(({ data }) => {
-  //       if (data.req_code == "ACC_RESET_PASS") {
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       const response = err.response;
-  //       if (response && response.status !== 200) {
-  //         setError(response.data.message);
-  //       }
-  //     });
-  // };
+  const handleResetPassword = () => {
+    const payload = {
+      email: emailRef.current?.value,
+    };
+    setInProgress(true);
+    axiosClient
+      .post("/account/reset/password", payload)
+      .then(({ data }) => {
+        if (data.status) {
+          alert(RESET_PASSWORD_SUCCESS_MSG);
+        }
+        setInProgress(false);
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response && response.status !== 200) {
+          setError(response.data.message);
+        }
+        setInProgress(false);
+      });
+  };
 
   return (
     <section
@@ -154,7 +168,14 @@ const Home = () => {
             <div className="mt-6 w-full text-center">
               <p>
                 Forgot your password?{" "}
-                <span className="underline">Reset it here</span>
+                <button
+                  onClick={handleResetPassword}
+                  className={` underline ${
+                    inProgress ? "text-green-500" : "text-red-500"
+                  }`}
+                >
+                  {inProgress ? "Sending reset email" : "Reset it here"}
+                </button>
               </p>
             </div>
           )}

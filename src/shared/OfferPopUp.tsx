@@ -12,7 +12,7 @@ const PopUp = () => {
   return (
     <div>
       {showPopUp && (
-        <div className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 transform shadow-md">
+        <div className="fixed left-1/2 top-1/3 z-50 -translate-x-1/2 -translate-y-1/2 transform shadow-md md:top-1/2">
           <div className="relative">
             <button
               onClick={closePopUp}
@@ -20,7 +20,10 @@ const PopUp = () => {
             >
               X
             </button>
-            <img className="max-w-[80vw] md:h-[70vh]" src={offer} />
+            <img
+              className="max-w-[80vw] md:h-[40vh] md:max-w-[50vw]"
+              src={offer}
+            />
           </div>
         </div>
       )}

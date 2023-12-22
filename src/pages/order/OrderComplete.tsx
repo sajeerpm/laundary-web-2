@@ -14,6 +14,11 @@ const OrderComplete = ({}: Props) => {
   const [order, setOrder] = useState<any>(null);
 
   useEffect(() => {
+    // Google Ads conversion tracking script
+    const script = document.createElement("script");
+    script.innerHTML = `gtag('event', 'conversion', { 'send_to': 'AW-11377566839/UmsBCIKt1_gYEPfIn7Eq', 'value': 30.0, 'currency': 'GBP', 'transaction_id': '' });`;
+    document.head.appendChild(script);
+
     try {
       axiosClient.get("/order/" + id).then(({ data }) => {
         setOrder(data.order);

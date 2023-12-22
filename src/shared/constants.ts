@@ -11,3 +11,6 @@ export const PASSWORD_CONFIRM_MG =
   "Password mismatch, please confirm password before submit";
 
 export const UK_PHONE_VALIDATION_MSG = "Please provide valid UK mobile number";
+
+export const RESET_PASSWORD_SUCCESS_MSG =
+  "Your reset password is sent to your registered email, please check your inbox";

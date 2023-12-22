@@ -5,6 +5,10 @@ import PaymentForm from "./components/PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { Helmet } from "react-helmet";
+import paypal from "@/assets/socialmedia/paypal.png";
+import mastercard from "@/assets/socialmedia/mastercard.png";
+import stripe from "@/assets/socialmedia/stripe.png";
+import visa from "@/assets/socialmedia/visa.png";
 
 type Props = {};
 
@@ -72,27 +76,36 @@ const Payment = ({}: Props) => {
             <Elements stripe={stripePromise}>
               <PaymentForm order_id={id!} />
             </Elements>
-            <p className="flex h-[50px] items-center justify-center">OR</p>
+            <p className="flex h-[50px] items-center justify-center font-[900]">
+              OR
+            </p>
             <PayPalButton id={id!} />
 
-            <strong className="text-center text-red-500">
+            {/* <strong className="text-center text-red-500">
               We do not store any Credit or Debit card data including card
               numbers, cvc and billing addresses. We send all Credit and Debit
               card information securely to PayPal and stripe for processing.
               <br /> Please see PayPal and stripe terms of service for more
               information about their payment system and security .
-            </strong>
+            </strong> */}
+
+            <div className="flex justify-center gap-4 py-8">
+              <img className="h-[42px]" src={mastercard} alt="" />
+              <img className="h-[42px]" src={visa} alt="" />
+              <img className="h-[42px]" src={stripe} alt="" />
+              <img className="h-[42px]" src={paypal} alt="" />
+            </div>
+
+            <p className="w-full px-2 py-4 text-center text-red-400">
+              <strong>
+                Master Clean Dry Cleaners are not taking any payment
+                (Credit/Debit card) until we have collected your items and
+                confirmed the price by email.
+              </strong>
+            </p>
           </div>
         </div>
       </div>
-
-      <p className="w-full px-2 py-4 text-red-400 md:w-3/5 md:border">
-        <strong>
-          Master Clean Dry Cleaners are not taking any payment (Credit/Debit
-          card) until we have collected your items and confirmed the price by
-          email.
-        </strong>
-      </p>
     </section>
   );
 };

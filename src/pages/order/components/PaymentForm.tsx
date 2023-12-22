@@ -79,7 +79,7 @@ const PaymentForm = ({ order_id }: Props) => {
           className="float-right mt-5 h-[50px] w-full rounded-full bg-black px-4 py-2 text-xl font-bold italic text-white"
           type="submit"
         >
-          {processing ? "Processing..." : "Pay"}
+          {processing ? "Your Payment Processing..." : "Pay with Stripe"}
         </button>
       </div>
     </form>

@@ -118,6 +118,7 @@ const Branches: React.FC = () => {
               >
                 {stores.map((store) => (
                   <option
+                    selected={selectedStore?.id == store.id}
                     key={store.id}
                     value={store.id}
                     className={`cursor-pointer rounded p-2 ${

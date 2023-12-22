@@ -6,7 +6,8 @@ import Home from "./home";
 import { useEffect } from "react";
 import Services from "./services";
 import { Helmet } from "react-helmet";
-import PopUp from "@/shared/OfferPopUp";
+// import PopUp from "@/shared/OfferPopUp";
+import GoogleReviews from "./reviews";
 
 function HomeScreen() {
   useEffect(() => {
@@ -27,13 +28,14 @@ function HomeScreen() {
           content="Master clean are award winning eco friendly drycleaners in london with 25+ years experience. we offer free collection & delivery services for your drycleaning & laundry."
         ></meta>
       </Helmet>
-      <Home />
+      <Home areaname={""} />
+      <GoogleReviews placeId={"ChIJmdOA3csadkgRwIf2zQ_JGYo"} />
       <HowItWorks />
       <Clients />
       <Pricing />
-      <AboutCompany />
+      <AboutCompany aboutArea={""} areaName={""} />
       <Services />
-      <PopUp />
+      {/* <PopUp /> */}
     </div>
   );
 }

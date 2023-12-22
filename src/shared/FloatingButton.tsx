@@ -15,7 +15,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
   return (
     <div id="floating-button" className="flex items-center justify-center">
       <div
-        className={`fixed right-[8px] top-[40%] flex flex-col items-end gap-5 py-0`}
+        className={`fixed right-[8px] top-[40%] z-20 flex flex-col items-end gap-5 py-0`}
       >
         {path != "/" && (
           <Link to={`/`}>
@@ -36,18 +36,20 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
         </a>
         {path != "/" && (
           <Link to={`/`}>
-            <button className="text-md rounded-full bg-[#FFD700] px-3 py-2 font-bold text-red-600 shadow-2xl md:px-6 md:py-3">
-              15% OFF
+            <button className="text-md rounded-full bg-[#FFD700] px-3 py-2 text-center font-bold text-red-600 shadow-2xl md:px-6 md:py-3">
+              15% OFF <br />
+              UNTIL NEW YEAR
             </button>
           </Link>
         )}
         {path == "/" && (
           <AnchorLink
-            className="text-md rounded-full bg-[#FFD700] px-3 py-2 font-bold text-red-600 shadow-2xl md:px-6 md:py-3"
+            className="text-md rounded-full bg-[#FFD700] px-3 py-2 text-center font-bold text-red-600 shadow-2xl md:px-6 md:py-3"
             onClick={() => {}}
             href={`#${SelectedPage.Order}`}
           >
-            15% OFF
+            15% OFF <br />
+            UNTIL NEW YEAR
           </AnchorLink>
         )}
       </div>

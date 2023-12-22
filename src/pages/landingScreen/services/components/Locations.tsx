@@ -1,7 +1,6 @@
 import axiosClient from "@/axiosClient";
 import { Area } from "@/model/Area";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -30,7 +29,12 @@ const Locations = ({}: Props) => {
         <div className="w-full justify-between gap-8 md:flex">
           <div className="grid w-full grid-flow-row grid-cols-1 md:grid-cols-4">
             {areas.map((area) => (
-              <Link to={"/" + area.area_code}>{area.name}</Link>
+              <p
+                className="cursor-pointer hover:underline"
+                onClick={() => (window.location.href = "/" + area.area_code)}
+              >
+                {area.name}
+              </p>
             ))}
           </div>
         </div>
