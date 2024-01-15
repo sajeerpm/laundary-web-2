@@ -79,6 +79,7 @@ const CustomerInfo = ({}: Props) => {
 
   const handleNext = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setButtonDisable(true);
     if (step == 1) {
       if (!isGuestUser && !validatePassword(password)) {
         alert(PASSWORD_VALIDATION_MSG);
@@ -104,8 +105,6 @@ const CustomerInfo = ({}: Props) => {
       };
 
       localStorage.setItem("customer_register", JSON.stringify(payload));
-
-      setButtonDisable(true);
 
       var endpoint = "/register";
       if (isGuestUser) {
@@ -174,7 +173,8 @@ const CustomerInfo = ({}: Props) => {
         .then(({ data }) => {
           if (data.status) {
             // window.location.href = data.url;
-            navigate("/order/payment/" + data.order.order_id);
+            // navigate("/order/payment/" + data.order.order_id);
+            navigate("/order/complete/" + data.order.order_id);
           }
           setButtonDisable(false);
         })
@@ -234,7 +234,7 @@ const CustomerInfo = ({}: Props) => {
           />
         </div>
       </div>
-      <div className="m-6 mx-auto flex w-10/12 flex-col items-center md:w-3/5">
+      <div className="md:mx-auto mt-2 flex flex-col items-center md:mt-6 md:w-3/5">
         <div className="w-full items-start justify-center gap-8 md:flex md:flex-row">
           {/* Customer Information Section */}
           <div className="h-full rounded-md bg-white px-4 py-6 md:w-2/3 md:px-20">
@@ -341,43 +341,39 @@ const CustomerInfo = ({}: Props) => {
               )}
               {/* Delivery Information Section */}
               {step == 3 && <OrderSuccess order={null} />}
-              <div className="mb-4 flex justify-between">
-                {step == 1 && (
-                  <div className="flex flex-1 justify-between">
-                    <button
+              <div className="flex flex-col justify-between">
+                  <div className="flex flex-col gap-4 md:flex-row justify-end py-4">
+                    {step == 1 && (<button
                       disabled={buttonDisabled}
                       type="submit"
                       onClick={() => handleCheckout("guest")}
-                      className="float-right rounded-2xl bg-yellow-500 px-8 py-1 text-black hover:shadow-sm hover:shadow-gray-400"
+                      className="float-right rounded-2xl bg-yellow-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
                       Guest Checkout
-                    </button>
-                    <button
+                    </button>)}
+                    {step == 1 && (<button
                       disabled={buttonDisabled}
                       type="button"
                       onClick={() => {
                         localStorage.setItem("FROM", "checkout");
                         navigate("/login");
                       }}
-                      className="float-right rounded-2xl bg-blue-500 px-8 py-1 text-black hover:shadow-sm hover:shadow-gray-400"
+                      className="float-right rounded-2xl bg-blue-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
                       Login
-                    </button>
-                  </div>
-                )}
-
-                {step < 3 && (
-                  <div className="flex flex-1 items-end justify-end">
-                    <button
+                    </button>)}
+                    {step == 2 && (<span className="py-2 text-lg text-center italic text-red-500">
+                      We will take the payment before delivery
+                    </span>)}
+                    {step < 3 && (<button
                       disabled={buttonDisabled}
                       type={isGuestUser ? "button" : "submit"}
                       onClick={() => handleCheckout("registered")}
                       className=" rounded-2xl bg-secondary-500 px-8 py-2 text-white"
                     >
-                      {step == 2 ? "Place Order" : "Sign Up"}
-                    </button>
+                      {buttonDisabled ? "Processing..." : step == 2 ? "Place Order" : "Sign Up"}
+                    </button>)}
                   </div>
-                )}
               </div>
             </form>
           </div>

@@ -37,8 +37,8 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
         {path != "/" && (
           <Link to={`/`}>
             <button className="text-md rounded-full bg-[#FFD700] px-3 py-2 text-center font-bold text-red-600 shadow-2xl md:px-6 md:py-3">
-              15% OFF <br />
-              UNTIL NEW YEAR
+              15% discount <br />
+              till 28th Feb
             </button>
           </Link>
         )}
@@ -48,8 +48,8 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ path }) => {
             onClick={() => {}}
             href={`#${SelectedPage.Order}`}
           >
-            15% OFF <br />
-            UNTIL NEW YEAR
+            15% discount <br />
+            till 28th Feb
           </AnchorLink>
         )}
       </div>

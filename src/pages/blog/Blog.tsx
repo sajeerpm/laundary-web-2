@@ -167,7 +167,7 @@ const Blog: React.FC = () => {
                       {/* Read more link */}
                       <Link
                         className="rounded-full border px-4 py-2 text-red-600"
-                        to={`/blog/${latestBlogPosts?.id}`}
+                        to={`/blog/${post?.id}`}
                       >
                         Read More
                       </Link>

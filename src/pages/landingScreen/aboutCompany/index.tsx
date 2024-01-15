@@ -83,7 +83,18 @@ const AboutCompany = ({ aboutArea, areaName }: Props) => {
               companies vying for attention, consumers may find it challenging
               to make the right choice.
             </TextMedium>
-            <div className={`${lineParagraphCap}`}></div>
+          </motion.div>
+          <div className={`${lineParagraphCap}`}></div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0 },
+            }}
+          >
             <TextMedium textAlign="text-center">
               Master Dry Cleaners have simplified this process by providing you
               with the overview of our services, Competitive pricing options and

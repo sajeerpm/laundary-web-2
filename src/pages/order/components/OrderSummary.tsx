@@ -41,7 +41,7 @@ const OrderSummaryPage: React.FC<Props> = ({
   };
   return (
     <div className="flex">
-      <div className="w-full space-y-8 rounded-lg bg-white pb-8">
+      <div className="w-full space-y-8 rounded-lg bg-white">
         {/* Address Section */}
         <div className="flex flex-col space-y-4">
           <p className="font-montserrat text-xl text-gray-600">Address</p>
