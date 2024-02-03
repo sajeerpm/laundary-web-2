@@ -4,9 +4,9 @@ type Props = {};
 
 const AboutUs = ({}: Props) => {
   return (
-    <div className="flex flex-col pt-6 md:w-1/6">
-      <p className="text-md uppercase">About Us</p>
-      <hr className="my-2 h-[2px] bg-gray-400" />
+    <div className="flex flex-col">
+      {/* <p className="text-md uppercase">About Us</p>
+      <hr className="my-2 h-[2px] bg-gray-400" /> */}
       <Link className="hover:underline" to={`/blogs`}>
         Blog
       </Link>

@@ -4,9 +4,9 @@ type Props = {};
 
 const CompanyServices = ({}: Props) => {
   return (
-    <div className="flex flex-col pt-6 md:w-1/6">
-      <p className="text-md uppercase">Services</p>
-      <hr className="my-2 h-[2px] bg-gray-400" />
+    <div className="flex flex-col">
+      {/* <p className="text-md uppercase">Services</p>
+      <hr className="my-2 h-[2px] bg-gray-400" /> */}
       <Link className="hover:underline" to={`/corperates`}>
         Corporate Services
       </Link>
@@ -69,6 +69,30 @@ const CompanyServices = ({}: Props) => {
         to={`/pricing/wedding-dresses-london-near-me`}
       >
         Wedding Dresses
+      </Link>
+      <Link
+        className="hover:underline"
+        to={`/pricing/airbnblaundryservice`}
+      >
+        Air Bnb Laundry Service
+      </Link>
+      <Link
+        className="hover:underline"
+        to={`/pricing/hotelsguestandstaffdrycleaning&laundry`}
+      >
+        Hotels Guest and Staff Dry cleaning & Laundry
+      </Link>
+      <Link
+        className="hover:underline"
+        to={`/pricing/sportskitslaundry&drycleaningservice`}
+      >
+        Sports Kits Laundry & Dry Cleaning Service
+      </Link>
+      <Link
+        className="hover:underline"
+        to={`/pricing/corporatelaundryanddrycleaningservices`}
+      >
+        Corporate Laundry and Dry Cleaning Services
       </Link>
     </div>
   );

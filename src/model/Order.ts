@@ -21,4 +21,5 @@ export interface Order {
   full_address: string | undefined;
   address_type: string | undefined;
   address: string | undefined;
+  status: string | undefined;
 }

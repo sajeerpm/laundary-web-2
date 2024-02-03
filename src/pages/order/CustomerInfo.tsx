@@ -83,12 +83,14 @@ const CustomerInfo = ({}: Props) => {
     if (step == 1) {
       if (!isGuestUser && !validatePassword(password)) {
         alert(PASSWORD_VALIDATION_MSG);
+        setButtonDisable(false);
         return;
       } else if (
         !isGuestUser &&
         !validateConfirmPassword(password, confirmPassword)
       ) {
         alert(PASSWORD_CONFIRM_MG);
+        setButtonDisable(false);
         return false;
       } /*else if (!UK_PHONE_NUMBER_PATTERN.test(phoneNumber)) {
         alert(UK_PHONE_VALIDATION_MSG);
@@ -143,53 +145,7 @@ const CustomerInfo = ({}: Props) => {
         });
     } else if (step == 2) {
       setProgress(66.66);
-      const payload: Order = {
-        customer_id: customerId !== "" ? customerId : userData?.customer_id,
-        customer_address_id: customerAddressId,
-        pickup_date: deliveryData?.pickup.slot_date,
-        pickup_start: deliveryData?.pickup.slot_start,
-        pickup_end: deliveryData?.pickup.slot_end,
-        pickup_display: deliveryData?.pickup.display,
-        delivery_date: deliveryData?.delivery.slot_date,
-        delivery_start: deliveryData?.delivery.slot_start,
-        delivery_end: deliveryData?.delivery.slot_end,
-        delivery_display: deliveryData?.delivery.display,
-        customer_name: firstName,
-        customer_email: email,
-        customer_phone: phoneNumber,
-        billing_address: selectedAddress?.Label,
-        shipping_address: selectedAddress?.Label,
-        postalcode: selectedAddress?.PostalCode,
-        door_number: doorNumber,
-        customer_notes: customerNotes,
-        company_name: selectedAddress?.Company,
-        full_address: selectedAddress?.Label,
-        address_type: selectedAddress?.Type,
-        address: JSON.stringify(selectedAddress),
-      };
-
-      axiosClient
-        .post("/placeorder", payload)
-        .then(({ data }) => {
-          if (data.status) {
-            // window.location.href = data.url;
-            // navigate("/order/payment/" + data.order.order_id);
-            navigate("/order/complete/" + data.order.order_id);
-          }
-          setButtonDisable(false);
-        })
-        .catch((err) => {
-          const response = err.response;
-          if (response) {
-            if (response.status === 422) {
-              alert("Please check mandatory fields.");
-            } else {
-              alert("Something went wrong, please try again!");
-              navigate("/");
-            }
-          }
-          setButtonDisable(false);
-        });
+      placeOrder(false);
     } else {
       setProgress(99.99);
       if (step < 2) {
@@ -198,13 +154,68 @@ const CustomerInfo = ({}: Props) => {
     }
   };
 
-  // const handleBack = () => {
-  //   if (step > 0) {
-  //     setStep(step - 1);
-  //     setProgress(50 * (step - 1));
-  //   }
-  //   console.log(step);
-  // };
+  const placeOrder = (isBack: boolean) => {
+    const payload: Order = {
+      customer_id: customerId !== "" ? customerId : userData?.customer_id,
+      customer_address_id: customerAddressId,
+      pickup_date: deliveryData?.pickup.slot_date,
+      pickup_start: deliveryData?.pickup.slot_start,
+      pickup_end: deliveryData?.pickup.slot_end,
+      pickup_display: deliveryData?.pickup.display,
+      delivery_date: deliveryData?.delivery.slot_date,
+      delivery_start: deliveryData?.delivery.slot_start,
+      delivery_end: deliveryData?.delivery.slot_end,
+      delivery_display: deliveryData?.delivery.display,
+      customer_name: firstName,
+      customer_email: email,
+      customer_phone: phoneNumber,
+      billing_address: selectedAddress?.Label,
+      shipping_address: selectedAddress?.Label,
+      postalcode: selectedAddress?.PostalCode,
+      door_number: doorNumber,
+      customer_notes: customerNotes,
+      company_name: selectedAddress?.Company,
+      full_address: selectedAddress?.Label,
+      address_type: selectedAddress?.Type,
+      address: JSON.stringify(selectedAddress),
+      status: isBack ? "pending payment" : "pending"
+    };
+
+    axiosClient
+      .post("/placeorder", payload)
+      .then(({ data }) => {
+        if (data.status && !isBack) {
+          // window.location.href = data.url;
+          // navigate("/order/payment/" + data.order.order_id);
+          navigate("/order/complete/" + data.order.order_id);
+        }
+        setButtonDisable(false);
+      })
+      .catch((err) => {
+        const response = err.response;
+        if (response) {
+          if (response.status === 422) {
+            alert("Please check mandatory fields.");
+          } else {
+            alert("Something went wrong, please try again!");
+            navigate("/");
+          }
+        }
+        setButtonDisable(false);
+      });
+  }
+
+  const handleBack = () => {
+    if (step > 0) {
+      if(!localStorage.getItem("ACCESS_TOKEN")) {
+        setStep(step - 1);
+        setProgress(50 * (step - 1));
+      } else {
+        navigate("/");
+      }
+      placeOrder(true);
+    }
+  };
 
   return (
     <section
@@ -234,7 +245,7 @@ const CustomerInfo = ({}: Props) => {
           />
         </div>
       </div>
-      <div className="md:mx-auto mt-2 flex flex-col items-center md:mt-6 md:w-3/5">
+      <div className="md:mx-auto mt-2 flex flex-col items-center md:mt-6 md:w-3/4">
         <div className="w-full items-start justify-center gap-8 md:flex md:flex-row">
           {/* Customer Information Section */}
           <div className="h-full rounded-md bg-white px-4 py-6 md:w-2/3 md:px-20">
@@ -342,7 +353,15 @@ const CustomerInfo = ({}: Props) => {
               {/* Delivery Information Section */}
               {step == 3 && <OrderSuccess order={null} />}
               <div className="flex flex-col justify-between">
-                  <div className="flex flex-col gap-4 md:flex-row justify-end py-4">
+                  <div className="flex flex-col gap-4 md:flex-row justify-between py-4">
+                    {step == 2 && (<button
+                      disabled={buttonDisabled}
+                      type="button"
+                      onClick={handleBack}
+                      className="float-right rounded-2xl bg-gray-400 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
+                    >
+                      Back
+                    </button>)}
                     {step == 1 && (<button
                       disabled={buttonDisabled}
                       type="submit"

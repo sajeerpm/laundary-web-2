@@ -13,3 +13,27 @@ body,
   font-family: "Lato", sans-serif;
   @apply text-gray-700;
 }
+
+.custom-swiper {
+  @apply relative w-full overflow-hidden;
+}
+
+.swiper-container {
+  @apply flex transition-transform duration-500 ease-in-out;
+}
+
+.swiper-slide {
+  @apply flex-shrink-0 w-full;
+}
+
+.button {
+  @apply absolute top-1/2 transform -translate-y-1/2 bg-transparent border-none cursor-pointer text-2xl;
+}
+
+.prev {
+  @apply left-0;
+}
+
+.next {
+  @apply right-0;
+}

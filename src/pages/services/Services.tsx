@@ -68,7 +68,12 @@ const Services = () => {
             >
               <img src={product.image} alt="Dry Cleaning London" />
               <SText textAlign="text-center">{product.name}</SText>
-              <p className="text-center align-top">{product.description}</p>
+              <div
+                className="text-center align-top"
+                dangerouslySetInnerHTML={{
+                  __html: product.description ?? "",
+                }}
+              />
               <Link to={`/${product.category_code.split("|")[0]}/`}>
                 <button
                   key={product.category_code}

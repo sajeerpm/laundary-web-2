@@ -30,8 +30,8 @@ function HomeScreen() {
       </Helmet>
       <Home areaname={""} />
       <GoogleReviews placeId={"ChIJmdOA3csadkgRwIf2zQ_JGYo"} />
-      <HowItWorks />
       <Clients />
+      <HowItWorks />
       <Pricing />
       <AboutCompany aboutArea={""} areaName={""} />
       <Services />

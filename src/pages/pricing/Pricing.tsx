@@ -139,7 +139,11 @@ const Pricing = () => {
                   key={category.id}
                   className="mx-auto max-w-[650px] text-center text-xl"
                 >
-                  <p>{category.description}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: category.description ?? "",
+                    }}
+                  />
                 </div>
               )
           )}

@@ -30,9 +30,9 @@ const Home = ({ areaname }: Props) => {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
 
-  const handleShowAlert = () => {
-    setShowAlert(true);
-  };
+  // const handleShowAlert = () => {
+  //   setShowAlert(true);
+  // };
 
   const handleCloseAlert = () => {
     setShowAlert(false);
@@ -99,7 +99,7 @@ const Home = ({ areaname }: Props) => {
   return (
     <section
       id="order"
-      className="mt-[4.5rem] gap-16 bg-[#EAE9E7] py-20 md:mt-0 md:h-[100vh] md:pb-0"
+      className="mt-[4.5rem] gap-16 bg-[#EAE9E7] py-8 md:mt-0 md:h-[100vh] md:pb-0"
       style={
         !isAboveMediumScreens
           ? {
@@ -211,7 +211,7 @@ const Home = ({ areaname }: Props) => {
             <img className="h-[32px] w-[42px]" src={stripe} alt="" />
             <img className="h-[32px] w-[42px]" src={paypal} alt="" />
           </div>
-          <div className="flex justify-center gap-4 py-2">
+          {/* <div className="flex justify-center gap-4 py-2">
             <img
               className="mr-2 h-8 w-auto cursor-pointer"
               alt="logo"
@@ -224,7 +224,7 @@ const Home = ({ areaname }: Props) => {
               src="https://d150we8dervy8c.cloudfront.net/static/images/app-stores/google.png"
               onClick={handleShowAlert}
             />
-          </div>
+          </div> */}
           <div className="flex justify-center gap-4 py-2">
             <a
               target="_new"

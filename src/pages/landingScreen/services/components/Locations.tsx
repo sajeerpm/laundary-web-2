@@ -23,9 +23,9 @@ const Locations = ({}: Props) => {
   }, []);
   return (
     <>
-      <div className="flex-1 pt-6 md:w-1/2">
-        <p className="text-md uppercase">Selected Locations</p>
-        <hr className="my-2 h-[2px] bg-gray-400" />
+      <div className="flex-1">
+        {/* <p className="text-md uppercase">Selected Locations</p>
+        <hr className="my-2 h-[2px] bg-gray-400" /> */}
         <div className="w-full justify-between gap-8 md:flex">
           <div className="grid w-full grid-flow-row grid-cols-1 md:grid-cols-4">
             {areas.map((area) => (

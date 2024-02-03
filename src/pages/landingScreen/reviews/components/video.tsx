@@ -17,7 +17,7 @@ const Video = ({ videoUrl, thumbnailUrl }: Props) => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <img
         src={thumbnailUrl}
         alt="Video Thumbnail"
