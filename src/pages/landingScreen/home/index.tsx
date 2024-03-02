@@ -131,25 +131,32 @@ const Home = ({ areaname }: Props) => {
           {/* LOGIN INPUTS */}
           <form onSubmit={handlePlaceOrder}>
             <p
+              className={`text-left text-[16px] md:text-[20px] absolute font-[700] top-32 p-2 rounded-md bg-white/20 backdrop-blur-sm ${
+                isAboveMediumScreens ? "text-black" : "text-black"
+              }`}
+            >
+              We handle everything in-house, unlike other dry cleaners.
+            </p>
+            <p
               className={`mb-3 w-fit rounded-lg bg-white px-3 text-left text-[16px] font-[700] text-black shadow-2xl md:text-[18px]`}
             >
               Family Business
               <br />
-              25+ years Experience in
+              25+ years Experience
             </p>
             <HText
-              textAlign={`text-left text-[24px] md:text-[32px] font-[500] ${
+              textAlign={`text-left text-[23px] md:text-[32px] font-[500] ${
                 isAboveMediumScreens ? "text-black" : "text-black"
               }`}
             >
-              DRY CLEANING &
+              MASTER DRY CLEANING &
               <br />
               LAUNDRY SERVICES {areaname}
             </HText>
             <p className={`w-fit py-1 text-[18px] font-[500] md:text-[20px]`}>
               Free Collection and Delivery
               <br />
-              (Minimum Order £30)
+              <b>(Express service available)</b>
             </p>
             <div className="mt-4 md:mt-8">
               <InputWithSuggestions placeholder="Your Location Or Postcode" />
@@ -201,7 +208,7 @@ const Home = ({ areaname }: Props) => {
                 type="submit"
                 className="w-full rounded-md bg-secondary-500 px-10 py-3 text-center font-semibold text-white hover:shadow-lg"
               >
-                Place Order
+                ORDER FOR COLLECTION
               </button>
             </div>
           </form>
@@ -239,6 +246,13 @@ const Home = ({ areaname }: Props) => {
               <img src={socialMediaInsta} alt="" />
             </a>
           </div>
+          <p
+            className={`text-center text-[20px] md:text-[20px] font-[700] py-4 my-4 rounded-md  ${
+              isAboveMediumScreens ? "text-black" : "text-black"
+            } bg-red-300/60 backdrop-blur-md`}
+          >
+            Award Winner<br/>Best Dry Cleaner in London<br/>2023
+          </p>
         </div>
       </div>
 

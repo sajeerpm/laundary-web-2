@@ -358,7 +358,7 @@ const CustomerInfo = ({}: Props) => {
                       disabled={buttonDisabled}
                       type="button"
                       onClick={handleBack}
-                      className="float-right rounded-2xl bg-gray-400 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
+                      className="float-right rounded-2xl h-[50px] bg-gray-400 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
                       Back
                     </button>)}
@@ -366,7 +366,7 @@ const CustomerInfo = ({}: Props) => {
                       disabled={buttonDisabled}
                       type="submit"
                       onClick={() => handleCheckout("guest")}
-                      className="float-right rounded-2xl bg-yellow-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
+                      className="float-right rounded-2xl h-[50px] bg-yellow-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
                       Guest Checkout
                     </button>)}
@@ -377,18 +377,19 @@ const CustomerInfo = ({}: Props) => {
                         localStorage.setItem("FROM", "checkout");
                         navigate("/login");
                       }}
-                      className="float-right rounded-2xl bg-blue-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
+                      className="float-right rounded-2xl h-[50px] bg-blue-500 px-8 py-2 text-black hover:shadow-sm hover:shadow-gray-400"
                     >
                       Login
                     </button>)}
                     {step == 2 && (<span className="py-2 text-lg text-center italic text-red-500">
-                      We will take the payment before delivery
+                      We will take the payment before delivery<br/>
+                      Minimum Order £25
                     </span>)}
                     {step < 3 && (<button
                       disabled={buttonDisabled}
                       type={isGuestUser ? "button" : "submit"}
                       onClick={() => handleCheckout("registered")}
-                      className=" rounded-2xl bg-secondary-500 px-8 py-2 text-white"
+                      className=" rounded-2xl h-[50px] bg-secondary-500 px-8 py-2 text-white"
                     >
                       {buttonDisabled ? "Processing..." : step == 2 ? "Place Order" : "Sign Up"}
                     </button>)}

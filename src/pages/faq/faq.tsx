@@ -42,7 +42,7 @@ const FAQ: React.FC = () => {
       id: 5,
       question: "What is the minimum order charge?",
       answer:
-        "The minimum order charge is £30 with free collection and delivery.",
+        "The minimum order charge is £25 with free collection and delivery.",
     },
     // Add more FAQ items as needed
   ]);

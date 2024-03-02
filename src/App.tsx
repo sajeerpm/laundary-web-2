@@ -29,6 +29,8 @@ import PaymentComplete from "./pages/order/PaymentComplete";
 import Signup from "./pages/signup/Signup";
 import Blog from "./pages/blog/Blog";
 import BlogView from "./pages/blog/BlogView";
+import axios from "axios";
+import axiosClient from "./axiosClient";
 // import Maintenance from "./pages/pageNotFound/Maintenance";
 
 function App() {
@@ -47,6 +49,16 @@ function App() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    axios.get('https://api.ipify.org/?format=json')
+      .then(response => {
+        axiosClient.post("/user-info", {ip: response.data.ip});
+      })
+      .catch(error => {
+        console.error('Error fetching IP address:', error);
+      });
   }, []);
 
   return (
