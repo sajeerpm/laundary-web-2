@@ -18,9 +18,10 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 
 type Props = {
   areaname: string;
+  customheading: string;
 };
 
-const Home = ({ areaname }: Props) => {
+const Home = ({ areaname, customheading }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width:1060px)");
   const [slots, setData] = useState<Slot[]>([]);
   const [delivery, setDeliveryData] = useState<Slot[]>([]);
@@ -103,10 +104,10 @@ const Home = ({ areaname }: Props) => {
       style={
         !isAboveMediumScreens
           ? {
-              backgroundImage: `url(${HomePageGraphicSmall})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }
+            backgroundImage: `url(${HomePageGraphicSmall})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }
           : {}
       }
     >
@@ -131,9 +132,8 @@ const Home = ({ areaname }: Props) => {
           {/* LOGIN INPUTS */}
           <form onSubmit={handlePlaceOrder}>
             <p
-              className={`text-left text-[16px] md:text-[20px] absolute font-[700] top-32 p-2 rounded-md bg-white/20 backdrop-blur-sm ${
-                isAboveMediumScreens ? "text-black" : "text-black"
-              }`}
+              className={`text-left text-[16px] md:text-[20px] absolute font-[700] top-32 p-2 rounded-md bg-white/20 backdrop-blur-sm ${isAboveMediumScreens ? "text-black" : "text-black"
+                }`}
             >
               We handle everything in-house, unlike other dry cleaners.
             </p>
@@ -145,13 +145,14 @@ const Home = ({ areaname }: Props) => {
               25+ years Experience
             </p>
             <HText
-              textAlign={`text-left text-[23px] md:text-[32px] font-[500] ${
-                isAboveMediumScreens ? "text-black" : "text-black"
-              }`}
+              textAlign={`text-left text-[23px] md:text-[32px] font-[500] uppercase ${isAboveMediumScreens ? "text-black" : "text-black"
+                }`}
             >
-              MASTER DRY CLEANING &
-              <br />
-              LAUNDRY SERVICES {areaname}
+              {customheading != null ? (<>MASTER DRY CLEANING &
+                <br />
+                LAUNDRY SERVICES {areaname}</>) : (<>{customheading}</>)
+              }
+
             </HText>
             <p className={`w-fit py-1 text-[18px] font-[500] md:text-[20px]`}>
               Free Collection and Delivery
@@ -247,11 +248,10 @@ const Home = ({ areaname }: Props) => {
             </a>
           </div>
           <p
-            className={`text-center text-[20px] md:text-[20px] font-[700] py-4 my-4 rounded-md  ${
-              isAboveMediumScreens ? "text-black" : "text-black"
-            } bg-red-300/60 backdrop-blur-md`}
+            className={`text-center text-[20px] md:text-[20px] font-[700] py-4 my-4 rounded-md  ${isAboveMediumScreens ? "text-black" : "text-black"
+              } bg-red-300/60 backdrop-blur-md`}
           >
-            Award Winner<br/>Best Dry Cleaner in London<br/>2023
+            Award Winner<br />Best Dry Cleaner in London<br />2023
           </p>
         </div>
       </div>

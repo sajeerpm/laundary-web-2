@@ -74,23 +74,20 @@ const PricingDetailed = () => {
             </title>
             <meta
               name="description"
-              content={`${
-                categories?.page_meta ? categories?.page_meta : area?.page_meta
-              }`}
+              content={`${categories?.page_meta ? categories?.page_meta : area?.page_meta
+                }`}
             />
             <meta
               property="og:title"
-              content={`${
-                categories?.page_title
+              content={`${categories?.page_title
                   ? categories?.page_title
                   : area?.page_title
-              }`}
+                }`}
             ></meta>
             <meta
               property="og:description"
-              content={`${
-                categories?.page_meta ? categories?.page_meta : area?.page_meta
-              }`}
+              content={`${categories?.page_meta ? categories?.page_meta : area?.page_meta
+                }`}
             ></meta>
           </Helmet>
           <div className="mt-24 md:mt-32">
@@ -155,7 +152,7 @@ const PricingDetailed = () => {
               content="Master clean are award winning eco friendly drycleaners in london with 25+ years experience. we offer free collection & delivery services for your drycleaning & laundry."
             ></meta>
           </Helmet>
-          <Home areaname={area?.name ? "IN " + area.name : ""} />
+          <Home areaname={area?.name ? "IN " + area.name : ""} customheading={area?.home_page_heading ? area.home_page_heading : ""} />
           <GoogleReviews placeId={"ChIJmdOA3csadkgRwIf2zQ_JGYo"} />
           <HowItWorks />
           <Clients />
