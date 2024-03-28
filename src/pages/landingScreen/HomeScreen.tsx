@@ -28,7 +28,7 @@ function HomeScreen() {
           content="Master clean are award winning eco friendly drycleaners in london with 25+ years experience. we offer free collection & delivery services for your drycleaning & laundry."
         ></meta>
       </Helmet>
-      <Home areaname={""} />
+      <Home areaname={""} customheading={""} />
       <GoogleReviews placeId={"ChIJmdOA3csadkgRwIf2zQ_JGYo"} />
       <Clients />
       <HowItWorks />

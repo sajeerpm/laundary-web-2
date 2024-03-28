@@ -148,7 +148,7 @@ const Home = ({ areaname, customheading }: Props) => {
               textAlign={`text-left text-[23px] md:text-[32px] font-[500] uppercase ${isAboveMediumScreens ? "text-black" : "text-black"
                 }`}
             >
-              {customheading != null ? (<>MASTER DRY CLEANING &
+              {customheading == "" ? (<>MASTER DRY CLEANING &
                 <br />
                 LAUNDRY SERVICES {areaname}</>) : (<>{customheading}</>)
               }
